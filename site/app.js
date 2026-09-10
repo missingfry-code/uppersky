@@ -271,76 +271,103 @@
     }
   });
 
-  /* ============ SCRUB-VIDEO SECTION ============ */
+  /* ============ SCRUB SECTION — canvas frame sequence ============ */
+  // The old <video currentTime> scrub needed the full 13MB mp4 buffered before
+  // it felt responsive. A WebP frame sequence paints after ~35KB and streams
+  // the rest in behind the loader.
   const scrubSection = document.querySelector('.scrub-section');
-  const scrubVideo   = document.querySelector('.scrub-video');
+  const scrubCanvas  = document.querySelector('canvas.scrub-video');
   const scrubCard    = document.querySelector('.scrub-card');
   const scrubLines   = document.querySelectorAll('.scrub-headers__line');
 
-  if (scrubSection && scrubVideo){
-    // Best-effort: keep video paused; we only set currentTime via scrub.
-    scrubVideo.pause();
+  if (scrubSection && scrubCanvas){
+    const FRAME_COUNT = 96;
+    const FIRST_CHUNK = 24; // the loader holds until this many frames are in
+    const frameSrc = (i) => `assets/scrub/frame_${String(i + 1).padStart(3, '0')}.webp`;
 
-    const setupScrub = () => {
-      const duration = scrubVideo.duration;
-      if (!duration || !isFinite(duration)) return;
+    const ctx = scrubCanvas.getContext('2d');
+    const frames = new Array(FRAME_COUNT).fill(null);
+    let loadedCount = 0;
+    let currentIndex = 0;
 
-      // Drive currentTime from scroll progress through the section
-      const scrubObj = { t: 0 };
-      gsap.to(scrubObj, {
-        t: duration,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: scrubSection,
-          start: 'top top',
-          end: 'bottom bottom',
-          scrub: true,
-          onUpdate: () => {
-            // Only seek when value actually changes — avoid redundant seeks
-            const next = Math.min(Math.max(scrubObj.t, 0), duration - 0.05);
-            if (Math.abs(scrubVideo.currentTime - next) > 0.03){
-              try { scrubVideo.currentTime = next; } catch (_) {}
-            }
-          }
-        }
-      });
-
-      // Headers — swap one word at a time across the scroll
-      const wordCount = scrubLines.length;
-      ScrollTrigger.create({
-        trigger: scrubSection,
-        start: 'top top',
-        end: 'bottom bottom',
-        onUpdate: (self) => {
-          const idx = Math.min(wordCount - 1, Math.floor(self.progress * wordCount));
-          scrubLines.forEach((el, i) => el.classList.toggle('is-active', i === idx));
-        }
-      });
-
-      // Reveal the side card + promise tag once we're near the end of the scrub
-      const scrubTag = document.querySelector('.scrub-tag');
-      ScrollTrigger.create({
-        trigger: scrubSection,
-        start: 'bottom bottom',
-        end: 'bottom top',
-        onEnter: () => {
-          scrubCard && scrubCard.classList.add('is-visible');
-          scrubTag  && scrubTag.classList.add('is-visible');
-        },
-        onLeaveBack: () => {
-          scrubCard && scrubCard.classList.remove('is-visible');
-          scrubTag  && scrubTag.classList.remove('is-visible');
-        }
-      });
-
-      ScrollTrigger.refresh();
+    const draw = (img) => {
+      if (!img) return;
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const cw = scrubCanvas.clientWidth, ch = scrubCanvas.clientHeight;
+      if (!cw || !ch) return;
+      if (scrubCanvas.width !== Math.round(cw * dpr) || scrubCanvas.height !== Math.round(ch * dpr)){
+        scrubCanvas.width  = Math.round(cw * dpr);
+        scrubCanvas.height = Math.round(ch * dpr);
+      }
+      // object-fit: cover, done by hand
+      const s = Math.max(scrubCanvas.width / img.width, scrubCanvas.height / img.height);
+      const w = img.width * s, h = img.height * s;
+      ctx.drawImage(img, (scrubCanvas.width - w) / 2, (scrubCanvas.height - h) / 2, w, h);
     };
 
-    if (scrubVideo.readyState >= 1 && isFinite(scrubVideo.duration)){
-      setupScrub();
-    } else {
-      scrubVideo.addEventListener('loadedmetadata', setupScrub, { once: true });
-    }
+    // Draw the nearest loaded frame at or before the wanted index
+    const render = () => {
+      let i = currentIndex;
+      while (i > 0 && !frames[i]) i--;
+      draw(frames[i] || frames[0]);
+    };
+
+    const onFrameSettled = () => {
+      loadedCount++;
+      if (!window.__scrubReady && loadedCount >= FIRST_CHUNK){
+        window.__scrubReady = true;
+        window.dispatchEvent(new Event('uppersky:scrubready'));
+      }
+      if (loadedCount === FRAME_COUNT) render();
+    };
+
+    const loadFrame = (i) => {
+      const img = new Image();
+      img.decoding = 'async';
+      img.onload = () => {
+        frames[i] = img;
+        if (i === 0 || i === currentIndex) render();
+        onFrameSettled();
+      };
+      img.onerror = onFrameSettled;
+      img.src = frameSrc(i);
+    };
+    for (let i = 0; i < FRAME_COUNT; i++) loadFrame(i);
+
+    window.addEventListener('resize', render);
+
+    // Frames + headline words driven straight from scroll progress
+    const wordCount = scrubLines.length;
+    ScrollTrigger.create({
+      trigger: scrubSection,
+      start: 'top top',
+      end: 'bottom bottom',
+      onUpdate: (self) => {
+        const idx = Math.min(FRAME_COUNT - 1, Math.round(self.progress * (FRAME_COUNT - 1)));
+        if (idx !== currentIndex){
+          currentIndex = idx;
+          render();
+        }
+        const wIdx = Math.min(wordCount - 1, Math.floor(self.progress * wordCount));
+        scrubLines.forEach((el, i) => el.classList.toggle('is-active', i === wIdx));
+      }
+    });
+
+    // Reveal the side card + promise tag once we're near the end of the scrub
+    const scrubTag = document.querySelector('.scrub-tag');
+    ScrollTrigger.create({
+      trigger: scrubSection,
+      start: 'bottom bottom',
+      end: 'bottom top',
+      onEnter: () => {
+        scrubCard && scrubCard.classList.add('is-visible');
+        scrubTag  && scrubTag.classList.add('is-visible');
+      },
+      onLeaveBack: () => {
+        scrubCard && scrubCard.classList.remove('is-visible');
+        scrubTag  && scrubTag.classList.remove('is-visible');
+      }
+    });
   }
 
   /* ============ SCRUBBED PARALLAX ============ */
@@ -543,7 +570,6 @@
 
   const pctEl = document.getElementById('loaderPct');
   const fill  = document.getElementById('loaderFill');
-  const video = document.querySelector('.scrub-video');
 
   document.documentElement.classList.add('is-loading');
   if (window.lenis) window.lenis.stop();
@@ -580,15 +606,9 @@
     });
   };
 
-  if (video){
-    if (video.readyState >= 4) finish();
-    else {
-      video.addEventListener('canplaythrough', finish, { once: true });
-      video.addEventListener('error', finish, { once: true });
-    }
-  } else {
-    window.addEventListener('load', finish, { once: true });
-  }
-  // Never trap the visitor — hard cap even if the video stalls
+  // Ready once the scrub section's first chunk of frames is in
+  if (window.__scrubReady) finish();
+  else window.addEventListener('uppersky:scrubready', finish, { once: true });
+  // Never trap the visitor — hard cap even if the network stalls
   setTimeout(finish, 7000);
 })();
