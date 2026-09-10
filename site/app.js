@@ -101,7 +101,12 @@
   // The background video is static and visible from the start — don't fade it in.
   // The first scrub word is already opacity 1 via the CSS .is-active rule, so we
   // keep its entrance to a subtle settle (no full fade-in) to avoid flashing.
-  const intro = gsap.timeline({ defaults: { ease: 'power3.out' }});
+  // Hold the intro until the loader clears (plays immediately if no loader in DOM)
+  const intro = gsap.timeline({
+    defaults: { ease: 'power3.out' },
+    paused: !!document.getElementById('loader')
+  });
+  window.addEventListener('uppersky:loaded', () => intro.play(), { once: true });
   intro.from('.top-cta',  { autoAlpha: 0, y: -10, duration: .6 }, 0);
   intro.from('.menu-tab', { x: -40, autoAlpha: 0, duration: .6 }, 0);
   intro.from('.m-header', { y: -30, autoAlpha: 0, duration: .6 }, 0);
@@ -350,15 +355,8 @@
       scrollTrigger: { trigger: '.strategies', start: 'top bottom', end: 'bottom top', scrub: true }
     });
 
-    // Dots — each circle drifts/rotates at its own rate as the section scrolls
-    gsap.utils.toArray('.dot').forEach((dot, i) => {
-      gsap.to(dot, {
-        yPercent: -40 - i * 12,
-        rotation: (i % 2 === 0 ? 1 : -1) * (10 + i * 6),
-        ease: 'none',
-        scrollTrigger: { trigger: '.strategies', start: 'top bottom', end: 'bottom top', scrub: 1 }
-      });
-    });
+    // (dots drift/rotate parallax removed — replaced by the scroll-scrubbed
+    //  row-to-column fold at the bottom of this file)
 
     // CMS copy column lifts as it leaves
     gsap.to('.strategies__col--right', {
@@ -427,4 +425,170 @@
   });
 
   window.addEventListener('load', () => ScrollTrigger.refresh());
+})();
+
+/* =====================================================
+   SERVICES INDEX — accordion + cursor peek
+   ===================================================== */
+(() => {
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const rows = document.querySelectorAll('.svc-row');
+  if (!rows.length) return;
+
+  /* Accordion — one open at a time */
+  rows.forEach((row) => {
+    const head = row.querySelector('.svc-row__head');
+    head.addEventListener('click', () => {
+      const opening = !row.classList.contains('is-open');
+      rows.forEach((r) => {
+        r.classList.remove('is-open');
+        r.querySelector('.svc-row__head').setAttribute('aria-expanded', 'false');
+      });
+      if (opening){
+        row.classList.add('is-open');
+        head.setAttribute('aria-expanded', 'true');
+      }
+      if (typeof ScrollTrigger !== 'undefined'){
+        setTimeout(() => ScrollTrigger.refresh(), 600);
+      }
+    });
+  });
+
+  /* Cursor-following preview image (desktop fine pointers only) */
+  const peek = document.querySelector('.svc-peek');
+  const list = document.querySelector('.svc-list');
+  const fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  if (peek && list && fine && !reduce && typeof gsap !== 'undefined'){
+    const img = peek.querySelector('img');
+    const xTo = gsap.quickTo(peek, 'x', { duration: .5, ease: 'power3.out' });
+    const yTo = gsap.quickTo(peek, 'y', { duration: .5, ease: 'power3.out' });
+
+    list.addEventListener('pointermove', (e) => {
+      xTo(e.clientX);
+      yTo(e.clientY);
+    });
+    let peekVisible = false;
+    rows.forEach((row) => {
+      row.addEventListener('pointerenter', (e) => {
+        const src = row.dataset.peek;
+        if (src && img.getAttribute('src') !== src) img.setAttribute('src', src);
+        if (!peekVisible){
+          // Snap to the cursor before showing so it never flies in from a corner
+          gsap.set(peek, { x: e.clientX, y: e.clientY });
+          xTo(e.clientX, e.clientX);
+          yTo(e.clientY, e.clientY);
+          peekVisible = true;
+        }
+        gsap.to(peek, { autoAlpha: 1, scale: 1, rotate: 0, duration: .4, ease: 'power3.out' });
+      });
+    });
+    list.addEventListener('pointerleave', () => {
+      peekVisible = false;
+      gsap.to(peek, { autoAlpha: 0, scale: .9, rotate: -3, duration: .3, ease: 'power2.in' });
+    });
+  }
+
+  /* Entrance — rows rise in with a stagger */
+  if (!reduce && typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined'){
+    gsap.from('.svc-row', {
+      y: 44, autoAlpha: 0,
+      duration: .8, ease: 'power3.out', stagger: .09,
+      scrollTrigger: { trigger: '.svc-list', start: 'top 82%', once: true }
+    });
+  }
+})();
+
+/* =====================================================
+   STRATEGIES DOTS — row folds into a column on scroll
+   ===================================================== */
+(() => {
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce || typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+  const dotsWrap = document.querySelector('.dots');
+  const dots = gsap.utils.toArray('.dots .dot');
+  if (!dotsWrap || dots.length < 2) return;
+
+  // Distance between slots = dot diameter + flex gap (recomputed on refresh/resize)
+  const off = (i) => {
+    // offsetWidth ignores transforms (the entrance anim scales dots from 0)
+    const d = dots[0].offsetWidth;
+    const gap = parseFloat(getComputedStyle(dotsWrap).gap) || 16;
+    return i * (d + gap);
+  };
+
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: dotsWrap,
+      start: 'top 85%',
+      end: 'top 30%',
+      scrub: true,
+      invalidateOnRefresh: true
+    }
+  });
+  dots.forEach((dot, i) => {
+    if (!i) return;
+    tl.to(dot, { x: () => -off(i), y: () => off(i), ease: 'none' }, 0);
+  });
+  // Grow the wrap so the column doesn't overlap the content beneath it
+  tl.to(dotsWrap, { paddingBottom: () => off(dots.length - 1), ease: 'none' }, 0);
+})();
+
+/* =====================================================
+   LOADER — buys the scrub video time to buffer
+   ===================================================== */
+(() => {
+  const loader = document.getElementById('loader');
+  if (!loader || typeof gsap === 'undefined'){ loader?.remove(); return; }
+
+  const pctEl = document.getElementById('loaderPct');
+  const fill  = document.getElementById('loaderFill');
+  const video = document.querySelector('.scrub-video');
+
+  document.documentElement.classList.add('is-loading');
+  if (window.lenis) window.lenis.stop();
+
+  const state = { p: 0 };
+  const render = () => {
+    const v = Math.round(state.p);
+    pctEl.textContent = v;
+    fill.style.transform = `scaleX(${v / 100})`;
+  };
+
+  // Creep toward 90% while the video buffers; real readiness completes it
+  const creep = gsap.to(state, { p: 90, duration: 4.5, ease: 'power1.out', onUpdate: render });
+
+  let done = false;
+  const finish = () => {
+    if (done) return;
+    done = true;
+    creep.kill();
+    gsap.to(state, {
+      p: 100, duration: .35, ease: 'power1.in', onUpdate: render,
+      onComplete: () => {
+        gsap.timeline()
+          .to('.loader__inner', { y: -24, autoAlpha: 0, duration: .4, ease: 'power2.in' })
+          .to(loader, { yPercent: -100, duration: .85, ease: 'power4.inOut' }, '-=.05')
+          .add(() => {
+            loader.remove();
+            document.documentElement.classList.remove('is-loading');
+            if (window.lenis) window.lenis.start();
+            window.dispatchEvent(new Event('uppersky:loaded'));
+            if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
+          });
+      }
+    });
+  };
+
+  if (video){
+    if (video.readyState >= 4) finish();
+    else {
+      video.addEventListener('canplaythrough', finish, { once: true });
+      video.addEventListener('error', finish, { once: true });
+    }
+  } else {
+    window.addEventListener('load', finish, { once: true });
+  }
+  // Never trap the visitor — hard cap even if the video stalls
+  setTimeout(finish, 7000);
 })();
