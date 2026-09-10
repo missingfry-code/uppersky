@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>UPPERSKY MEDIA — Complete Marketing Strategies</title>
+  <meta name="description" content="UPPERSKY MEDIA — the weapon of choice for industry professionals. Photo, Video, Graphics, Web & Social. A one-stop-shop for premium marketing." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css?v=20" />
+  <script>
+    // Disable browser scroll restoration BEFORE the browser repositions on reload.
+    // Must run before paint, so it lives in <head> not in app.js (which runs at body end).
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    // Best-effort: jump to top early in case the browser already restored.
+    window.scrollTo(0, 0);
+  </script>
+</head>
+<body>
+
+  <!-- ============ DESKTOP MENU TAB (top-left) ============ -->
+  <button class="menu-tab" id="menuTab" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
+    <img class="menu-tab__emblem" src="assets/mark-black.png" alt="" aria-hidden="true" />
+    <span class="menu-tab__label" aria-hidden="true">MENU</span>
+    <span class="visually-hidden">MENU</span>
+  </button>
+
+  <!-- ============ MOBILE HEADER ============ -->
+  <header class="m-header">
+    <a class="m-header__logo" href="#home" aria-label="UPPERSKY home">
+      <img src="assets/mark-light.png" alt="UPPERSKY" />
+    </a>
+    <button class="m-header__burger" id="mBurger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- ============ DRAWER (1/3 width) ============ -->
+  <aside class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer__inner">
+      <div class="drawer__head">
+        <span class="drawer__brand">UPPERSKY<sup>®</sup></span>
+        <button class="drawer__close" id="drawerClose" aria-label="Close menu">
+          <svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+
+      <nav class="drawer__nav" aria-label="Primary">
+        <ul>
+          <li><a href="#home" data-i="01"><span class="num">01</span><span class="word">Home</span></a></li>
+          <li><a href="#strategies" data-i="02"><span class="num">02</span><span class="word">Strategies</span></a></li>
+          <li><a href="#services" data-i="03"><span class="num">03</span><span class="word">Services</span></a></li>
+          <li><a href="#process" data-i="04"><span class="num">04</span><span class="word">Process</span></a></li>
+          <li><a href="#contact" data-i="05"><span class="num">05</span><span class="word">Contact</span></a></li>
+        </ul>
+      </nav>
+
+      <div class="drawer__foot">
+        <div>
+          <div class="drawer__label">Get in touch</div>
+          <a class="drawer__email" href="mailto:hello@uppersky.media">hello@uppersky.media</a>
+        </div>
+        <div class="drawer__socials">
+          <a href="#" aria-label="Instagram">IG</a>
+          <a href="#" aria-label="LinkedIn">IN</a>
+          <a href="#" aria-label="YouTube">YT</a>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="drawer-scrim" id="drawerScrim"></div>
+
+  <!-- ============ TOP-RIGHT CTA ============ -->
+  <a class="top-cta" href="#contact">GET STARTED</a>
+
+  <!-- ============ SCRUB VIDEO ============ -->
+  <section class="scrub-section" id="scrub-section">
+    <div class="scrub-stage">
+      <video class="scrub-video"
+             src="assets/Scrubvideo.mp4"
+             muted playsinline preload="auto"
+             aria-hidden="true"></video>
+      <div class="scrub-overlay" aria-hidden="true"></div>
+
+      <div class="scrub-headers">
+        <h2 class="scrub-headers__line is-active">MARKETING</h2>
+        <h2 class="scrub-headers__line">THAT TAKES</h2>
+        <h2 class="scrub-headers__line">FLIGHT</h2>
+      </div>
+
+      <div class="scrub-tag" aria-hidden="true">
+        <span class="scrub-tag__eyebrow">Our promise</span>
+        <p class="scrub-tag__copy">Transparent with you. <em>A secret weapon</em> to the industry.</p>
+      </div>
+
+      <aside class="scrub-card scrub-card--stats" aria-hidden="true">
+        <ul class="scrub-stats">
+          <li class="scrub-stat">
+            <span class="scrub-stat__num"><span class="scrub-stat__plus">+</span>175,320</span>
+            <span class="scrub-stat__meta">
+              <span class="scrub-stat__label">Total time</span>
+              <span class="scrub-stat__unit">Hours logged</span>
+            </span>
+          </li>
+          <li class="scrub-stat">
+            <span class="scrub-stat__num"><span class="scrub-stat__plus">+</span>300</span>
+            <span class="scrub-stat__meta">
+              <span class="scrub-stat__label">Projects landed</span>
+              <span class="scrub-stat__unit">Campaigns delivered</span>
+            </span>
+          </li>
+          <li class="scrub-stat">
+            <span class="scrub-stat__num"><span class="scrub-stat__plus">+</span>180</span>
+            <span class="scrub-stat__meta">
+              <span class="scrub-stat__label">Aircraft featured</span>
+              <span class="scrub-stat__unit">Tails on the runway</span>
+            </span>
+          </li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ============ CREATIVE STRIP (compact services preview, full-width) ============ -->
+  <section class="creative-strip" aria-label="Creative services">
+    <div class="creative-strip__inner">
+      <div class="creative-strip__head">
+        <span class="creative-strip__eyebrow">— Creative services</span>
+        <h2 class="creative-strip__title">A one-stop shop for all your listing needs.</h2>
+      </div>
+      <ul class="creative-strip__list">
+        <li class="creative-strip__item">
+          <span class="creative-strip__num">01</span>
+          <span class="creative-strip__name">Photo</span>
+          <span class="creative-strip__desc">Studio &amp; air-to-air imagery</span>
+        </li>
+        <li class="creative-strip__item">
+          <span class="creative-strip__num">02</span>
+          <span class="creative-strip__name">Video</span>
+          <span class="creative-strip__desc">Walk-throughs &amp; brand films</span>
+        </li>
+        <li class="creative-strip__item">
+          <span class="creative-strip__num">03</span>
+          <span class="creative-strip__name">Graphics</span>
+          <span class="creative-strip__desc">Brochures, decks &amp; identity</span>
+        </li>
+        <li class="creative-strip__item">
+          <span class="creative-strip__num">04</span>
+          <span class="creative-strip__name">Web</span>
+          <span class="creative-strip__desc">Listing sites &amp; platforms</span>
+        </li>
+        <li class="creative-strip__item">
+          <span class="creative-strip__num">05</span>
+          <span class="creative-strip__name">Social</span>
+          <span class="creative-strip__desc">Strategy &amp; daily content</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ BIG QUOTE (white) ============ -->
+  <section class="big-quote-section">
+    <div class="big-quote" data-reveal>
+      <p>Custom marketing packages and à la carte services designed to elevate your listing and deliver a clear, cohesive message that <em>reflects your brand.</em></p>
+    </div>
+  </section>
+
+  <!-- ============ BEFORE / AFTER SLIDER ============ -->
+  <section class="ba-section" aria-label="Before and after">
+    <div class="ba-section__inner">
+      <div class="ba-slider" data-ba style="--ba-pos: 50%;">
+        <img class="ba-slider__img ba-slider__img--after" src="assets/jet.webp" alt="After — polished marketing image" draggable="false" />
+        <img class="ba-slider__img ba-slider__img--before" src="assets/jet.webp" alt="Before — raw image" draggable="false" />
+        <div class="ba-slider__handle" aria-hidden="true">
+          <span class="ba-slider__line"></span>
+          <button class="ba-slider__knob" type="button" aria-label="Drag to compare before and after">
+            <svg viewBox="0 0 24 24"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+        <span class="ba-slider__label ba-slider__label--before">Before</span>
+        <span class="ba-slider__label ba-slider__label--after">After</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EDITORIAL GALLERY (OG + edited variants) ============ -->
+  <section class="gallery-section" aria-label="From original to editorial">
+    <div class="gallery-section__inner">
+      <div class="gallery-layout">
+
+        <div class="gallery-section__copy" data-reveal>
+          <span class="gallery-section__eyebrow">— From frame to feature</span>
+          <h3 class="gallery-section__title">We take the photos you already have and make them <em>editorial-worthy.</em></h3>
+          <p class="gallery-section__lede">Every aircraft has a hero shot waiting to be uncovered. Our retouching, colour-grading, and creative direction transform an as-shot frame into a magazine-grade asset — ready for catalogues, listings, brand campaigns, and the kind of presentation serious buyers expect.</p>
+        </div>
+
+        <div class="gallery-grid">
+          <figure class="gallery-item">
+            <img src="assets/gallery/ogangle.jpg" alt="Original aircraft photograph" loading="lazy" />
+            <figcaption class="gallery-item__caption">
+              <span class="gallery-item__tag gallery-item__tag--lead">Original</span>
+            </figcaption>
+          </figure>
+
+          <figure class="gallery-item">
+            <img src="assets/gallery/editedogangle.jpg" alt="Editorial edit, version 1" loading="lazy" />
+            <figcaption class="gallery-item__caption">
+              <span class="gallery-item__tag">Original Edited #1</span>
+            </figcaption>
+          </figure>
+
+          <figure class="gallery-item">
+            <img src="assets/gallery/differentangle1.jpg" alt="Editorial edit, version 2" loading="lazy" />
+            <figcaption class="gallery-item__caption">
+              <span class="gallery-item__tag">Original Edited #2</span>
+            </figcaption>
+          </figure>
+
+          <figure class="gallery-item">
+            <img src="assets/gallery/differentangle2.jpg" alt="Editorial edit, version 3" loading="lazy" />
+            <figcaption class="gallery-item__caption">
+              <span class="gallery-item__tag">Original Edited #3</span>
+            </figcaption>
+          </figure>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SKY STAGE: HERO + STRATEGIES (shared bg) ============ -->
+  <div class="sky-stage">
+    <div class="sky-stage__bg" aria-hidden="true">
+      <img src="assets/hero-bg.jpg" alt="" />
+    </div>
+    <div class="sky-stage__overlay" aria-hidden="true"></div>
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="home">
+      <div class="hero__inner">
+        <img class="hero__logo-img" src="assets/logo-white.png" alt="UPPERSKY MEDIA" />
+      </div>
+    </section>
+
+    <!-- ============ STRATEGIES (editorial) ============ -->
+    <section class="strategies" id="strategies">
+      <div class="strategies__inner">
+
+        <div class="strategies__col strategies__col--left">
+          <h2 class="quote-head" data-reveal>
+            &ldquo;THE SECRET WEAPON FOR EVERY SUCCESSFUL INDUSTRY PROFESSIONAL AND SINGLE OWNERS&rdquo;
+          </h2>
+          <p class="tagline" data-reveal>
+            Sell faster &amp; lead with an unforgettable first impression.
+          </p>
+        </div>
+
+        <div class="strategies__col strategies__col--right">
+          <div class="dots" aria-hidden="true">
+            <span class="dot dot--video">
+              <video class="dot__video" src="assets/circlevideomask.mp4" autoplay muted loop playsinline></video>
+            </span><span class="dot"></span><span class="dot"></span>
+          </div>
+          <h3 class="cms-title" data-reveal>COMPLETE MARKETING STRATEGIES</h3>
+          <p class="cms-copy" data-reveal>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.
+          </p>
+          <span class="cms-rule" aria-hidden="true"></span>
+        </div>
+
+      </div>
+
+    </section>
+
+    <div class="sky-stage__fade" aria-hidden="true"></div>
+  </div>
+
+  <!-- ============ PROCESS ============ -->
+  <section class="process" id="process">
+    <div class="container">
+      <header class="section-head" data-reveal>
+        <span class="eyebrow">How it works</span>
+        <h2>Five steps. One sharp result.</h2>
+      </header>
+
+      <ol class="steps">
+        <li class="step">
+          <div class="step__num">01</div>
+          <div class="step__bar"><span></span></div>
+          <h3>Discover</h3>
+          <p>We start with a deep-dive on your brand, audience and goals to align on the win.</p>
+        </li>
+        <li class="step">
+          <div class="step__num">02</div>
+          <div class="step__bar"><span></span></div>
+          <h3>Plan</h3>
+          <p>A custom strategy &amp; creative direction, mapped to channels that move the needle.</p>
+        </li>
+        <li class="step">
+          <div class="step__num">03</div>
+          <div class="step__bar"><span></span></div>
+          <h3>Capture</h3>
+          <p>On-location shoots, drone, studio &amp; video — built for high-impact storytelling.</p>
+        </li>
+        <li class="step">
+          <div class="step__num">04</div>
+          <div class="step__bar"><span></span></div>
+          <h3>Produce</h3>
+          <p>Edit, design and develop. Polished assets ready for every touchpoint.</p>
+        </li>
+        <li class="step">
+          <div class="step__num">05</div>
+          <div class="step__bar"><span></span></div>
+          <h3>Launch</h3>
+          <p>We deploy, distribute and measure — so the next campaign is even sharper.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ COLOPHON (CTA + footer in one cinematic block) ============ -->
+  <section class="colophon" id="contact">
+    <video class="colophon__video"
+           src="assets/Scrubvideo.mp4"
+           autoplay muted loop playsinline preload="auto"
+           aria-hidden="true"></video>
+    <div class="colophon__overlay" aria-hidden="true"></div>
+
+    <div class="colophon__inner">
+
+      <!-- INVITATION -->
+      <div class="colophon__invite">
+        <span class="colophon__status">
+          <span class="colophon__pulse" aria-hidden="true"></span>
+          Available for projects · 2026
+        </span>
+        <h2 class="colophon__h" data-reveal>
+          Want to see what a <em>customized</em> approach looks like?
+        </h2>
+        <a class="colophon__cta" href="mailto:hello@uppersky.media">
+          <span>Start a project</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a class="colophon__contact" href="mailto:hello@uppersky.media">hello@uppersky.media</a>
+      </div>
+
+      <!-- WORDMARK MOMENT -->
+      <a class="colophon__wordmark" href="#home" aria-label="UPPERSKY home">
+        UPPERSKY<span class="colophon__dot">.</span>
+      </a>
+
+      <!-- INFO GRID -->
+      <div class="colophon__grid">
+        <nav class="colophon__col" aria-label="Footer navigation">
+          <span class="colophon__h-mini">Navigate</span>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#strategies">Strategies</a></li>
+            <li><a href="#process">Process</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="colophon__col">
+          <span class="colophon__h-mini">Get in touch</span>
+          <ul>
+            <li><a href="mailto:hello@uppersky.media">hello@uppersky.media</a></li>
+            <li><a href="tel:+15555555555">+1 (555) 555-5555</a></li>
+            <li>Los Angeles · Worldwide</li>
+          </ul>
+        </div>
+        <div class="colophon__col">
+          <span class="colophon__h-mini">Follow</span>
+          <ul class="colophon__social">
+            <li><a href="#" aria-label="Instagram">Instagram <span aria-hidden="true">↗</span></a></li>
+            <li><a href="#" aria-label="LinkedIn">LinkedIn <span aria-hidden="true">↗</span></a></li>
+            <li><a href="#" aria-label="YouTube">YouTube <span aria-hidden="true">↗</span></a></li>
+            <li><a href="#" aria-label="Vimeo">Vimeo <span aria-hidden="true">↗</span></a></li>
+          </ul>
+        </div>
+        <div class="colophon__col colophon__col--time">
+          <span class="colophon__h-mini">Local time</span>
+          <span class="colophon__clock" id="laClock">—</span>
+          <span class="colophon__clock-meta">Los Angeles · PT</span>
+        </div>
+      </div>
+
+      <!-- BOTTOM BAR -->
+      <div class="colophon__bar">
+        <span class="colophon__copy">© <span id="year"></span> UPPERSKY MEDIA · All rights reserved</span>
+        <span class="colophon__tag">— Built to fly</span>
+        <a class="colophon__top-link" href="#home" aria-label="Back to top">
+          Back to top
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- GSAP + Lenis (smooth scroll) -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/SplitText.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
+  <script src="app.js?v=14"></script>
+</body>
+</html>
