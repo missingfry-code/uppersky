@@ -185,6 +185,7 @@ button{ font: inherit; color: inherit; background: none; border: 0; cursor: poin
   font-size: 15px;
 }
 .drawer__brand sup{ color: var(--yellow); margin-left: 2px; }
+.drawer__logo{ height: 38px; width: auto; display: block; }
 .drawer__close{
   width: 40px; height: 40px;
   border-radius: 50%;
