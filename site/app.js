@@ -544,6 +544,10 @@
     return i * (d + gap);
   };
 
+  // On phones the row is centered, so fold under the middle dot to keep the
+  // final column centered; on desktop fold under the first (left-aligned).
+  const anchor = () => (window.matchMedia('(max-width: 640px)').matches ? 1 : 0);
+
   const tl = gsap.timeline({
     scrollTrigger: {
       trigger: dotsWrap,
@@ -554,8 +558,7 @@
     }
   });
   dots.forEach((dot, i) => {
-    if (!i) return;
-    tl.to(dot, { x: () => -off(i), y: () => off(i), ease: 'none' }, 0);
+    tl.to(dot, { x: () => off(anchor() - i), y: () => off(i), ease: 'none' }, 0);
   });
   // Grow the wrap so the column doesn't overlap the content beneath it
   tl.to(dotsWrap, { paddingBottom: () => off(dots.length - 1), ease: 'none' }, 0);
