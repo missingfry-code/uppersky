@@ -335,41 +335,6 @@
 .flightform__title em{ font-style: normal; color: var(--yellow); }
 .flightform__sub{ margin: 0; max-width: 46ch; color: var(--on-dark-2); font-size: 14.5px; line-height: 1.6; }
 
-/* route: YOU - - - ✈ - - - USM */
-.flightform__route{
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  font-family: 'Oswald', sans-serif;
-  font-weight: 700;
-  font-size: 12px;
-  letter-spacing: .3em;
-}
-.flightform__code{ color: var(--on-dark-3); }
-.flightform__code--dest{ color: var(--yellow); }
-.flightform__path{ position: relative; flex: 1; height: 26px; }
-.flightform__path::before{
-  content: '';
-  position: absolute; left: 0; right: 0; top: 50%;
-  border-top: 1.5px dashed rgba(255,255,255,.22);
-}
-.flightform__trail{
-  position: absolute; left: 0; top: 50%;
-  width: var(--ff-progress, 0%);
-  height: 2px;
-  margin-top: -1px;
-  background: var(--yellow);
-  box-shadow: 0 0 14px rgba(212,255,61,.55);
-  transition: width .8s var(--easing);
-}
-.flightform__plane{
-  position: absolute; top: 50%; left: var(--ff-progress, 0%);
-  width: 24px; height: 24px;
-  color: var(--yellow);
-  transform: translate(-50%, -50%) rotate(var(--ff-spin, 0deg));
-  filter: drop-shadow(0 0 10px rgba(212,255,61,.55));
-  transition: left .8s var(--easing), transform .8s var(--easing);
-}
 .flightform__legs{
   display: grid;
   grid-template-columns: repeat(4, 1fr);

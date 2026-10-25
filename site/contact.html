@@ -13,10 +13,15 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&family=Bebas+Neue&display=swap" rel="stylesheet">
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <!-- icons: .ico for Safari and older browsers, SVG for the rest, touch icon for iOS -->
+  <link rel="icon" href="favicon.ico" sizes="16x16 32x32 48x48">
+  <link rel="icon" href="assets/favicon.svg?v=2" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#0a0b0e">
 
   <link rel="stylesheet" href="styles.css?v=30" />
-  <link rel="stylesheet" href="kit.css?v=2" />
+  <link rel="stylesheet" href="kit.css?v=3" />
   <script>
     // Disable browser scroll restoration BEFORE the browser repositions on reload.
     // Must run before paint, so it lives in <head> not in app.js (which runs at body end).
@@ -208,18 +213,6 @@
                     <p class="flightform__sub">Four quick legs. Then a real conversation about your sale or acquisition — no pitch, no pressure.</p>
                   </header>
 
-                  <!-- progress, drawn as a route: you → us -->
-                  <div class="flightform__route" aria-hidden="true">
-                    <span class="flightform__code">YOU</span>
-                    <span class="flightform__path">
-                      <span class="flightform__trail"></span>
-                      <svg class="flightform__plane" viewBox="0 0 102.23 100" fill="currentColor">
-                        <path d="M 38.28 0.77 C 33.13 8.56 36.3 17.53 40.18 25.07 C 49.14 42.48 69.13 65.88 56.38 86.05 C 46.42 101.81 26.94 97.35 15.15 86.39 C 0.42 72.69 -3.61 50.68 3.23 32.02 C 3.63 30.93 4.09 29.41 4.91 28.58 C 5.74 40.55 8.01 53.36 13.94 63.9 C 18.64 72.27 30.6 86.01 40.03 75.55 C 46.53 68.34 41.83 58.07 37.75 50.92 C 31.78 40.48 19.44 27.35 23.08 14.4 C 24.91 7.89 32.01 2.56 38.28 0.77"/>
-                        <path d="M 101.8 55.8 L 99.68 49.29 C 97.16 41.37 85.33 24.11 77.22 21.99 C 72.51 20.75 75.21 27.84 76.11 30.12 C 81.74 44.43 91.66 55.68 90.69 72.65 C 89.76 88.89 75.96 96.65 61.7 100 C 68.11 94.38 73.44 87.35 74.79 78.7 C 77.05 64.22 68.26 44.73 61.56 32.09 C 58.56 26.43 54.39 20.55 51.99 14.73 C 43.63 -5.49 64.77 -0.92 75.55 5.22 C 93.71 15.58 104.57 34.59 101.8 55.8"/>
-                      </svg>
-                    </span>
-                    <span class="flightform__code flightform__code--dest">USM</span>
-                  </div>
                   <ol class="flightform__legs" aria-label="Steps">
                     <li class="is-current"><span>01</span>Mission</li>
                     <li><span>02</span>Aircraft</li>
@@ -723,7 +716,7 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
   <script src="app.js?v=20"></script>
-  <script src="kit.js?v=2"></script>
+  <script src="kit.js?v=3"></script>
   <!-- /include:scripts -->
   <script src="js/contact.js?v=1"></script>
 </body>

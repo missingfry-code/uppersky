@@ -61,9 +61,6 @@ const animate = () => hasGsap() && !reduceMotion;
       back.hidden = i === 0;
       next.hidden = i === steps.length - 1;
       send.hidden = i !== steps.length - 1;
-      // the emblem flies along the route, turning a quarter per leg
-      form.style.setProperty('--ff-progress', `${4 + (i / (steps.length - 1)) * 92}%`);
-      form.style.setProperty('--ff-spin', `${i * 90}deg`);
 
       if (from === to) return;
       if (animate()){
