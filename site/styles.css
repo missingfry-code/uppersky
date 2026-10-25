@@ -2186,13 +2186,16 @@ button{ font: inherit; color: inherit; background: none; border: 0; cursor: poin
   line-height: 1.7;
   max-width: 560px;
 }
+/* Five cards: three across, then two wider ones (6-col track, spans 2 / 3) */
 .industry__grid{
   list-style: none;
   margin: 0; padding: 0;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: clamp(16px, 2.4vw, 28px);
 }
+.industry__grid > .industry-card{ grid-column: span 2; }
+.industry__grid > .industry-card:nth-child(n+4){ grid-column: span 3; }
 .industry-card{
   position: relative;
   background: var(--bg-light);
@@ -2249,6 +2252,9 @@ button{ font: inherit; color: inherit; background: none; border: 0; cursor: poin
 
 @media (max-width: 1024px){
   .industry__grid{ grid-template-columns: repeat(2, 1fr); }
+  .industry__grid > .industry-card,
+  .industry__grid > .industry-card:nth-child(n+4){ grid-column: auto; }
+  .industry__grid > .industry-card:last-child:nth-child(odd){ grid-column: 1 / -1; }
 }
 @media (max-width: 560px){
   .industry__grid{ grid-template-columns: 1fr; }
@@ -2294,7 +2300,7 @@ button{ font: inherit; color: inherit; background: none; border: 0; cursor: poin
   .story-rail{ display: none; }
 }
 
-/* ===================== WHY (ch. 02 — the difference) ===================== */
+/* ===================== WHY (chapter: the difference) ===================== */
 .why{
   background: var(--bg-light);
   color: var(--ink);
@@ -2377,7 +2383,7 @@ button{ font: inherit; color: inherit; background: none; border: 0; cursor: poin
   .why__grid{ grid-template-columns: 1fr; }
 }
 
-/* ===================== CRAFT (ch. 03 — technology × creativity) ===================== */
+/* ===================== CRAFT (chapter: the method — technology × creativity) ===================== */
 .craft{
   background: var(--bg-dark-2);
   color: var(--on-dark);
@@ -2472,7 +2478,7 @@ button{ font: inherit; color: inherit; background: none; border: 0; cursor: poin
   .craft__formula{ grid-template-columns: 1fr; }
 }
 
-/* ===================== PARTNER (ch. 07 — the partnership) ===================== */
+/* ===================== PARTNER (chapter: the partnership) ===================== */
 .partner{
   background: var(--yellow);
   color: #0a0b0e;

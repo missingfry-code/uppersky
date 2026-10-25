@@ -13,7 +13,7 @@
   <!-- opening shot of the scrub sequence — first thing on screen -->
   <link rel="preload" as="image" href="assets/scrub/frame_001.webp" fetchpriority="high">
 
-  <link rel="stylesheet" href="styles.css?v=25" />
+  <link rel="stylesheet" href="styles.css?v=27" />
   <script>
     // Disable browser scroll restoration BEFORE the browser repositions on reload.
     // Must run before paint, so it lives in <head> not in app.js (which runs at body end).
@@ -99,7 +99,7 @@
   <div class="story-rail" aria-hidden="true">
     <span class="story-rail__num" id="railNum">01</span>
     <span class="story-rail__bar"><span class="story-rail__fill" id="railFill"></span></span>
-    <span class="story-rail__name" id="railName">The edge</span>
+    <span class="story-rail__name" id="railName">Fluency</span>
   </div>
 
   <!-- ================================================================
@@ -149,6 +149,78 @@
     </div>
   </section>
 
+  <!-- ================================================================
+       CHAPTER 01 — FLUENCY (we speak the language)
+       ================================================================ -->
+  <section class="industry" id="industry" data-chapter="Fluency">
+    <div class="industry__marquee" aria-hidden="true">
+      <div class="industry__track">
+        <span>Adverts</span><i>·</i><span>Spec sheets</span><i>·</i><span>Workflows</span><i>·</i><span>API connections</span><i>·</i><span>Inventory feeds</span><i>·</i><span>CRM sync</span><i>·</i><span>Social media</span><i>·</i>
+        <span>Adverts</span><i>·</i><span>Spec sheets</span><i>·</i><span>Workflows</span><i>·</i><span>API connections</span><i>·</i><span>Inventory feeds</span><i>·</i><span>CRM sync</span><i>·</i><span>Social media</span><i>·</i>
+      </div>
+    </div>
+
+    <div class="industry__inner">
+      <header class="industry__head" data-reveal>
+        <span class="industry__eyebrow">— Industry fluent</span>
+        <h2 class="industry__title">We know what the industry <em>wants.</em></h2>
+        <p class="industry__lede">Beyond the creative, we build the machinery of a deal — every touchpoint tuned to move a transaction forward.</p>
+      </header>
+
+      <ul class="industry__grid">
+        <li class="industry-card" data-reveal>
+          <span class="industry-card__num">01</span>
+          <h3 class="industry-card__name">Adverts</h3>
+          <p class="industry-card__copy">Campaign-ready listing adverts, formatted and placed for the platforms buyers actually browse — print and digital.</p>
+        </li>
+        <li class="industry-card" data-reveal>
+          <span class="industry-card__num">02</span>
+          <h3 class="industry-card__name">Spec sheets</h3>
+          <p class="industry-card__copy">Buyer-ready spec sheets with clean data hierarchy — the document every broker reads first, done properly.</p>
+        </li>
+        <li class="industry-card" data-reveal>
+          <span class="industry-card__num">03</span>
+          <h3 class="industry-card__name">Workflows</h3>
+          <p class="industry-card__copy">Repeatable listing-to-close pipelines that keep marketing, sales and operations flying in formation.</p>
+        </li>
+        <li class="industry-card" data-reveal>
+          <span class="industry-card__num">04</span>
+          <h3 class="industry-card__name">API connections</h3>
+          <p class="industry-card__copy">Direct integrations with the industry's platforms — inventory feeds, CRMs and market data, synced automatically.</p>
+        </li>
+        <li class="industry-card" data-reveal>
+          <span class="industry-card__num">05</span>
+          <h3 class="industry-card__name">Social media</h3>
+          <p class="industry-card__copy">Listing launches, reels and paid campaigns across Instagram, LinkedIn and beyond — reaching buyers and brokers where they already scroll.</p>
+        </li>
+      </ul>
+
+      <p class="industry__foot" data-reveal>+ everything else that optimizes your transaction.</p>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       CHAPTER 02 — THE PARTNERSHIP (you focus on relationships)
+       ================================================================ -->
+  <section class="partner" id="partnership" data-chapter="The partnership">
+    <div class="partner__inner">
+      <span class="partner__eyebrow" data-reveal>— The partnership</span>
+      <h2 class="partner__title" data-reveal>You focus on your relationships. <em>We'll handle the marketing.</em></h2>
+
+      <div class="partner__row">
+        <p class="partner__big" data-reveal><span>Sell faster.</span> <span>Earn more.</span></p>
+        <div class="partner__note" data-reveal>
+          <h3 class="partner__note-title">We're not like the competition.</h3>
+          <p>We love to create, and we focus on keeping the customer happy. That's you.</p>
+          <a class="partner__cta" href="#contact">
+            <span>Let's fly together</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ CREATIVE STRIP (compact services preview, full-width) ============ -->
   <section class="creative-strip" aria-label="Creative services">
     <div class="creative-strip__inner">
@@ -187,7 +259,7 @@
   </section>
 
   <!-- ================================================================
-       CHAPTER 01 — THE EDGE (who we're for)
+       CHAPTER 03 — THE EDGE (who we're for)
        ================================================================ -->
   <div class="sky-stage" data-chapter="The edge">
     <div class="sky-stage__bg" aria-hidden="true">
@@ -233,7 +305,7 @@
   </div>
 
   <!-- ================================================================
-       CHAPTER 02 — THE DIFFERENCE (better · faster · accurate · seamless)
+       CHAPTER 04 — THE DIFFERENCE (better · faster · accurate · seamless)
        ================================================================ -->
   <section class="why" id="why" data-chapter="The difference">
     <div class="why__inner">
@@ -272,7 +344,7 @@
   </section>
 
   <!-- ================================================================
-       CHAPTER 03 — THE METHOD (technology + creativity + industry knowledge)
+       CHAPTER 05 — THE METHOD (technology + creativity + industry knowledge)
        ================================================================ -->
   <section class="craft" id="craft" data-chapter="The method">
     <div class="craft__inner">
@@ -311,7 +383,7 @@
   </section>
 
   <!-- ================================================================
-       CHAPTER 04 — THE PROOF (frame to feature, before / after)
+       CHAPTER 06 — THE PROOF (frame to feature, before / after)
        ================================================================ -->
   <section class="gallery-section" aria-label="From original to editorial" data-chapter="The proof">
     <div class="gallery-section__inner">
@@ -375,7 +447,7 @@
   </section>
 
   <!-- ================================================================
-       CHAPTER 05 — THE TOOLKIT (packages + services index)
+       CHAPTER 07 — THE TOOLKIT (packages + services index)
        ================================================================ -->
   <section class="big-quote-section" data-chapter="The toolkit">
     <div class="big-quote" data-reveal>
@@ -489,73 +561,6 @@
     </div>
 
     <div class="svc-peek" aria-hidden="true"><img src="" alt="" /></div>
-  </section>
-
-  <!-- ================================================================
-       CHAPTER 06 — FLUENCY (we speak the language)
-       ================================================================ -->
-  <section class="industry" id="industry" data-chapter="Fluency">
-    <div class="industry__marquee" aria-hidden="true">
-      <div class="industry__track">
-        <span>Adverts</span><i>·</i><span>Spec sheets</span><i>·</i><span>Workflows</span><i>·</i><span>API connections</span><i>·</i><span>Inventory feeds</span><i>·</i><span>CRM sync</span><i>·</i>
-        <span>Adverts</span><i>·</i><span>Spec sheets</span><i>·</i><span>Workflows</span><i>·</i><span>API connections</span><i>·</i><span>Inventory feeds</span><i>·</i><span>CRM sync</span><i>·</i>
-      </div>
-    </div>
-
-    <div class="industry__inner">
-      <header class="industry__head" data-reveal>
-        <span class="industry__eyebrow">— Industry fluent</span>
-        <h2 class="industry__title">We know what the industry <em>wants.</em></h2>
-        <p class="industry__lede">Beyond the creative, we build the machinery of a deal — every touchpoint tuned to move a transaction forward.</p>
-      </header>
-
-      <ul class="industry__grid">
-        <li class="industry-card" data-reveal>
-          <span class="industry-card__num">01</span>
-          <h3 class="industry-card__name">Adverts</h3>
-          <p class="industry-card__copy">Campaign-ready listing adverts, formatted and placed for the platforms buyers actually browse — print and digital.</p>
-        </li>
-        <li class="industry-card" data-reveal>
-          <span class="industry-card__num">02</span>
-          <h3 class="industry-card__name">Spec sheets</h3>
-          <p class="industry-card__copy">Buyer-ready spec sheets with clean data hierarchy — the document every broker reads first, done properly.</p>
-        </li>
-        <li class="industry-card" data-reveal>
-          <span class="industry-card__num">03</span>
-          <h3 class="industry-card__name">Workflows</h3>
-          <p class="industry-card__copy">Repeatable listing-to-close pipelines that keep marketing, sales and operations flying in formation.</p>
-        </li>
-        <li class="industry-card" data-reveal>
-          <span class="industry-card__num">04</span>
-          <h3 class="industry-card__name">API connections</h3>
-          <p class="industry-card__copy">Direct integrations with the industry's platforms — inventory feeds, CRMs and market data, synced automatically.</p>
-        </li>
-      </ul>
-
-      <p class="industry__foot" data-reveal>+ everything else that optimizes your transaction.</p>
-    </div>
-  </section>
-
-  <!-- ================================================================
-       CHAPTER 07 — THE PARTNERSHIP (you focus on relationships)
-       ================================================================ -->
-  <section class="partner" id="partnership" data-chapter="The partnership">
-    <div class="partner__inner">
-      <span class="partner__eyebrow" data-reveal>— The partnership</span>
-      <h2 class="partner__title" data-reveal>You focus on your relationships. <em>We'll handle the marketing.</em></h2>
-
-      <div class="partner__row">
-        <p class="partner__big" data-reveal><span>Sell faster.</span> <span>Earn more.</span></p>
-        <div class="partner__note" data-reveal>
-          <h3 class="partner__note-title">We're not like the competition.</h3>
-          <p>We love to create, and we focus on keeping the customer happy. That's you.</p>
-          <a class="partner__cta" href="#contact">
-            <span>Let's fly together</span>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-        </div>
-      </div>
-    </div>
   </section>
 
   <!-- ================================================================
@@ -689,6 +694,6 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
-  <script src="app.js?v=17"></script>
+  <script src="app.js?v=18"></script>
 </body>
 </html>

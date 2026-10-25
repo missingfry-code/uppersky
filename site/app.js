@@ -573,7 +573,7 @@
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
 
-  /* Ch. 02 — "Better. Faster. More accurate. Seamless." lights up word by word */
+  /* The difference — "Better. Faster. More accurate. Seamless." lights up word by word */
   const whyWords = gsap.utils.toArray('.why__word');
   if (whyWords.length && !reduce){
     gsap.to(whyWords, {
@@ -582,7 +582,7 @@
     });
   }
 
-  /* Ch. 03 — the + + = operators snap in between the terms */
+  /* The method — the + + = operators snap in between the terms */
   if (!reduce){
     gsap.from('.craft__op', {
       scale: 0, rotate: -90, autoAlpha: 0,
@@ -613,14 +613,21 @@
       name.classList.add('is-swap');
     }
   };
-  chapters.forEach((el, i) => {
-    ScrollTrigger.create({
-      trigger: el, start: 'top 55%', end: 'bottom 55%',
-      onToggle: (self) => { if (self.isActive) show(i); }
-    });
-  });
+  // Current chapter = the last one whose top has crossed 55% of the viewport.
+  // Measured on every scroll rather than per-chapter toggles, so jumps (menu
+  // links, back-to-top) that skip whole chapters still land on the right label.
+  const current = () => {
+    const line = window.innerHeight * .55;
+    let i = 0;
+    chapters.forEach((el, k) => { if (el.getBoundingClientRect().top <= line) i = k; });
+    return i;
+  };
   ScrollTrigger.create({
     start: 0, end: 'max',
-    onUpdate: (self) => { fill.style.transform = `scaleX(${self.progress})`; }
+    onUpdate: (self) => {
+      fill.style.transform = `scaleX(${self.progress})`;
+      show(current());
+    },
+    onRefresh: () => show(current())
   });
 })();
