@@ -13,7 +13,7 @@
   <!-- opening shot of the scrub sequence — first thing on screen -->
   <link rel="preload" as="image" href="assets/scrub/frame_001.webp" fetchpriority="high">
 
-  <link rel="stylesheet" href="styles.css?v=27" />
+  <link rel="stylesheet" href="styles.css?v=28" />
   <script>
     // Disable browser scroll restoration BEFORE the browser repositions on reload.
     // Must run before paint, so it lives in <head> not in app.js (which runs at body end).
@@ -149,17 +149,47 @@
     </div>
   </section>
 
+  <!-- ============ CREATIVE STRIP (compact services preview, full-width) ============ -->
+  <section class="creative-strip" aria-label="Creative services">
+    <div class="creative-strip__inner">
+      <div class="creative-strip__head">
+        <span class="creative-strip__eyebrow">— Creative services</span>
+        <h2 class="creative-strip__title">A one-stop shop for all your listing needs.</h2>
+      </div>
+      <ul class="creative-strip__list">
+        <li class="creative-strip__item">
+          <span class="creative-strip__num">01</span>
+          <span class="creative-strip__name">Photo</span>
+          <span class="creative-strip__desc">Studio &amp; air-to-air imagery</span>
+        </li>
+        <li class="creative-strip__item">
+          <span class="creative-strip__num">02</span>
+          <span class="creative-strip__name">Video</span>
+          <span class="creative-strip__desc">Walk-throughs &amp; brand films</span>
+        </li>
+        <li class="creative-strip__item">
+          <span class="creative-strip__num">03</span>
+          <span class="creative-strip__name">Graphics</span>
+          <span class="creative-strip__desc">Brochures, decks &amp; identity</span>
+        </li>
+        <li class="creative-strip__item">
+          <span class="creative-strip__num">04</span>
+          <span class="creative-strip__name">Web</span>
+          <span class="creative-strip__desc">Listing sites &amp; platforms</span>
+        </li>
+        <li class="creative-strip__item">
+          <span class="creative-strip__num">05</span>
+          <span class="creative-strip__name">Social</span>
+          <span class="creative-strip__desc">Strategy &amp; daily content</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
   <!-- ================================================================
        CHAPTER 01 — FLUENCY (we speak the language)
        ================================================================ -->
   <section class="industry" id="industry" data-chapter="Fluency">
-    <div class="industry__marquee" aria-hidden="true">
-      <div class="industry__track">
-        <span>Adverts</span><i>·</i><span>Spec sheets</span><i>·</i><span>Workflows</span><i>·</i><span>API connections</span><i>·</i><span>Inventory feeds</span><i>·</i><span>CRM sync</span><i>·</i><span>Social media</span><i>·</i>
-        <span>Adverts</span><i>·</i><span>Spec sheets</span><i>·</i><span>Workflows</span><i>·</i><span>API connections</span><i>·</i><span>Inventory feeds</span><i>·</i><span>CRM sync</span><i>·</i><span>Social media</span><i>·</i>
-      </div>
-    </div>
-
     <div class="industry__inner">
       <header class="industry__head" data-reveal>
         <span class="industry__eyebrow">— Industry fluent</span>
@@ -218,43 +248,6 @@
           </a>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- ============ CREATIVE STRIP (compact services preview, full-width) ============ -->
-  <section class="creative-strip" aria-label="Creative services">
-    <div class="creative-strip__inner">
-      <div class="creative-strip__head">
-        <span class="creative-strip__eyebrow">— Creative services</span>
-        <h2 class="creative-strip__title">A one-stop shop for all your listing needs.</h2>
-      </div>
-      <ul class="creative-strip__list">
-        <li class="creative-strip__item">
-          <span class="creative-strip__num">01</span>
-          <span class="creative-strip__name">Photo</span>
-          <span class="creative-strip__desc">Studio &amp; air-to-air imagery</span>
-        </li>
-        <li class="creative-strip__item">
-          <span class="creative-strip__num">02</span>
-          <span class="creative-strip__name">Video</span>
-          <span class="creative-strip__desc">Walk-throughs &amp; brand films</span>
-        </li>
-        <li class="creative-strip__item">
-          <span class="creative-strip__num">03</span>
-          <span class="creative-strip__name">Graphics</span>
-          <span class="creative-strip__desc">Brochures, decks &amp; identity</span>
-        </li>
-        <li class="creative-strip__item">
-          <span class="creative-strip__num">04</span>
-          <span class="creative-strip__name">Web</span>
-          <span class="creative-strip__desc">Listing sites &amp; platforms</span>
-        </li>
-        <li class="creative-strip__item">
-          <span class="creative-strip__num">05</span>
-          <span class="creative-strip__name">Social</span>
-          <span class="creative-strip__desc">Strategy &amp; daily content</span>
-        </li>
-      </ul>
     </div>
   </section>
 
@@ -342,6 +335,14 @@
       </ul>
     </div>
   </section>
+
+  <!-- ============ TICKER (what we build, on a loop) ============ -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker__track">
+      <span>Adverts</span><i>·</i><span>Spec sheets</span><i>·</i><span>Workflows</span><i>·</i><span>API connections</span><i>·</i><span>Inventory feeds</span><i>·</i><span>CRM sync</span><i>·</i><span>Social media</span><i>·</i>
+      <span>Adverts</span><i>·</i><span>Spec sheets</span><i>·</i><span>Workflows</span><i>·</i><span>API connections</span><i>·</i><span>Inventory feeds</span><i>·</i><span>CRM sync</span><i>·</i><span>Social media</span><i>·</i>
+    </div>
+  </div>
 
   <!-- ================================================================
        CHAPTER 05 — THE METHOD (technology + creativity + industry knowledge)

@@ -2123,21 +2123,22 @@ button{ font: inherit; color: inherit; background: none; border: 0; cursor: poin
   padding-bottom: clamp(80px, 14vh, 160px);
   overflow: clip;
 }
-.industry__marquee{
+/* Ticker — standalone looping strip under the "Better. Faster." chapter */
+.ticker{
   border-block: 1px solid var(--line);
   padding: 18px 0;
   overflow: hidden;
   background: var(--bg-light);
 }
-.industry__track{
+.ticker__track{
   display: flex;
   align-items: baseline;
   gap: 28px;
   width: max-content;
   white-space: nowrap;
-  animation: industry-marquee 28s linear infinite;
+  animation: ticker-scroll 28s linear infinite;
 }
-.industry__track span{
+.ticker__track span{
   font-family: 'Oswald', sans-serif;
   font-weight: 600;
   font-size: clamp(20px, 2.6vw, 34px);
@@ -2145,11 +2146,11 @@ button{ font: inherit; color: inherit; background: none; border: 0; cursor: poin
   letter-spacing: .14em;
   color: var(--ink);
 }
-.industry__track span:nth-child(4n+3){ color: transparent; -webkit-text-stroke: 1px var(--ink-3); }
-.industry__track i{ font-style: normal; color: var(--yellow-2); font-size: 24px; }
-@keyframes industry-marquee{ to{ transform: translateX(-50%); } }
+.ticker__track span:nth-child(4n+3){ color: transparent; -webkit-text-stroke: 1px var(--ink-3); }
+.ticker__track i{ font-style: normal; color: var(--yellow-2); font-size: 24px; }
+@keyframes ticker-scroll{ to{ transform: translateX(-50%); } }
 @media (prefers-reduced-motion: reduce){
-  .industry__track{ animation: none; }
+  .ticker__track{ animation: none; }
 }
 
 .industry__inner{
@@ -2629,5 +2630,5 @@ button{ font: inherit; color: inherit; background: none; border: 0; cursor: poin
   .dots{ justify-content: center; }
 
   /* Industry marquee — bigger type for the strip */
-  .industry__track span{ font-size: clamp(24px, 7vw, 34px); }
+  .ticker__track span{ font-size: clamp(24px, 7vw, 34px); }
 }
