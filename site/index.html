@@ -6,14 +6,17 @@
   <title>UPPERSKY MEDIA — Complete Marketing Strategies</title>
   <meta name="description" content="UPPERSKY MEDIA — the weapon of choice for industry professionals. Photo, Video, Graphics, Web & Social. A one-stop-shop for premium marketing." />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&family=Bebas+Neue&display=swap" rel="stylesheet">
-
   <!-- opening shot of the scrub sequence — first thing on screen -->
   <link rel="preload" as="image" href="assets/scrub/frame_001.webp" fetchpriority="high">
 
-  <link rel="stylesheet" href="styles.css?v=28" />
+  <!-- include:head-assets -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+  <link rel="stylesheet" href="styles.css?v=30" />
+  <link rel="stylesheet" href="kit.css?v=2" />
   <script>
     // Disable browser scroll restoration BEFORE the browser repositions on reload.
     // Must run before paint, so it lives in <head> not in app.js (which runs at body end).
@@ -21,9 +24,11 @@
     // Best-effort: jump to top early in case the browser already restored.
     window.scrollTo(0, 0);
   </script>
+  <!-- /include:head-assets -->
 </head>
-<body>
+<body id="top">
 
+  <!-- include:chrome -->
   <!-- ============ DESKTOP MENU TAB (top-left) ============ -->
   <button class="menu-tab" id="menuTab" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
     <svg class="emblem menu-tab__emblem" viewBox="0 0 102.23 100" fill="currentColor" aria-hidden="true">
@@ -36,7 +41,7 @@
 
   <!-- ============ MOBILE HEADER ============ -->
   <header class="m-header">
-    <a class="m-header__logo" href="#home" aria-label="UPPERSKY home">
+    <a class="m-header__logo" href="index.html" aria-current="page" aria-label="UPPERSKY home">
       <svg class="emblem" viewBox="0 0 102.23 100" fill="currentColor" aria-hidden="true">
         <path class="emblem__a" d="M 38.28 0.77 C 33.13 8.56 36.3 17.53 40.18 25.07 C 49.14 42.48 69.13 65.88 56.38 86.05 C 46.42 101.81 26.94 97.35 15.15 86.39 C 0.42 72.69 -3.61 50.68 3.23 32.02 C 3.63 30.93 4.09 29.41 4.91 28.58 C 5.74 40.55 8.01 53.36 13.94 63.9 C 18.64 72.27 30.6 86.01 40.03 75.55 C 46.53 68.34 41.83 58.07 37.75 50.92 C 31.78 40.48 19.44 27.35 23.08 14.4 C 24.91 7.89 32.01 2.56 38.28 0.77"/>
         <path class="emblem__b" d="M 101.8 55.8 L 99.68 49.29 C 97.16 41.37 85.33 24.11 77.22 21.99 C 72.51 20.75 75.21 27.84 76.11 30.12 C 81.74 44.43 91.66 55.68 90.69 72.65 C 89.76 88.89 75.96 96.65 61.7 100 C 68.11 94.38 73.44 87.35 74.79 78.7 C 77.05 64.22 68.26 44.73 61.56 32.09 C 58.56 26.43 54.39 20.55 51.99 14.73 C 43.63 -5.49 64.77 -0.92 75.55 5.22 C 93.71 15.58 104.57 34.59 101.8 55.8"/>
@@ -52,7 +57,7 @@
     <div class="drawer__inner">
       <div class="drawer__head">
         <!-- Lockup built around the emblem: mark + UPPER/SKY wordmark + spaced MEDIA -->
-        <a class="drawer__brand" href="#home" aria-label="UPPERSKY Media — home">
+        <a class="drawer__brand" href="index.html" aria-current="page" aria-label="UPPERSKY Media — home">
           <svg class="emblem drawer__emblem" viewBox="0 0 102.23 100" fill="currentColor" aria-hidden="true">
             <path class="emblem__a" d="M 38.28 0.77 C 33.13 8.56 36.3 17.53 40.18 25.07 C 49.14 42.48 69.13 65.88 56.38 86.05 C 46.42 101.81 26.94 97.35 15.15 86.39 C 0.42 72.69 -3.61 50.68 3.23 32.02 C 3.63 30.93 4.09 29.41 4.91 28.58 C 5.74 40.55 8.01 53.36 13.94 63.9 C 18.64 72.27 30.6 86.01 40.03 75.55 C 46.53 68.34 41.83 58.07 37.75 50.92 C 31.78 40.48 19.44 27.35 23.08 14.4 C 24.91 7.89 32.01 2.56 38.28 0.77"/>
             <path class="emblem__b" d="M 101.8 55.8 L 99.68 49.29 C 97.16 41.37 85.33 24.11 77.22 21.99 C 72.51 20.75 75.21 27.84 76.11 30.12 C 81.74 44.43 91.66 55.68 90.69 72.65 C 89.76 88.89 75.96 96.65 61.7 100 C 68.11 94.38 73.44 87.35 74.79 78.7 C 77.05 64.22 68.26 44.73 61.56 32.09 C 58.56 26.43 54.39 20.55 51.99 14.73 C 43.63 -5.49 64.77 -0.92 75.55 5.22 C 93.71 15.58 104.57 34.59 101.8 55.8"/>
@@ -69,11 +74,12 @@
 
       <nav class="drawer__nav" aria-label="Primary">
         <ul>
-          <li><a href="#home" data-i="01"><span class="num">01</span><span class="word">Home</span></a></li>
-          <li><a href="#why" data-i="02"><span class="num">02</span><span class="word">Why us</span></a></li>
-          <li><a href="#services" data-i="03"><span class="num">03</span><span class="word">Services</span></a></li>
-          <li><a href="#process" data-i="04"><span class="num">04</span><span class="word">Process</span></a></li>
-          <li><a href="#contact" data-i="05"><span class="num">05</span><span class="word">Contact</span></a></li>
+          <li><a href="index.html" aria-current="page" data-i="01"><span class="num">01</span><span class="word">Home</span></a></li>
+          <li><a href="why-us.html" data-i="02"><span class="num">02</span><span class="word">Why us</span></a></li>
+          <li><a href="services.html" data-i="03"><span class="num">03</span><span class="word">Services</span></a></li>
+          <li><a href="process.html" data-i="04"><span class="num">04</span><span class="word">Process</span></a></li>
+          <li><a href="blog.html" data-i="05"><span class="num">05</span><span class="word">Journal</span></a></li>
+          <li><a href="contact.html" data-i="06"><span class="num">06</span><span class="word">Contact</span></a></li>
         </ul>
       </nav>
 
@@ -92,15 +98,16 @@
   </aside>
   <div class="drawer-scrim" id="drawerScrim"></div>
 
-  <!-- ============ TOP-RIGHT CTA ============ -->
-  <a class="top-cta" href="#contact">GET STARTED</a>
+  <!-- ============ TOP-RIGHT CTA — opens the consultation form ============ -->
+  <a class="top-cta" href="contact.html" data-consult>GET STARTED</a>
 
   <!-- ============ STORY RAIL (current chapter, desktop) ============ -->
   <div class="story-rail" aria-hidden="true">
     <span class="story-rail__num" id="railNum">01</span>
     <span class="story-rail__bar"><span class="story-rail__fill" id="railFill"></span></span>
-    <span class="story-rail__name" id="railName">Fluency</span>
+    <span class="story-rail__name" id="railName"></span>
   </div>
+  <!-- /include:chrome -->
 
   <!-- ================================================================
        PROLOGUE — TAKEOFF
@@ -110,6 +117,8 @@
       <canvas class="scrub-video" aria-hidden="true"></canvas>
       <div class="scrub-overlay" aria-hidden="true"></div>
 
+      <!-- the visible headline is three scroll-swapped lines; this is the page's real title -->
+      <h1 class="visually-hidden">UPPERSKY MEDIA — aviation marketing that takes flight</h1>
       <div class="scrub-headers">
         <h2 class="scrub-headers__line is-active">MARKETING</h2>
         <h2 class="scrub-headers__line">THAT TAKES</h2>
@@ -242,7 +251,7 @@
         <div class="partner__note" data-reveal>
           <h3 class="partner__note-title">We're not like the competition.</h3>
           <p>We love to create, and we focus on keeping the customer happy. That's you.</p>
-          <a class="partner__cta" href="#contact">
+          <a class="partner__cta" href="contact.html" data-consult>
             <span>Let's fly together</span>
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
@@ -432,11 +441,11 @@
 
   <section class="ba-section" aria-label="Before and after">
     <div class="ba-section__inner">
-      <div class="ba-slider" data-ba style="--ba-pos: 50%;">
-        <img class="ba-slider__img ba-slider__img--after" src="assets/jet.webp" alt="After — polished marketing image" draggable="false" />
-        <img class="ba-slider__img ba-slider__img--before" src="assets/jet.webp" alt="Before — raw image" draggable="false" />
-        <div class="ba-slider__handle" aria-hidden="true">
-          <span class="ba-slider__line"></span>
+      <div class="ba-slider ba-slider--real" data-ba style="--ba-pos: 50%;">
+        <img class="ba-slider__img ba-slider__img--after" src="assets/gallery/editedogangle.jpg" alt="After — the same aircraft, edited to an editorial dusk scene" draggable="false" />
+        <img class="ba-slider__img ba-slider__img--before" src="assets/gallery/ogangle.jpg" alt="Before — the original photo as shot" draggable="false" />
+        <div class="ba-slider__handle">
+          <span class="ba-slider__line" aria-hidden="true"></span>
           <button class="ba-slider__knob" type="button" aria-label="Drag to compare before and after">
             <svg viewBox="0 0 24 24"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
@@ -609,10 +618,11 @@
     </div>
   </section>
 
+  <!-- include:footer -->
   <!-- ================================================================
-       EPILOGUE — ARRIVAL (CTA + footer in one cinematic block)
+       EPILOGUE — ARRIVAL (consultation CTA + footer in one cinematic block)
        ================================================================ -->
-  <section class="colophon" id="contact" data-chapter="Arrival">
+  <section class="colophon" id="footer" data-chapter="Arrival">
     <video class="colophon__video"
            src="assets/colophon-loop.mp4"
            autoplay muted loop playsinline preload="metadata"
@@ -625,20 +635,20 @@
       <div class="colophon__invite">
         <span class="colophon__status">
           <span class="colophon__pulse" aria-hidden="true"></span>
-          Available for projects · 2026
+          Free consultation · No commitment
         </span>
         <h2 class="colophon__h" data-reveal>
           Want to see what a <em>customized</em> approach looks like?
         </h2>
-        <a class="colophon__cta" href="mailto:hello@uppersky.media">
-          <span>Start a project</span>
+        <a class="colophon__cta" href="contact.html" data-consult>
+          <span>Book a free consultation</span>
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
         <a class="colophon__contact" href="mailto:hello@uppersky.media">hello@uppersky.media</a>
       </div>
 
       <!-- WORDMARK MOMENT -->
-      <a class="colophon__wordmark" href="#home" aria-label="UPPERSKY home">
+      <a class="colophon__wordmark" href="index.html" aria-current="page" aria-label="UPPERSKY home">
         UPPERSKY<span class="colophon__dot">.</span>
       </a>
 
@@ -647,11 +657,12 @@
         <nav class="colophon__col" aria-label="Footer navigation">
           <span class="colophon__h-mini">Navigate</span>
           <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#why">Why us</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#process">Process</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="index.html" aria-current="page">Home</a></li>
+            <li><a href="why-us.html">Why us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="process.html">Process</a></li>
+            <li><a href="blog.html">Journal</a></li>
+            <li><a href="contact.html">Contact</a></li>
           </ul>
         </nav>
         <div class="colophon__col">
@@ -680,9 +691,10 @@
 
       <!-- BOTTOM BAR -->
       <div class="colophon__bar">
-        <span class="colophon__copy">© <span id="year"></span> UPPERSKY MEDIA · All rights reserved</span>
+        <span class="colophon__copy">© <span id="year"></span> UPPERSKY MEDIA — a Unimarq company · All rights reserved</span>
+        <button class="colophon__cookie" type="button" data-cookie-open>Cookie settings</button>
         <span class="colophon__tag">— Built to fly</span>
-        <a class="colophon__top-link" href="#home" aria-label="Back to top">
+        <a class="colophon__top-link" href="#top" aria-label="Back to top">
           Back to top
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
@@ -690,11 +702,272 @@
 
     </div>
   </section>
+  <!-- /include:footer -->
 
+  <!-- include:consult-modal -->
+  <!-- ============ CONSULTATION MODAL — opened by any [data-consult] link ============ -->
+  <dialog class="consult-modal" id="consultModal" aria-labelledby="cfTitle" data-lenis-prevent>
+    <div class="consult-modal__panel">
+      <aside class="consult-modal__aside" aria-hidden="true">
+        <video class="consult-modal__video" src="assets/colophon-loop.mp4" muted loop playsinline preload="none"></video>
+        <div class="consult-modal__shade"></div>
+        <div class="consult-modal__aside-in">
+          <svg class="consult-modal__emblem" viewBox="0 0 102.23 100" fill="currentColor">
+            <path d="M 38.28 0.77 C 33.13 8.56 36.3 17.53 40.18 25.07 C 49.14 42.48 69.13 65.88 56.38 86.05 C 46.42 101.81 26.94 97.35 15.15 86.39 C 0.42 72.69 -3.61 50.68 3.23 32.02 C 3.63 30.93 4.09 29.41 4.91 28.58 C 5.74 40.55 8.01 53.36 13.94 63.9 C 18.64 72.27 30.6 86.01 40.03 75.55 C 46.53 68.34 41.83 58.07 37.75 50.92 C 31.78 40.48 19.44 27.35 23.08 14.4 C 24.91 7.89 32.01 2.56 38.28 0.77"/>
+            <path d="M 101.8 55.8 L 99.68 49.29 C 97.16 41.37 85.33 24.11 77.22 21.99 C 72.51 20.75 75.21 27.84 76.11 30.12 C 81.74 44.43 91.66 55.68 90.69 72.65 C 89.76 88.89 75.96 96.65 61.7 100 C 68.11 94.38 73.44 87.35 74.79 78.7 C 77.05 64.22 68.26 44.73 61.56 32.09 C 58.56 26.43 54.39 20.55 51.99 14.73 C 43.63 -5.49 64.77 -0.92 75.55 5.22 C 93.71 15.58 104.57 34.59 101.8 55.8"/>
+          </svg>
+          <p class="consult-modal__quote">Your deal, in its <em>best light</em> — and every number in plain sight.</p>
+          <ul class="consult-modal__promises">
+            <li><b>Free</b> No cost, ever, for the first conversation.</li>
+            <li><b>No commitment</b> Walk away with a plan, whatever you decide.</li>
+            <li><b>Private</b> Your deal stays between us.</li>
+          </ul>
+        </div>
+      </aside>
+      <div class="consult-modal__body">
+        <button class="consult-modal__close" type="button" data-consult-close aria-label="Close">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>
+        </button>
+        <!-- include:consult-form -->
+        <!-- ============ CONSULTATION FORM — "file your flight plan" ============
+             Four short legs, one question each. Without a form backend the finished
+             request opens in the visitor's email app, fully written; set
+             data-endpoint to a form service URL to POST it instead. -->
+        <div class="flightplan" data-flightplan>
+          <form class="flightform" id="consultForm" novalidate
+                data-to="hello@uppersky.media" data-endpoint="">
+            <header class="flightform__head">
+              <span class="flightform__kicker"><span class="flightform__pulse" aria-hidden="true"></span>Free consultation · No commitment</span>
+              <h2 class="flightform__title" id="cfTitle">File your <em>flight plan.</em></h2>
+              <p class="flightform__sub">Four quick legs. Then a real conversation about your sale or acquisition — no pitch, no pressure.</p>
+            </header>
+
+            <!-- progress, drawn as a route: you → us -->
+            <div class="flightform__route" aria-hidden="true">
+              <span class="flightform__code">YOU</span>
+              <span class="flightform__path">
+                <span class="flightform__trail"></span>
+                <svg class="flightform__plane" viewBox="0 0 102.23 100" fill="currentColor">
+                  <path d="M 38.28 0.77 C 33.13 8.56 36.3 17.53 40.18 25.07 C 49.14 42.48 69.13 65.88 56.38 86.05 C 46.42 101.81 26.94 97.35 15.15 86.39 C 0.42 72.69 -3.61 50.68 3.23 32.02 C 3.63 30.93 4.09 29.41 4.91 28.58 C 5.74 40.55 8.01 53.36 13.94 63.9 C 18.64 72.27 30.6 86.01 40.03 75.55 C 46.53 68.34 41.83 58.07 37.75 50.92 C 31.78 40.48 19.44 27.35 23.08 14.4 C 24.91 7.89 32.01 2.56 38.28 0.77"/>
+                  <path d="M 101.8 55.8 L 99.68 49.29 C 97.16 41.37 85.33 24.11 77.22 21.99 C 72.51 20.75 75.21 27.84 76.11 30.12 C 81.74 44.43 91.66 55.68 90.69 72.65 C 89.76 88.89 75.96 96.65 61.7 100 C 68.11 94.38 73.44 87.35 74.79 78.7 C 77.05 64.22 68.26 44.73 61.56 32.09 C 58.56 26.43 54.39 20.55 51.99 14.73 C 43.63 -5.49 64.77 -0.92 75.55 5.22 C 93.71 15.58 104.57 34.59 101.8 55.8"/>
+                </svg>
+              </span>
+              <span class="flightform__code flightform__code--dest">USM</span>
+            </div>
+            <ol class="flightform__legs" aria-label="Steps">
+              <li class="is-current"><span>01</span>Mission</li>
+              <li><span>02</span>Aircraft</li>
+              <li><span>03</span>Contact</li>
+              <li><span>04</span>Notes</li>
+            </ol>
+
+            <div class="flightform__stage">
+              <!-- LEG 01 -->
+              <fieldset class="flightform__step is-active" data-step="1">
+                <legend class="flightform__q"><span class="flightform__qnum">01</span>What's the mission?</legend>
+                <div class="missions">
+                  <label class="mission">
+                    <input type="radio" name="mission" value="Selling an aircraft" required>
+                    <span class="mission__card">
+                      <svg class="mission__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 12.5V4.5a1 1 0 0 1 1-1h8l8 8-9 9-8-8Z"/><circle cx="8.5" cy="8.5" r="1.6"/></svg>
+                      <span class="mission__name">Sell</span>
+                      <span class="mission__desc">Launch a listing that moves — fast.</span>
+                      <span class="mission__tick" aria-hidden="true"></span>
+                    </span>
+                  </label>
+                  <label class="mission">
+                    <input type="radio" name="mission" value="Acquiring an aircraft">
+                    <span class="mission__card">
+                      <svg class="mission__icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 1.5v4M12 18.5v4M1.5 12h4M18.5 12h4"/></svg>
+                      <span class="mission__name">Acquire</span>
+                      <span class="mission__desc">Find and win the right aircraft.</span>
+                      <span class="mission__tick" aria-hidden="true"></span>
+                    </span>
+                  </label>
+                  <label class="mission">
+                    <input type="radio" name="mission" value="Marketing a brokerage">
+                    <span class="mission__card">
+                      <svg class="mission__icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8.5 7V5.5a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2V7M3 13h18"/></svg>
+                      <span class="mission__name">Brokerage</span>
+                      <span class="mission__desc">Build the brand behind the deals.</span>
+                      <span class="mission__tick" aria-hidden="true"></span>
+                    </span>
+                  </label>
+                  <label class="mission">
+                    <input type="radio" name="mission" value="Something else">
+                    <span class="mission__card">
+                      <svg class="mission__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5v5M12 16.5v5M2.5 12h5M16.5 12h5M5.3 5.3l3.2 3.2M15.5 15.5l3.2 3.2M18.7 5.3l-3.2 3.2M8.5 15.5l-3.2 3.2"/></svg>
+                      <span class="mission__name">Other</span>
+                      <span class="mission__desc">Something bespoke? Let's hear it.</span>
+                      <span class="mission__tick" aria-hidden="true"></span>
+                    </span>
+                  </label>
+                </div>
+                <p class="flightform__hint" data-hint="1" hidden>Pick a mission to continue.</p>
+              </fieldset>
+
+              <!-- LEG 02 -->
+              <fieldset class="flightform__step" data-step="2">
+                <legend class="flightform__q"><span class="flightform__qnum">02</span>Tell us about the aircraft.</legend>
+                <div class="ff-field">
+                  <input class="ff-input" id="cf-aircraft" name="aircraft" type="text" placeholder=" " autocomplete="off">
+                  <label class="ff-label" for="cf-aircraft">Make &amp; model <span>optional</span></label>
+                  <span class="ff-line" aria-hidden="true"></span>
+                </div>
+                <p class="flightform__label" id="cf-timeline-label">When do you want to move?</p>
+                <div class="chips" role="radiogroup" aria-labelledby="cf-timeline-label">
+                  <label class="chip"><input type="radio" name="timeline" value="As soon as possible"><span>ASAP</span></label>
+                  <label class="chip"><input type="radio" name="timeline" value="1–3 months"><span>1–3 months</span></label>
+                  <label class="chip"><input type="radio" name="timeline" value="3–6 months"><span>3–6 months</span></label>
+                  <label class="chip"><input type="radio" name="timeline" value="Just exploring"><span>Just exploring</span></label>
+                </div>
+              </fieldset>
+
+              <!-- LEG 03 -->
+              <fieldset class="flightform__step" data-step="3">
+                <legend class="flightform__q"><span class="flightform__qnum">03</span>Who should we call?</legend>
+                <div class="ff-grid">
+                  <div class="ff-field">
+                    <input class="ff-input" id="cf-name" name="name" type="text" placeholder=" " autocomplete="name" required>
+                    <label class="ff-label" for="cf-name">Your name</label>
+                    <span class="ff-line" aria-hidden="true"></span>
+                  </div>
+                  <div class="ff-field">
+                    <input class="ff-input" id="cf-email" name="email" type="email" placeholder=" " autocomplete="email" required>
+                    <label class="ff-label" for="cf-email">Email</label>
+                    <span class="ff-line" aria-hidden="true"></span>
+                  </div>
+                  <div class="ff-field">
+                    <input class="ff-input" id="cf-phone" name="phone" type="tel" placeholder=" " autocomplete="tel">
+                    <label class="ff-label" for="cf-phone">Phone <span>optional</span></label>
+                    <span class="ff-line" aria-hidden="true"></span>
+                  </div>
+                  <div class="ff-field">
+                    <input class="ff-input" id="cf-company" name="company" type="text" placeholder=" " autocomplete="organization">
+                    <label class="ff-label" for="cf-company">Company / brokerage <span>optional</span></label>
+                    <span class="ff-line" aria-hidden="true"></span>
+                  </div>
+                </div>
+                <p class="flightform__hint" data-hint="3" hidden>We need your name and a valid email to reply.</p>
+              </fieldset>
+
+              <!-- LEG 04 -->
+              <fieldset class="flightform__step" data-step="4">
+                <legend class="flightform__q"><span class="flightform__qnum">04</span>Anything we should know?</legend>
+                <div class="ff-field ff-field--area">
+                  <textarea class="ff-input" id="cf-message" name="message" rows="4" placeholder=" "></textarea>
+                  <label class="ff-label" for="cf-message">Goals, questions, the story of the deal <span>optional</span></label>
+                  <span class="ff-line" aria-hidden="true"></span>
+                </div>
+                <p class="flightform__privacy">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/></svg>
+                  Private by default. We use your details only to reply — never shared, never sold.
+                </p>
+              </fieldset>
+            </div>
+
+            <footer class="flightform__nav">
+              <button type="button" class="flightform__back" data-ff="back" hidden>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H5M11 6l-6 6 6 6"/></svg>Back
+              </button>
+              <span class="flightform__count" aria-live="polite"><b data-ff="count">01</b> / 04</span>
+              <button type="button" class="ff-btn" data-ff="next">
+                <span>Continue</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+              </button>
+              <button type="submit" class="ff-btn ff-btn--submit" data-ff="submit" hidden>
+                <span>Request my free consultation</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+              </button>
+            </footer>
+            <p class="flightform__error" role="alert" hidden>Something went wrong sending that. Email us directly at <a href="mailto:hello@uppersky.media">hello@uppersky.media</a>.</p>
+          </form>
+
+          <!-- confirmation — a boarding pass for the call -->
+          <div class="flightdone" data-ff="done" tabindex="-1" hidden>
+            <div class="pass">
+              <div class="pass__main">
+                <span class="pass__kicker">Boarding pass · Free consultation</span>
+                <h3 class="pass__title">Cleared for <em>takeoff.</em></h3>
+                <dl class="pass__grid">
+                  <div><dt>Passenger</dt><dd data-pass="name">—</dd></div>
+                  <div><dt>Mission</dt><dd data-pass="mission">—</dd></div>
+                  <div><dt>Aircraft</dt><dd data-pass="aircraft">—</dd></div>
+                  <div><dt>Timeline</dt><dd data-pass="timeline">—</dd></div>
+                </dl>
+                <p class="pass__note" data-pass-note
+                   data-note-mail="Your email app just opened with your flight plan filled in — press send and we'll take it from there."
+                   data-note-sent="Your flight plan is in. We'll be in touch personally to find a time that suits you.">—</p>
+                <p class="pass__fallback">Nothing opened? Email <a href="mailto:hello@uppersky.media">hello@uppersky.media</a>.</p>
+              </div>
+              <div class="pass__stub" aria-hidden="true">
+                <svg class="pass__emblem" viewBox="0 0 102.23 100" fill="currentColor">
+                  <path d="M 38.28 0.77 C 33.13 8.56 36.3 17.53 40.18 25.07 C 49.14 42.48 69.13 65.88 56.38 86.05 C 46.42 101.81 26.94 97.35 15.15 86.39 C 0.42 72.69 -3.61 50.68 3.23 32.02 C 3.63 30.93 4.09 29.41 4.91 28.58 C 5.74 40.55 8.01 53.36 13.94 63.9 C 18.64 72.27 30.6 86.01 40.03 75.55 C 46.53 68.34 41.83 58.07 37.75 50.92 C 31.78 40.48 19.44 27.35 23.08 14.4 C 24.91 7.89 32.01 2.56 38.28 0.77"/>
+                  <path d="M 101.8 55.8 L 99.68 49.29 C 97.16 41.37 85.33 24.11 77.22 21.99 C 72.51 20.75 75.21 27.84 76.11 30.12 C 81.74 44.43 91.66 55.68 90.69 72.65 C 89.76 88.89 75.96 96.65 61.7 100 C 68.11 94.38 73.44 87.35 74.79 78.7 C 77.05 64.22 68.26 44.73 61.56 32.09 C 58.56 26.43 54.39 20.55 51.99 14.73 C 43.63 -5.49 64.77 -0.92 75.55 5.22 C 93.71 15.58 104.57 34.59 101.8 55.8"/>
+                </svg>
+                <span class="pass__route">YOU <i>→</i> USM</span>
+                <span class="pass__gate">Gate · Consult</span>
+                <span class="pass__barcode"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /include:consult-form -->
+      </div>
+    </div>
+  </dialog>
+  <!-- /include:consult-modal -->
+
+  <!-- include:cookie -->
+  <!-- ============ COOKIE CONSENT ============
+       Choice is stored in localStorage ("usm-consent") and announced as an
+       "uppersky:consent" event — load any analytics only after that fires. -->
+  <section class="cookie" id="cookieBanner" aria-label="Cookie preferences" hidden>
+    <div class="cookie__card">
+      <div class="cookie__top">
+        <span class="cookie__badge" aria-hidden="true">
+          <svg viewBox="0 0 102.23 100" fill="currentColor">
+            <path d="M 38.28 0.77 C 33.13 8.56 36.3 17.53 40.18 25.07 C 49.14 42.48 69.13 65.88 56.38 86.05 C 46.42 101.81 26.94 97.35 15.15 86.39 C 0.42 72.69 -3.61 50.68 3.23 32.02 C 3.63 30.93 4.09 29.41 4.91 28.58 C 5.74 40.55 8.01 53.36 13.94 63.9 C 18.64 72.27 30.6 86.01 40.03 75.55 C 46.53 68.34 41.83 58.07 37.75 50.92 C 31.78 40.48 19.44 27.35 23.08 14.4 C 24.91 7.89 32.01 2.56 38.28 0.77"/>
+            <path d="M 101.8 55.8 L 99.68 49.29 C 97.16 41.37 85.33 24.11 77.22 21.99 C 72.51 20.75 75.21 27.84 76.11 30.12 C 81.74 44.43 91.66 55.68 90.69 72.65 C 89.76 88.89 75.96 96.65 61.7 100 C 68.11 94.38 73.44 87.35 74.79 78.7 C 77.05 64.22 68.26 44.73 61.56 32.09 C 58.56 26.43 54.39 20.55 51.99 14.73 C 43.63 -5.49 64.77 -0.92 75.55 5.22 C 93.71 15.58 104.57 34.59 101.8 55.8"/>
+          </svg>
+        </span>
+        <span class="cookie__kicker">Privacy first</span>
+      </div>
+      <h2 class="cookie__title">Cookies — <em>cleared for takeoff?</em></h2>
+      <p class="cookie__copy">We use essential cookies to run this site and, only with your OK, analytics to learn what's useful. We never sell your data.</p>
+
+      <div class="cookie__prefs" id="cookiePrefs" hidden>
+        <label class="cookie__pref">
+          <span><b>Essential</b> Keeps the site working. Always on.</span>
+          <input type="checkbox" checked disabled><span class="cookie__switch" aria-hidden="true"></span>
+        </label>
+        <label class="cookie__pref">
+          <span><b>Analytics</b> Anonymous stats on what people read.</span>
+          <input type="checkbox" name="analytics"><span class="cookie__switch" aria-hidden="true"></span>
+        </label>
+        <label class="cookie__pref">
+          <span><b>Marketing</b> Measures our own campaigns.</span>
+          <input type="checkbox" name="marketing"><span class="cookie__switch" aria-hidden="true"></span>
+        </label>
+      </div>
+
+      <div class="cookie__actions">
+        <button type="button" class="cookie__btn cookie__btn--text" data-cookie="prefs" aria-expanded="false" aria-controls="cookiePrefs">Preferences</button>
+        <button type="button" class="cookie__btn cookie__btn--ghost" data-cookie="essential">Essential only</button>
+        <button type="button" class="cookie__btn cookie__btn--lime" data-cookie="accept">Accept all</button>
+        <button type="button" class="cookie__btn cookie__btn--lime" data-cookie="save" hidden>Save choices</button>
+      </div>
+    </div>
+  </section>
+  <!-- /include:cookie -->
+
+  <!-- include:scripts -->
   <!-- GSAP + Lenis (smooth scroll) -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
-  <script src="app.js?v=18"></script>
+  <script src="app.js?v=20"></script>
+  <script src="kit.js?v=2"></script>
+  <!-- /include:scripts -->
 </body>
 </html>

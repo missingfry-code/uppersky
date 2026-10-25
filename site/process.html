@@ -1,0 +1,934 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Process — UPPERSKY MEDIA</title>
+  <meta name="description" content="How UPPERSKY MEDIA works: a free, no-commitment consultation, then five clear legs — Discover, Plan, Capture, Produce, Launch. Up and running in days, not weeks, with every draft in plain sight." />
+
+  <!-- the hero frame is the first thing on screen -->
+  <link rel="preload" as="image" href="assets/scrub/frame_040.webp" fetchpriority="high">
+
+  <!-- include:head-assets -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+  <link rel="stylesheet" href="styles.css?v=30" />
+  <link rel="stylesheet" href="kit.css?v=2" />
+  <script>
+    // Disable browser scroll restoration BEFORE the browser repositions on reload.
+    // Must run before paint, so it lives in <head> not in app.js (which runs at body end).
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    // Best-effort: jump to top early in case the browser already restored.
+    window.scrollTo(0, 0);
+  </script>
+  <!-- /include:head-assets -->
+  <link rel="stylesheet" href="css/process.css?v=1" />
+</head>
+<body id="top" class="page page--process">
+
+  <!-- include:chrome -->
+  <!-- ============ DESKTOP MENU TAB (top-left) ============ -->
+  <button class="menu-tab" id="menuTab" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
+    <svg class="emblem menu-tab__emblem" viewBox="0 0 102.23 100" fill="currentColor" aria-hidden="true">
+      <path class="emblem__a" d="M 38.28 0.77 C 33.13 8.56 36.3 17.53 40.18 25.07 C 49.14 42.48 69.13 65.88 56.38 86.05 C 46.42 101.81 26.94 97.35 15.15 86.39 C 0.42 72.69 -3.61 50.68 3.23 32.02 C 3.63 30.93 4.09 29.41 4.91 28.58 C 5.74 40.55 8.01 53.36 13.94 63.9 C 18.64 72.27 30.6 86.01 40.03 75.55 C 46.53 68.34 41.83 58.07 37.75 50.92 C 31.78 40.48 19.44 27.35 23.08 14.4 C 24.91 7.89 32.01 2.56 38.28 0.77"/>
+      <path class="emblem__b" d="M 101.8 55.8 L 99.68 49.29 C 97.16 41.37 85.33 24.11 77.22 21.99 C 72.51 20.75 75.21 27.84 76.11 30.12 C 81.74 44.43 91.66 55.68 90.69 72.65 C 89.76 88.89 75.96 96.65 61.7 100 C 68.11 94.38 73.44 87.35 74.79 78.7 C 77.05 64.22 68.26 44.73 61.56 32.09 C 58.56 26.43 54.39 20.55 51.99 14.73 C 43.63 -5.49 64.77 -0.92 75.55 5.22 C 93.71 15.58 104.57 34.59 101.8 55.8"/>
+    </svg>
+    <span class="menu-tab__label" aria-hidden="true">MENU</span>
+    <span class="visually-hidden">MENU</span>
+  </button>
+
+  <!-- ============ MOBILE HEADER ============ -->
+  <header class="m-header">
+    <a class="m-header__logo" href="index.html" aria-label="UPPERSKY home">
+      <svg class="emblem" viewBox="0 0 102.23 100" fill="currentColor" aria-hidden="true">
+        <path class="emblem__a" d="M 38.28 0.77 C 33.13 8.56 36.3 17.53 40.18 25.07 C 49.14 42.48 69.13 65.88 56.38 86.05 C 46.42 101.81 26.94 97.35 15.15 86.39 C 0.42 72.69 -3.61 50.68 3.23 32.02 C 3.63 30.93 4.09 29.41 4.91 28.58 C 5.74 40.55 8.01 53.36 13.94 63.9 C 18.64 72.27 30.6 86.01 40.03 75.55 C 46.53 68.34 41.83 58.07 37.75 50.92 C 31.78 40.48 19.44 27.35 23.08 14.4 C 24.91 7.89 32.01 2.56 38.28 0.77"/>
+        <path class="emblem__b" d="M 101.8 55.8 L 99.68 49.29 C 97.16 41.37 85.33 24.11 77.22 21.99 C 72.51 20.75 75.21 27.84 76.11 30.12 C 81.74 44.43 91.66 55.68 90.69 72.65 C 89.76 88.89 75.96 96.65 61.7 100 C 68.11 94.38 73.44 87.35 74.79 78.7 C 77.05 64.22 68.26 44.73 61.56 32.09 C 58.56 26.43 54.39 20.55 51.99 14.73 C 43.63 -5.49 64.77 -0.92 75.55 5.22 C 93.71 15.58 104.57 34.59 101.8 55.8"/>
+      </svg>
+    </a>
+    <button class="m-header__burger" id="mBurger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- ============ DRAWER (1/3 width) ============ -->
+  <aside class="drawer" id="drawer" aria-hidden="true" data-lenis-prevent>
+    <div class="drawer__inner">
+      <div class="drawer__head">
+        <!-- Lockup built around the emblem: mark + UPPER/SKY wordmark + spaced MEDIA -->
+        <a class="drawer__brand" href="index.html" aria-label="UPPERSKY Media — home">
+          <svg class="emblem drawer__emblem" viewBox="0 0 102.23 100" fill="currentColor" aria-hidden="true">
+            <path class="emblem__a" d="M 38.28 0.77 C 33.13 8.56 36.3 17.53 40.18 25.07 C 49.14 42.48 69.13 65.88 56.38 86.05 C 46.42 101.81 26.94 97.35 15.15 86.39 C 0.42 72.69 -3.61 50.68 3.23 32.02 C 3.63 30.93 4.09 29.41 4.91 28.58 C 5.74 40.55 8.01 53.36 13.94 63.9 C 18.64 72.27 30.6 86.01 40.03 75.55 C 46.53 68.34 41.83 58.07 37.75 50.92 C 31.78 40.48 19.44 27.35 23.08 14.4 C 24.91 7.89 32.01 2.56 38.28 0.77"/>
+            <path class="emblem__b" d="M 101.8 55.8 L 99.68 49.29 C 97.16 41.37 85.33 24.11 77.22 21.99 C 72.51 20.75 75.21 27.84 76.11 30.12 C 81.74 44.43 91.66 55.68 90.69 72.65 C 89.76 88.89 75.96 96.65 61.7 100 C 68.11 94.38 73.44 87.35 74.79 78.7 C 77.05 64.22 68.26 44.73 61.56 32.09 C 58.56 26.43 54.39 20.55 51.99 14.73 C 43.63 -5.49 64.77 -0.92 75.55 5.22 C 93.71 15.58 104.57 34.59 101.8 55.8"/>
+          </svg>
+          <span class="drawer__wordmark" aria-hidden="true">
+            <span class="drawer__word"><span>U</span><span>P</span><span>P</span><span>E</span><span>R</span><span class="is-sky">S</span><span class="is-sky">K</span><span class="is-sky">Y</span></span>
+            <span class="drawer__sub"><span>M</span><span>E</span><span>D</span><span>I</span><span>A</span></span>
+          </span>
+        </a>
+        <button class="drawer__close" id="drawerClose" aria-label="Close menu">
+          <svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+
+      <nav class="drawer__nav" aria-label="Primary">
+        <ul>
+          <li><a href="index.html" data-i="01"><span class="num">01</span><span class="word">Home</span></a></li>
+          <li><a href="why-us.html" data-i="02"><span class="num">02</span><span class="word">Why us</span></a></li>
+          <li><a href="services.html" data-i="03"><span class="num">03</span><span class="word">Services</span></a></li>
+          <li><a href="process.html" aria-current="page" data-i="04"><span class="num">04</span><span class="word">Process</span></a></li>
+          <li><a href="blog.html" data-i="05"><span class="num">05</span><span class="word">Journal</span></a></li>
+          <li><a href="contact.html" data-i="06"><span class="num">06</span><span class="word">Contact</span></a></li>
+        </ul>
+      </nav>
+
+      <div class="drawer__foot">
+        <div>
+          <div class="drawer__label">Get in touch</div>
+          <a class="drawer__email" href="mailto:hello@uppersky.media">hello@uppersky.media</a>
+        </div>
+        <div class="drawer__socials">
+          <a href="#" aria-label="Instagram">IG</a>
+          <a href="#" aria-label="LinkedIn">IN</a>
+          <a href="#" aria-label="YouTube">YT</a>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="drawer-scrim" id="drawerScrim"></div>
+
+  <!-- ============ TOP-RIGHT CTA — opens the consultation form ============ -->
+  <a class="top-cta" href="contact.html" data-consult>GET STARTED</a>
+
+  <!-- ============ STORY RAIL (current chapter, desktop) ============ -->
+  <div class="story-rail" aria-hidden="true">
+    <span class="story-rail__num" id="railNum">01</span>
+    <span class="story-rail__bar"><span class="story-rail__fill" id="railFill"></span></span>
+    <span class="story-rail__name" id="railName"></span>
+  </div>
+  <!-- /include:chrome -->
+
+  <main>
+
+    <!-- ================================================================
+         PROLOGUE — PRE-FLIGHT (jet nose-on in the hangar)
+         ================================================================ -->
+    <section class="page-hero pr-hero" data-chapter="Prologue">
+      <div class="page-hero__media"><img src="assets/scrub/frame_040.webp" alt="" fetchpriority="high"></div>
+      <div class="page-hero__shade"></div>
+      <div class="page-hero__inner">
+
+        <!-- departure board — values flip into place on load (process.js) -->
+        <dl class="pr-board" aria-label="Flight status">
+          <div class="pr-board__cell pr-board__cell--flight"><dt>Flight</dt><dd><span data-flap>USM 001</span></dd></div>
+          <div class="pr-board__cell pr-board__cell--from"><dt>From</dt><dd><span data-flap>First call</span></dd></div>
+          <div class="pr-board__cell pr-board__cell--to"><dt>To</dt><dd><span data-flap>Launch</span></dd></div>
+          <div class="pr-board__cell pr-board__cell--eta"><dt>ETA</dt><dd><span data-flap>Days, not weeks</span></dd></div>
+          <div class="pr-board__cell pr-board__cell--status"><dt>Status</dt><dd><span class="pr-board__pulse" aria-hidden="true"></span><span data-flap>Now boarding</span></dd></div>
+        </dl>
+
+        <nav class="page-hero__crumb" aria-label="Breadcrumb"><a href="index.html">Uppersky</a><span>/</span><b>Process</b></nav>
+        <h1 class="page-hero__title"><span class="line"><span>A flight plan</span></span><span class="line"><span>you can <em>see.</em></span></span></h1>
+        <div class="page-hero__foot">
+          <p class="page-hero__lede"><strong>Up and running in days, not weeks.</strong> One free conversation, five clear legs and every draft in plain sight — so you always know where your marketing is, and where it's headed next.</p>
+          <div class="page-hero__actions">
+            <a class="btn btn--lime" href="contact.html" data-consult><span>Book a free consultation</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
+            <a class="btn btn--ghost pr-hero__route" href="#flight-path"><span>See the route</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
+          </div>
+        </div>
+      </div>
+      <span class="page-hero__cue" aria-hidden="true">Scroll</span>
+    </section>
+
+    <!-- ============ TICKER — the promises, on a loop ============ -->
+    <div class="ticker pr-ticker" aria-hidden="true">
+      <div class="ticker__track">
+        <span>Days, not weeks</span><i>·</i><span>One point of contact</span><i>·</i><span>Every draft in plain sight</span><i>·</i><span>No endless meetings</span><i>·</i><span>Private by default</span><i>·</i><span>Free consultation</span><i>·</i>
+        <span>Days, not weeks</span><i>·</i><span>One point of contact</span><i>·</i><span>Every draft in plain sight</span><i>·</i><span>No endless meetings</span><i>·</i><span>Private by default</span><i>·</i><span>Free consultation</span><i>·</i>
+      </div>
+    </div>
+
+    <!-- ================================================================
+         CHAPTER 01 — THE MANIFESTO (three promises, lit word by word)
+         ================================================================ -->
+    <section class="chapter chapter--light pr-manifesto" id="manifesto" data-chapter="The manifesto">
+      <div class="chapter__inner">
+        <header class="pr-manifesto__head" data-reveal>
+          <h2 class="kicker">The manifesto</h2>
+          <p class="pr-manifesto__intro">Three promises we fly by — on every aircraft, for every client.</p>
+        </header>
+
+        <ol class="pr-creeds">
+          <li class="pr-creed">
+            <div class="pr-creed__aside" aria-hidden="true">
+              <span class="pr-creed__num">01</span>
+              <span class="pr-creed__tag">Speed</span>
+            </div>
+            <div class="pr-creed__body">
+              <h3 class="statement" data-lit>Up and running in <em class="pr-mark">days.</em> Not <span class="pr-strike">weeks</span>.</h3>
+              <p class="pr-creed__note" data-reveal>Momentum sells aircraft. We move from first conversation to first assets fast, because a listing that waits is a listing that cools.</p>
+            </div>
+          </li>
+
+          <li class="pr-creed">
+            <div class="pr-creed__aside" aria-hidden="true">
+              <span class="pr-creed__num">02</span>
+              <span class="pr-creed__tag">Focus</span>
+            </div>
+            <div class="pr-creed__body">
+              <h3 class="statement" data-lit>We don't lose you between the <span class="pr-ghost">pitch decks</span> and <span class="pr-ghost">endless meetings.</span></h3>
+              <p class="pr-creed__note" data-reveal>One team, one point of contact, one clear plan. Your time goes to buyers and relationships — not to status meetings about status meetings.</p>
+            </div>
+          </li>
+
+          <li class="pr-creed">
+            <div class="pr-creed__aside" aria-hidden="true">
+              <span class="pr-creed__num">03</span>
+              <span class="pr-creed__tag">Standard</span>
+            </div>
+            <div class="pr-creed__body">
+              <h3 class="statement" data-lit>Here to disrupt the competition. Built to operate at a <em class="pr-mark">new standard</em> in aviation.</h3>
+              <p class="pr-creed__note" data-reveal>Tomorrow's technology, editorial craft and real industry fluency, held to a bar the industry hasn't seen. Transparent with you. A secret weapon to the industry.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         CHAPTER 02 — LEG 00 (the free consultation)
+         ================================================================ -->
+    <section class="chapter chapter--lime pr-brief" id="consultation" data-chapter="The consultation">
+      <div class="chapter__inner pr-brief__grid">
+        <div class="pr-brief__copy">
+          <span class="kicker" data-reveal>Leg 00 — Pre-flight briefing</span>
+          <h2 class="display" data-reveal>It starts with a <em>conversation.</em></h2>
+          <p class="lede" data-reveal>Before a single frame is shot, we talk. A free consultation about your sale or acquisition strategy — no commitment, no pitch deck, no pressure. You leave with a clearer plan, whether you fly with us or not.</p>
+          <div class="pr-brief__actions" data-reveal>
+            <a class="btn btn--ink" href="contact.html" data-consult><span>Book a free consultation</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
+            <a class="link-arrow" href="mailto:hello@uppersky.media">hello@uppersky.media<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+
+        <div class="pr-brief__card" data-reveal>
+          <article class="pr-ticket" aria-labelledby="prTicketTitle">
+            <header class="pr-ticket__top">
+              <span class="pr-ticket__kicker">Briefing pass</span>
+              <span class="pr-ticket__leg">Leg 00</span>
+            </header>
+
+            <div class="pr-ticket__route" aria-hidden="true">
+              <span class="pr-ticket__code">You</span>
+              <span class="pr-ticket__path">
+                <svg class="pr-ticket__plane" viewBox="0 0 102.23 100" fill="currentColor">
+                  <path d="M 38.28 0.77 C 33.13 8.56 36.3 17.53 40.18 25.07 C 49.14 42.48 69.13 65.88 56.38 86.05 C 46.42 101.81 26.94 97.35 15.15 86.39 C 0.42 72.69 -3.61 50.68 3.23 32.02 C 3.63 30.93 4.09 29.41 4.91 28.58 C 5.74 40.55 8.01 53.36 13.94 63.9 C 18.64 72.27 30.6 86.01 40.03 75.55 C 46.53 68.34 41.83 58.07 37.75 50.92 C 31.78 40.48 19.44 27.35 23.08 14.4 C 24.91 7.89 32.01 2.56 38.28 0.77"/>
+                  <path d="M 101.8 55.8 L 99.68 49.29 C 97.16 41.37 85.33 24.11 77.22 21.99 C 72.51 20.75 75.21 27.84 76.11 30.12 C 81.74 44.43 91.66 55.68 90.69 72.65 C 89.76 88.89 75.96 96.65 61.7 100 C 68.11 94.38 73.44 87.35 74.79 78.7 C 77.05 64.22 68.26 44.73 61.56 32.09 C 58.56 26.43 54.39 20.55 51.99 14.73 C 43.63 -5.49 64.77 -0.92 75.55 5.22 C 93.71 15.58 104.57 34.59 101.8 55.8"/>
+                </svg>
+              </span>
+              <span class="pr-ticket__code pr-ticket__code--dest">USM</span>
+            </div>
+
+            <h3 class="pr-ticket__title" id="prTicketTitle">Your free consultation</h3>
+
+            <dl class="pr-ticket__facts">
+              <div><dt>Fare</dt><dd class="is-lime">Free</dd></div>
+              <div><dt>Commitment</dt><dd>None</dd></div>
+              <div><dt>Sales pitch</dt><dd>None</dd></div>
+              <div><dt>You leave with</dt><dd>A plan</dd></div>
+            </dl>
+
+            <div class="pr-ticket__lists">
+              <div>
+                <h4 class="pr-ticket__h">On the agenda</h4>
+                <ul class="pr-ticket__list pr-ticket__list--yes">
+                  <li>Your aircraft — or the one you're hunting for</li>
+                  <li>Your timeline, and what's driving it</li>
+                  <li>What's working, and what isn't</li>
+                  <li>An honest recommendation</li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="pr-ticket__h">Not on the agenda</h4>
+                <ul class="pr-ticket__list pr-ticket__list--no">
+                  <li>A sales pitch</li>
+                  <li>Any commitment</li>
+                  <li>A maze of follow-up meetings</li>
+                </ul>
+              </div>
+            </div>
+
+            <footer class="pr-ticket__stub">
+              <span class="pr-ticket__barcode" aria-hidden="true"></span>
+              <span class="pr-ticket__board">Boarding whenever you're ready</span>
+            </footer>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         CHAPTER 03 — THE FLIGHT PATH (five legs; the route draws with scroll)
+         ================================================================ -->
+    <section class="chapter chapter--soft pr-path" id="flight-path" data-chapter="The flight path">
+      <div class="chapter__inner">
+        <header class="chapter__head pr-path__head">
+          <span class="kicker" data-reveal>The flight path</span>
+          <h2 class="display" data-reveal>Five legs. <em>Zero</em> holding patterns.</h2>
+          <p class="lede" data-reveal>Every project flies the same clear route. You always know which leg you're on, what happens next and when we need you — which is less often than you'd think.</p>
+        </header>
+
+        <div class="pr-path__grid">
+
+          <!-- sticky "legs page", like a flight computer — a visual mirror of the list, so hidden from screen readers -->
+          <div class="pr-path__side">
+            <div class="pr-fmc" aria-hidden="true">
+              <div class="pr-fmc__top"><span>Flight plan · Legs</span><span class="pr-fmc__live"><i></i>Live</span></div>
+              <div class="pr-fmc__now">
+                <span class="pr-fmc__label">Active leg</span>
+                <span class="pr-fmc__num"><b data-fmc-num>01</b><small>/ 05</small></span>
+                <span class="pr-fmc__name" data-fmc-name>Discover</span>
+              </div>
+              <ol class="pr-fmc__legs">
+                <li class="is-current" data-fmc-leg><span>01</span><b>Discover</b><em>In progress</em></li>
+                <li data-fmc-leg><span>02</span><b>Plan</b><em>Scheduled</em></li>
+                <li data-fmc-leg><span>03</span><b>Capture</b><em>Scheduled</em></li>
+                <li data-fmc-leg><span>04</span><b>Produce</b><em>Scheduled</em></li>
+                <li data-fmc-leg><span>05</span><b>Launch</b><em>Scheduled</em></li>
+              </ol>
+              <div class="pr-fmc__eta"><span>ETA</span><b>Days, not weeks</b></div>
+            </div>
+          </div>
+
+          <div class="pr-route" data-route>
+            <div class="pr-route__track" aria-hidden="true">
+              <span class="pr-route__fill"></span>
+              <span class="pr-route__plane">
+                <svg viewBox="0 0 102.23 100" fill="currentColor">
+                  <path d="M 38.28 0.77 C 33.13 8.56 36.3 17.53 40.18 25.07 C 49.14 42.48 69.13 65.88 56.38 86.05 C 46.42 101.81 26.94 97.35 15.15 86.39 C 0.42 72.69 -3.61 50.68 3.23 32.02 C 3.63 30.93 4.09 29.41 4.91 28.58 C 5.74 40.55 8.01 53.36 13.94 63.9 C 18.64 72.27 30.6 86.01 40.03 75.55 C 46.53 68.34 41.83 58.07 37.75 50.92 C 31.78 40.48 19.44 27.35 23.08 14.4 C 24.91 7.89 32.01 2.56 38.28 0.77"/>
+                  <path d="M 101.8 55.8 L 99.68 49.29 C 97.16 41.37 85.33 24.11 77.22 21.99 C 72.51 20.75 75.21 27.84 76.11 30.12 C 81.74 44.43 91.66 55.68 90.69 72.65 C 89.76 88.89 75.96 96.65 61.7 100 C 68.11 94.38 73.44 87.35 74.79 78.7 C 77.05 64.22 68.26 44.73 61.56 32.09 C 58.56 26.43 54.39 20.55 51.99 14.73 C 43.63 -5.49 64.77 -0.92 75.55 5.22 C 93.71 15.58 104.57 34.59 101.8 55.8"/>
+                </svg>
+              </span>
+            </div>
+
+            <ol class="pr-legs">
+              <!-- LEG 01 -->
+              <li class="pr-leg" data-name="Discover">
+                <span class="pr-leg__node" aria-hidden="true">01</span>
+                <div class="pr-leg__body">
+                  <div class="pr-leg__meta"><span class="pr-leg__code">Leg 01</span><span class="pr-leg__status" aria-hidden="true"></span></div>
+                  <h3 class="pr-leg__title">Discover</h3>
+                  <p class="pr-leg__sum">A deep-dive on your aircraft, your buyers and your goals — so we agree on what a win looks like before anything else moves.</p>
+                  <dl class="pr-leg__grid">
+                    <div class="pr-leg__cell"><dt>What happens</dt><dd>One focused session on the aircraft (or the one you're after), the market you're selling into and the people who sign. We audit what already exists, so nothing useful gets made twice.</dd></div>
+                    <div class="pr-leg__cell"><dt>What you get</dt><dd>A shared definition of success and a clear read on where the opportunity is.</dd></div>
+                    <div class="pr-leg__cell pr-leg__cell--you"><dt>Your part</dt><dd>One conversation, plus anything you already have.</dd></div>
+                  </dl>
+                  <div class="pr-leg__extra" data-reveal>
+                    <span class="pr-leg__label">On the table</span>
+                    <ul class="pr-chips"><li>The aircraft</li><li>Your buyers</li><li>The market</li><li>Your goals</li><li>Existing assets</li></ul>
+                  </div>
+                </div>
+              </li>
+
+              <!-- LEG 02 -->
+              <li class="pr-leg" data-name="Plan">
+                <span class="pr-leg__node" aria-hidden="true">02</span>
+                <div class="pr-leg__body">
+                  <div class="pr-leg__meta"><span class="pr-leg__code">Leg 02</span><span class="pr-leg__status" aria-hidden="true"></span></div>
+                  <h3 class="pr-leg__title">Plan</h3>
+                  <p class="pr-leg__sum">A custom strategy and creative direction, mapped to the channels that actually move aircraft.</p>
+                  <dl class="pr-leg__grid">
+                    <div class="pr-leg__cell"><dt>What happens</dt><dd>We turn the brief into a flight plan: the story, the look, the deliverables and the channels — adverts, spec sheets, web and social — sequenced so every piece lands when it should.</dd></div>
+                    <div class="pr-leg__cell"><dt>What you get</dt><dd>A written plan you can read in minutes, with every deliverable and date in plain sight.</dd></div>
+                    <div class="pr-leg__cell pr-leg__cell--you"><dt>Your part</dt><dd>Read it. Push back. Approve.</dd></div>
+                  </dl>
+                  <div class="pr-leg__extra" data-reveal>
+                    <span class="pr-leg__label">In the plan</span>
+                    <ul class="pr-chips"><li>Story &amp; angle</li><li>Creative direction</li><li>Deliverables</li><li>Channels</li><li>Dates, up front</li></ul>
+                  </div>
+                </div>
+              </li>
+
+              <!-- LEG 03 -->
+              <li class="pr-leg" data-name="Capture">
+                <span class="pr-leg__node" aria-hidden="true">03</span>
+                <div class="pr-leg__body">
+                  <div class="pr-leg__meta"><span class="pr-leg__code">Leg 03</span><span class="pr-leg__status" aria-hidden="true"></span></div>
+                  <h3 class="pr-leg__title">Capture</h3>
+                  <p class="pr-leg__sum">On-location shoots, air-to-air, drone, studio and video — built for high-impact storytelling.</p>
+                  <dl class="pr-leg__grid">
+                    <div class="pr-leg__cell"><dt>What happens</dt><dd>Our crew plans every frame around the aircraft's best angles and the light that flatters them, then captures stills, film and detail — on the ramp, in the hangar or in the air.</dd></div>
+                    <div class="pr-leg__cell"><dt>What you get</dt><dd>A complete library of imagery and footage: the raw material for every asset that follows.</dd></div>
+                    <div class="pr-leg__cell pr-leg__cell--you"><dt>Your part</dt><dd>Access to the aircraft. We coordinate the rest.</dd></div>
+                  </dl>
+                  <figure class="pr-shot" data-reveal>
+                    <div class="pr-shot__frame" data-parallax>
+                      <img src="assets/gallery/differentangle1.jpg" alt="A business jet lit up on a ramp at dusk, mountains behind it" loading="lazy" width="1000" height="435">
+                    </div>
+                    <span class="pr-shot__hud" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                    <span class="pr-shot__rec" aria-hidden="true">Rec</span>
+                    <figcaption>On the ramp at dusk — every frame planned around the light.</figcaption>
+                  </figure>
+                </div>
+              </li>
+
+              <!-- LEG 04 -->
+              <li class="pr-leg" data-name="Produce">
+                <span class="pr-leg__node" aria-hidden="true">04</span>
+                <div class="pr-leg__body">
+                  <div class="pr-leg__meta"><span class="pr-leg__code">Leg 04</span><span class="pr-leg__status" aria-hidden="true"></span></div>
+                  <h3 class="pr-leg__title">Produce</h3>
+                  <p class="pr-leg__sum">Edit, design and develop. Polished assets, ready for every touchpoint.</p>
+                  <dl class="pr-leg__grid">
+                    <div class="pr-leg__cell"><dt>What happens</dt><dd>Retouching, colour grading, editing, design and build — brochures, spec sheets, films and listing sites. You see every draft as it takes shape, not just the final reveal.</dd></div>
+                    <div class="pr-leg__cell"><dt>What you get</dt><dd>One finished, consistent set of assets: a clear message across every page a buyer touches.</dd></div>
+                    <div class="pr-leg__cell pr-leg__cell--you"><dt>Your part</dt><dd>Review the drafts. Tell us what you think.</dd></div>
+                  </dl>
+                  <figure class="pr-ba" data-reveal>
+                    <div class="ba-slider ba-slider--real" data-ba style="--ba-pos: 50%;">
+                      <img class="ba-slider__img ba-slider__img--after" src="assets/gallery/editedogangle.jpg" alt="After: the same jet, edited — dusk sky, cabin lights on, polished finish" draggable="false" loading="lazy" width="1000" height="435">
+                      <img class="ba-slider__img ba-slider__img--before" src="assets/gallery/ogangle.jpg" alt="Before: the original photo as shot, in flat daylight on a busy ramp" draggable="false" loading="lazy" width="1000" height="435">
+                      <div class="ba-slider__handle">
+                        <span class="ba-slider__line" aria-hidden="true"></span>
+                        <button class="ba-slider__knob" type="button" aria-label="Compare the original photo and the edit">
+                          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </button>
+                      </div>
+                      <span class="ba-slider__label ba-slider__label--before" aria-hidden="true">As shot</span>
+                      <span class="ba-slider__label ba-slider__label--after" aria-hidden="true">Delivered</span>
+                    </div>
+                    <figcaption>Drag to compare: the frame as shot, and what we delivered.</figcaption>
+                  </figure>
+                </div>
+              </li>
+
+              <!-- LEG 05 -->
+              <li class="pr-leg" data-name="Launch">
+                <span class="pr-leg__node" aria-hidden="true">05</span>
+                <div class="pr-leg__body">
+                  <div class="pr-leg__meta"><span class="pr-leg__code">Leg 05</span><span class="pr-leg__status" aria-hidden="true"></span></div>
+                  <h3 class="pr-leg__title">Launch</h3>
+                  <p class="pr-leg__sum">We deploy, distribute and measure — so every next move is sharper than the last.</p>
+                  <dl class="pr-leg__grid">
+                    <div class="pr-leg__cell"><dt>What happens</dt><dd>Your listing goes live where buyers actually browse — adverts, listing sites, social and spec sheets — and we watch what performs from day one.</dd></div>
+                    <div class="pr-leg__cell"><dt>What you get</dt><dd>A live campaign and plain-language reporting on what's working, and what we'd change.</dd></div>
+                    <div class="pr-leg__cell pr-leg__cell--you"><dt>Your part</dt><dd>Take the calls. That's the point.</dd></div>
+                  </dl>
+                  <div class="pr-launch" data-reveal>
+                    <div class="pr-launch__top"><span>Launch board</span><span class="pr-launch__tag">Example</span></div>
+                    <ul class="pr-launch__rows">
+                      <li><b>Adverts</b><i aria-hidden="true"></i><span>Live</span></li>
+                      <li><b>Spec sheets</b><i aria-hidden="true"></i><span>Live</span></li>
+                      <li><b>Listing site</b><i aria-hidden="true"></i><span>Live</span></li>
+                      <li><b>Social</b><i aria-hidden="true"></i><span>Live</span></li>
+                      <li><b>Reporting</b><i aria-hidden="true"></i><span>On</span></li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+            </ol>
+
+            <!-- ARRIVAL -->
+            <div class="pr-arrival">
+              <span class="pr-arrival__node" aria-hidden="true">Arr</span>
+              <div class="pr-arrival__body">
+                <p class="pr-arrival__title">Arrival.</p>
+                <p class="pr-arrival__copy">Your aircraft, in its best light — up and running in days, not weeks.</p>
+                <a class="btn btn--ink" href="contact.html" data-consult><span>Start with a free consultation</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         CHAPTER 04 — ALWAYS IN THE LOOP (transparency while we work)
+         ================================================================ -->
+    <section class="chapter chapter--dark pr-loop" id="in-the-loop" data-chapter="Always in the loop">
+      <div class="chapter__inner">
+        <div class="pr-loop__grid">
+          <header class="pr-loop__head">
+            <span class="kicker" data-reveal>Always in the loop</span>
+            <h2 class="display" data-reveal>No black boxes. No <em>radio silence.</em></h2>
+            <p class="lede" data-reveal>Transparency isn't a feature we bolt on. It's how we fly. You see the work while it happens, you always know who to call, and you never have to chase us for an update.</p>
+            <div class="pr-loop__actions" data-reveal>
+              <a class="btn btn--lime" href="contact.html" data-consult><span>Book a free consultation</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
+            </div>
+          </header>
+
+          <figure class="pr-update" data-reveal>
+            <div class="pr-update__bar">
+              <span class="pr-update__dot" aria-hidden="true"></span>
+              <span>Project update</span>
+              <span class="pr-update__tag">Sample</span>
+            </div>
+            <div class="pr-update__cols">
+              <div class="pr-update__col pr-update__col--done">
+                <h3 class="pr-update__h"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Done</h3>
+                <ul><li>Creative direction approved</li><li>Hangar shoot wrapped</li></ul>
+              </div>
+              <div class="pr-update__col pr-update__col--next">
+                <h3 class="pr-update__h"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>Next</h3>
+                <ul><li>First edit, ready for your review</li></ul>
+              </div>
+              <div class="pr-update__col pr-update__col--you">
+                <h3 class="pr-update__h"><span class="pr-update__ping" aria-hidden="true"></span>Needed from you</h3>
+                <ul><li>A quick check of the final spec sheet</li></ul>
+              </div>
+            </div>
+            <figcaption>What an update from us looks like: plain language, nothing to chase.</figcaption>
+          </figure>
+        </div>
+
+        <ol class="pr-promises">
+          <li class="pr-promise" data-reveal>
+            <span class="pr-promise__num">01</span>
+            <h3 class="pr-promise__name">Every draft, in plain sight</h3>
+            <p class="pr-promise__copy">Not just the big reveal. You see the work as it takes shape, and steer it before anything is final.</p>
+          </li>
+          <li class="pr-promise" data-reveal>
+            <span class="pr-promise__num">02</span>
+            <h3 class="pr-promise__name">One point of contact</h3>
+            <p class="pr-promise__copy">One person who knows your deal from first call to launch. No relay race, no repeating yourself.</p>
+          </li>
+          <li class="pr-promise" data-reveal>
+            <span class="pr-promise__num">03</span>
+            <h3 class="pr-promise__name">Updates you never chase</h3>
+            <p class="pr-promise__copy">What's done, what's next and what we need from you — in plain language, before you have to ask.</p>
+          </li>
+          <li class="pr-promise" data-reveal>
+            <span class="pr-promise__num">04</span>
+            <h3 class="pr-promise__name">Real reporting</h3>
+            <p class="pr-promise__copy">After launch, honest reporting on what's performing and what we'd change next. No vanity numbers.</p>
+          </li>
+        </ol>
+
+        <div class="pr-private" data-reveal>
+          <span class="pr-private__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/></svg>
+          </span>
+          <div>
+            <span class="kicker">Private by default</span>
+            <p class="pr-private__text">Your deal stays between us. Your project's ideas are <em>never recycled</em> for anyone else.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         CHAPTER 05 — QUESTIONS
+         ================================================================ -->
+    <section class="chapter chapter--light pr-faq" id="questions" data-chapter="Questions">
+      <div class="chapter__inner split">
+        <header class="split__sticky">
+          <span class="kicker" data-reveal>Questions</span>
+          <h2 class="display" data-reveal>Before you <em>board.</em></h2>
+          <p class="lede" data-reveal>Straight answers to what brokers ask us first. Anything else, ask us on the call — or write to <a href="mailto:hello@uppersky.media">hello@uppersky.media</a>.</p>
+        </header>
+
+        <div class="faq" data-reveal>
+          <details name="pr-faq">
+            <summary>Is the consultation really free?</summary>
+            <div class="faq__a"><p>Yes. No fee, no catch, no invoice afterwards. It's a real conversation about your sale or acquisition strategy, and you leave with an honest recommendation either way.</p></div>
+          </details>
+          <details name="pr-faq">
+            <summary>Do I commit to anything?</summary>
+            <div class="faq__a"><p>No. The consultation carries no commitment at all. If we're the right fit, we'll put a clear plan in front of you — whether you go ahead is entirely your call.</p></div>
+          </details>
+          <details name="pr-faq">
+            <summary>How fast can we launch?</summary>
+            <div class="faq__a"><p>We get you up and running in days, not weeks. Exact timing depends on your aircraft, your goals and what's already in place — we'll map it out together in the consultation, with every date in plain sight.</p></div>
+          </details>
+          <details name="pr-faq">
+            <summary>Do you work with single brokers?</summary>
+            <div class="faq__a"><p>Absolutely. We work with industry professionals and single brokers alike. Whether you run a brokerage or you're working one deal, you get the same standard, the same transparency and one point of contact.</p></div>
+          </details>
+          <details name="pr-faq">
+            <summary>Who owns the content?</summary>
+            <div class="faq__a"><p>You'll know before we start. Ownership and usage rights are agreed in writing up front, so there's no fine print waiting for you later. Bring any questions to the consultation.</p></div>
+          </details>
+          <details name="pr-faq">
+            <summary>What do you need from me?</summary>
+            <div class="faq__a"><p>Less than you'd think. Access to the aircraft (or the details of the one you're after), a few decisions at the key moments, and your eyes on the drafts. We handle the rest — so you can stay focused on your buyers and relationships.</p></div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         CHAPTER 06 — FINAL APPROACH (hands off to the footer's CTA)
+         ================================================================ -->
+    <section class="pr-final" data-chapter="Final approach">
+      <div class="pr-final__media" data-parallax aria-hidden="true"><img src="assets/hero-bg.jpg" alt="" loading="lazy"></div>
+      <div class="pr-final__shade" aria-hidden="true"></div>
+      <div class="pr-final__inner">
+        <span class="pr-final__kicker" data-reveal><span class="pr-final__pulse" aria-hidden="true"></span>Final call</span>
+        <h2 class="pr-final__title" data-reveal>Wheels up in <em>days,</em> not weeks.</h2>
+        <p class="pr-final__lede" data-reveal>It all starts with one free, no-commitment conversation about your sale or acquisition. Your boarding pass is just below.</p>
+        <a class="pr-final__cue" href="#footer" data-reveal>
+          <span>Book your consultation</span>
+          <span class="pr-final__arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></svg></span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- include:footer -->
+  <!-- ================================================================
+       EPILOGUE — ARRIVAL (consultation CTA + footer in one cinematic block)
+       ================================================================ -->
+  <section class="colophon" id="footer" data-chapter="Arrival">
+    <video class="colophon__video"
+           src="assets/colophon-loop.mp4"
+           autoplay muted loop playsinline preload="metadata"
+           aria-hidden="true"></video>
+    <div class="colophon__overlay" aria-hidden="true"></div>
+
+    <div class="colophon__inner">
+
+      <!-- INVITATION -->
+      <div class="colophon__invite">
+        <span class="colophon__status">
+          <span class="colophon__pulse" aria-hidden="true"></span>
+          Free consultation · No commitment
+        </span>
+        <h2 class="colophon__h" data-reveal>
+          Want to see what a <em>customized</em> approach looks like?
+        </h2>
+        <a class="colophon__cta" href="contact.html" data-consult>
+          <span>Book a free consultation</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a class="colophon__contact" href="mailto:hello@uppersky.media">hello@uppersky.media</a>
+      </div>
+
+      <!-- WORDMARK MOMENT -->
+      <a class="colophon__wordmark" href="index.html" aria-label="UPPERSKY home">
+        UPPERSKY<span class="colophon__dot">.</span>
+      </a>
+
+      <!-- INFO GRID -->
+      <div class="colophon__grid">
+        <nav class="colophon__col" aria-label="Footer navigation">
+          <span class="colophon__h-mini">Navigate</span>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="why-us.html">Why us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="process.html" aria-current="page">Process</a></li>
+            <li><a href="blog.html">Journal</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="colophon__col">
+          <span class="colophon__h-mini">Get in touch</span>
+          <ul>
+            <li><a href="mailto:hello@uppersky.media">hello@uppersky.media</a></li>
+            <li><a href="tel:+15555555555">+1 (555) 555-5555</a></li>
+            <li>Los Angeles · Worldwide</li>
+          </ul>
+        </div>
+        <div class="colophon__col">
+          <span class="colophon__h-mini">Follow</span>
+          <ul class="colophon__social">
+            <li><a href="#" aria-label="Instagram">Instagram <span aria-hidden="true">↗</span></a></li>
+            <li><a href="#" aria-label="LinkedIn">LinkedIn <span aria-hidden="true">↗</span></a></li>
+            <li><a href="#" aria-label="YouTube">YouTube <span aria-hidden="true">↗</span></a></li>
+            <li><a href="#" aria-label="Vimeo">Vimeo <span aria-hidden="true">↗</span></a></li>
+          </ul>
+        </div>
+        <div class="colophon__col colophon__col--time">
+          <span class="colophon__h-mini">Local time</span>
+          <span class="colophon__clock" id="laClock">—</span>
+          <span class="colophon__clock-meta">Los Angeles · PT</span>
+        </div>
+      </div>
+
+      <!-- BOTTOM BAR -->
+      <div class="colophon__bar">
+        <span class="colophon__copy">© <span id="year"></span> UPPERSKY MEDIA — a Unimarq company · All rights reserved</span>
+        <button class="colophon__cookie" type="button" data-cookie-open>Cookie settings</button>
+        <span class="colophon__tag">— Built to fly</span>
+        <a class="colophon__top-link" href="#top" aria-label="Back to top">
+          Back to top
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </section>
+  <!-- /include:footer -->
+
+  <!-- include:consult-modal -->
+  <!-- ============ CONSULTATION MODAL — opened by any [data-consult] link ============ -->
+  <dialog class="consult-modal" id="consultModal" aria-labelledby="cfTitle" data-lenis-prevent>
+    <div class="consult-modal__panel">
+      <aside class="consult-modal__aside" aria-hidden="true">
+        <video class="consult-modal__video" src="assets/colophon-loop.mp4" muted loop playsinline preload="none"></video>
+        <div class="consult-modal__shade"></div>
+        <div class="consult-modal__aside-in">
+          <svg class="consult-modal__emblem" viewBox="0 0 102.23 100" fill="currentColor">
+            <path d="M 38.28 0.77 C 33.13 8.56 36.3 17.53 40.18 25.07 C 49.14 42.48 69.13 65.88 56.38 86.05 C 46.42 101.81 26.94 97.35 15.15 86.39 C 0.42 72.69 -3.61 50.68 3.23 32.02 C 3.63 30.93 4.09 29.41 4.91 28.58 C 5.74 40.55 8.01 53.36 13.94 63.9 C 18.64 72.27 30.6 86.01 40.03 75.55 C 46.53 68.34 41.83 58.07 37.75 50.92 C 31.78 40.48 19.44 27.35 23.08 14.4 C 24.91 7.89 32.01 2.56 38.28 0.77"/>
+            <path d="M 101.8 55.8 L 99.68 49.29 C 97.16 41.37 85.33 24.11 77.22 21.99 C 72.51 20.75 75.21 27.84 76.11 30.12 C 81.74 44.43 91.66 55.68 90.69 72.65 C 89.76 88.89 75.96 96.65 61.7 100 C 68.11 94.38 73.44 87.35 74.79 78.7 C 77.05 64.22 68.26 44.73 61.56 32.09 C 58.56 26.43 54.39 20.55 51.99 14.73 C 43.63 -5.49 64.77 -0.92 75.55 5.22 C 93.71 15.58 104.57 34.59 101.8 55.8"/>
+          </svg>
+          <p class="consult-modal__quote">Your deal, in its <em>best light</em> — and every number in plain sight.</p>
+          <ul class="consult-modal__promises">
+            <li><b>Free</b> No cost, ever, for the first conversation.</li>
+            <li><b>No commitment</b> Walk away with a plan, whatever you decide.</li>
+            <li><b>Private</b> Your deal stays between us.</li>
+          </ul>
+        </div>
+      </aside>
+      <div class="consult-modal__body">
+        <button class="consult-modal__close" type="button" data-consult-close aria-label="Close">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>
+        </button>
+        <!-- include:consult-form -->
+        <!-- ============ CONSULTATION FORM — "file your flight plan" ============
+             Four short legs, one question each. Without a form backend the finished
+             request opens in the visitor's email app, fully written; set
+             data-endpoint to a form service URL to POST it instead. -->
+        <div class="flightplan" data-flightplan>
+          <form class="flightform" id="consultForm" novalidate
+                data-to="hello@uppersky.media" data-endpoint="">
+            <header class="flightform__head">
+              <span class="flightform__kicker"><span class="flightform__pulse" aria-hidden="true"></span>Free consultation · No commitment</span>
+              <h2 class="flightform__title" id="cfTitle">File your <em>flight plan.</em></h2>
+              <p class="flightform__sub">Four quick legs. Then a real conversation about your sale or acquisition — no pitch, no pressure.</p>
+            </header>
+
+            <!-- progress, drawn as a route: you → us -->
+            <div class="flightform__route" aria-hidden="true">
+              <span class="flightform__code">YOU</span>
+              <span class="flightform__path">
+                <span class="flightform__trail"></span>
+                <svg class="flightform__plane" viewBox="0 0 102.23 100" fill="currentColor">
+                  <path d="M 38.28 0.77 C 33.13 8.56 36.3 17.53 40.18 25.07 C 49.14 42.48 69.13 65.88 56.38 86.05 C 46.42 101.81 26.94 97.35 15.15 86.39 C 0.42 72.69 -3.61 50.68 3.23 32.02 C 3.63 30.93 4.09 29.41 4.91 28.58 C 5.74 40.55 8.01 53.36 13.94 63.9 C 18.64 72.27 30.6 86.01 40.03 75.55 C 46.53 68.34 41.83 58.07 37.75 50.92 C 31.78 40.48 19.44 27.35 23.08 14.4 C 24.91 7.89 32.01 2.56 38.28 0.77"/>
+                  <path d="M 101.8 55.8 L 99.68 49.29 C 97.16 41.37 85.33 24.11 77.22 21.99 C 72.51 20.75 75.21 27.84 76.11 30.12 C 81.74 44.43 91.66 55.68 90.69 72.65 C 89.76 88.89 75.96 96.65 61.7 100 C 68.11 94.38 73.44 87.35 74.79 78.7 C 77.05 64.22 68.26 44.73 61.56 32.09 C 58.56 26.43 54.39 20.55 51.99 14.73 C 43.63 -5.49 64.77 -0.92 75.55 5.22 C 93.71 15.58 104.57 34.59 101.8 55.8"/>
+                </svg>
+              </span>
+              <span class="flightform__code flightform__code--dest">USM</span>
+            </div>
+            <ol class="flightform__legs" aria-label="Steps">
+              <li class="is-current"><span>01</span>Mission</li>
+              <li><span>02</span>Aircraft</li>
+              <li><span>03</span>Contact</li>
+              <li><span>04</span>Notes</li>
+            </ol>
+
+            <div class="flightform__stage">
+              <!-- LEG 01 -->
+              <fieldset class="flightform__step is-active" data-step="1">
+                <legend class="flightform__q"><span class="flightform__qnum">01</span>What's the mission?</legend>
+                <div class="missions">
+                  <label class="mission">
+                    <input type="radio" name="mission" value="Selling an aircraft" required>
+                    <span class="mission__card">
+                      <svg class="mission__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 12.5V4.5a1 1 0 0 1 1-1h8l8 8-9 9-8-8Z"/><circle cx="8.5" cy="8.5" r="1.6"/></svg>
+                      <span class="mission__name">Sell</span>
+                      <span class="mission__desc">Launch a listing that moves — fast.</span>
+                      <span class="mission__tick" aria-hidden="true"></span>
+                    </span>
+                  </label>
+                  <label class="mission">
+                    <input type="radio" name="mission" value="Acquiring an aircraft">
+                    <span class="mission__card">
+                      <svg class="mission__icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 1.5v4M12 18.5v4M1.5 12h4M18.5 12h4"/></svg>
+                      <span class="mission__name">Acquire</span>
+                      <span class="mission__desc">Find and win the right aircraft.</span>
+                      <span class="mission__tick" aria-hidden="true"></span>
+                    </span>
+                  </label>
+                  <label class="mission">
+                    <input type="radio" name="mission" value="Marketing a brokerage">
+                    <span class="mission__card">
+                      <svg class="mission__icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8.5 7V5.5a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2V7M3 13h18"/></svg>
+                      <span class="mission__name">Brokerage</span>
+                      <span class="mission__desc">Build the brand behind the deals.</span>
+                      <span class="mission__tick" aria-hidden="true"></span>
+                    </span>
+                  </label>
+                  <label class="mission">
+                    <input type="radio" name="mission" value="Something else">
+                    <span class="mission__card">
+                      <svg class="mission__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5v5M12 16.5v5M2.5 12h5M16.5 12h5M5.3 5.3l3.2 3.2M15.5 15.5l3.2 3.2M18.7 5.3l-3.2 3.2M8.5 15.5l-3.2 3.2"/></svg>
+                      <span class="mission__name">Other</span>
+                      <span class="mission__desc">Something bespoke? Let's hear it.</span>
+                      <span class="mission__tick" aria-hidden="true"></span>
+                    </span>
+                  </label>
+                </div>
+                <p class="flightform__hint" data-hint="1" hidden>Pick a mission to continue.</p>
+              </fieldset>
+
+              <!-- LEG 02 -->
+              <fieldset class="flightform__step" data-step="2">
+                <legend class="flightform__q"><span class="flightform__qnum">02</span>Tell us about the aircraft.</legend>
+                <div class="ff-field">
+                  <input class="ff-input" id="cf-aircraft" name="aircraft" type="text" placeholder=" " autocomplete="off">
+                  <label class="ff-label" for="cf-aircraft">Make &amp; model <span>optional</span></label>
+                  <span class="ff-line" aria-hidden="true"></span>
+                </div>
+                <p class="flightform__label" id="cf-timeline-label">When do you want to move?</p>
+                <div class="chips" role="radiogroup" aria-labelledby="cf-timeline-label">
+                  <label class="chip"><input type="radio" name="timeline" value="As soon as possible"><span>ASAP</span></label>
+                  <label class="chip"><input type="radio" name="timeline" value="1–3 months"><span>1–3 months</span></label>
+                  <label class="chip"><input type="radio" name="timeline" value="3–6 months"><span>3–6 months</span></label>
+                  <label class="chip"><input type="radio" name="timeline" value="Just exploring"><span>Just exploring</span></label>
+                </div>
+              </fieldset>
+
+              <!-- LEG 03 -->
+              <fieldset class="flightform__step" data-step="3">
+                <legend class="flightform__q"><span class="flightform__qnum">03</span>Who should we call?</legend>
+                <div class="ff-grid">
+                  <div class="ff-field">
+                    <input class="ff-input" id="cf-name" name="name" type="text" placeholder=" " autocomplete="name" required>
+                    <label class="ff-label" for="cf-name">Your name</label>
+                    <span class="ff-line" aria-hidden="true"></span>
+                  </div>
+                  <div class="ff-field">
+                    <input class="ff-input" id="cf-email" name="email" type="email" placeholder=" " autocomplete="email" required>
+                    <label class="ff-label" for="cf-email">Email</label>
+                    <span class="ff-line" aria-hidden="true"></span>
+                  </div>
+                  <div class="ff-field">
+                    <input class="ff-input" id="cf-phone" name="phone" type="tel" placeholder=" " autocomplete="tel">
+                    <label class="ff-label" for="cf-phone">Phone <span>optional</span></label>
+                    <span class="ff-line" aria-hidden="true"></span>
+                  </div>
+                  <div class="ff-field">
+                    <input class="ff-input" id="cf-company" name="company" type="text" placeholder=" " autocomplete="organization">
+                    <label class="ff-label" for="cf-company">Company / brokerage <span>optional</span></label>
+                    <span class="ff-line" aria-hidden="true"></span>
+                  </div>
+                </div>
+                <p class="flightform__hint" data-hint="3" hidden>We need your name and a valid email to reply.</p>
+              </fieldset>
+
+              <!-- LEG 04 -->
+              <fieldset class="flightform__step" data-step="4">
+                <legend class="flightform__q"><span class="flightform__qnum">04</span>Anything we should know?</legend>
+                <div class="ff-field ff-field--area">
+                  <textarea class="ff-input" id="cf-message" name="message" rows="4" placeholder=" "></textarea>
+                  <label class="ff-label" for="cf-message">Goals, questions, the story of the deal <span>optional</span></label>
+                  <span class="ff-line" aria-hidden="true"></span>
+                </div>
+                <p class="flightform__privacy">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/></svg>
+                  Private by default. We use your details only to reply — never shared, never sold.
+                </p>
+              </fieldset>
+            </div>
+
+            <footer class="flightform__nav">
+              <button type="button" class="flightform__back" data-ff="back" hidden>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H5M11 6l-6 6 6 6"/></svg>Back
+              </button>
+              <span class="flightform__count" aria-live="polite"><b data-ff="count">01</b> / 04</span>
+              <button type="button" class="ff-btn" data-ff="next">
+                <span>Continue</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+              </button>
+              <button type="submit" class="ff-btn ff-btn--submit" data-ff="submit" hidden>
+                <span>Request my free consultation</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+              </button>
+            </footer>
+            <p class="flightform__error" role="alert" hidden>Something went wrong sending that. Email us directly at <a href="mailto:hello@uppersky.media">hello@uppersky.media</a>.</p>
+          </form>
+
+          <!-- confirmation — a boarding pass for the call -->
+          <div class="flightdone" data-ff="done" tabindex="-1" hidden>
+            <div class="pass">
+              <div class="pass__main">
+                <span class="pass__kicker">Boarding pass · Free consultation</span>
+                <h3 class="pass__title">Cleared for <em>takeoff.</em></h3>
+                <dl class="pass__grid">
+                  <div><dt>Passenger</dt><dd data-pass="name">—</dd></div>
+                  <div><dt>Mission</dt><dd data-pass="mission">—</dd></div>
+                  <div><dt>Aircraft</dt><dd data-pass="aircraft">—</dd></div>
+                  <div><dt>Timeline</dt><dd data-pass="timeline">—</dd></div>
+                </dl>
+                <p class="pass__note" data-pass-note
+                   data-note-mail="Your email app just opened with your flight plan filled in — press send and we'll take it from there."
+                   data-note-sent="Your flight plan is in. We'll be in touch personally to find a time that suits you.">—</p>
+                <p class="pass__fallback">Nothing opened? Email <a href="mailto:hello@uppersky.media">hello@uppersky.media</a>.</p>
+              </div>
+              <div class="pass__stub" aria-hidden="true">
+                <svg class="pass__emblem" viewBox="0 0 102.23 100" fill="currentColor">
+                  <path d="M 38.28 0.77 C 33.13 8.56 36.3 17.53 40.18 25.07 C 49.14 42.48 69.13 65.88 56.38 86.05 C 46.42 101.81 26.94 97.35 15.15 86.39 C 0.42 72.69 -3.61 50.68 3.23 32.02 C 3.63 30.93 4.09 29.41 4.91 28.58 C 5.74 40.55 8.01 53.36 13.94 63.9 C 18.64 72.27 30.6 86.01 40.03 75.55 C 46.53 68.34 41.83 58.07 37.75 50.92 C 31.78 40.48 19.44 27.35 23.08 14.4 C 24.91 7.89 32.01 2.56 38.28 0.77"/>
+                  <path d="M 101.8 55.8 L 99.68 49.29 C 97.16 41.37 85.33 24.11 77.22 21.99 C 72.51 20.75 75.21 27.84 76.11 30.12 C 81.74 44.43 91.66 55.68 90.69 72.65 C 89.76 88.89 75.96 96.65 61.7 100 C 68.11 94.38 73.44 87.35 74.79 78.7 C 77.05 64.22 68.26 44.73 61.56 32.09 C 58.56 26.43 54.39 20.55 51.99 14.73 C 43.63 -5.49 64.77 -0.92 75.55 5.22 C 93.71 15.58 104.57 34.59 101.8 55.8"/>
+                </svg>
+                <span class="pass__route">YOU <i>→</i> USM</span>
+                <span class="pass__gate">Gate · Consult</span>
+                <span class="pass__barcode"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /include:consult-form -->
+      </div>
+    </div>
+  </dialog>
+  <!-- /include:consult-modal -->
+
+  <!-- include:cookie -->
+  <!-- ============ COOKIE CONSENT ============
+       Choice is stored in localStorage ("usm-consent") and announced as an
+       "uppersky:consent" event — load any analytics only after that fires. -->
+  <section class="cookie" id="cookieBanner" aria-label="Cookie preferences" hidden>
+    <div class="cookie__card">
+      <div class="cookie__top">
+        <span class="cookie__badge" aria-hidden="true">
+          <svg viewBox="0 0 102.23 100" fill="currentColor">
+            <path d="M 38.28 0.77 C 33.13 8.56 36.3 17.53 40.18 25.07 C 49.14 42.48 69.13 65.88 56.38 86.05 C 46.42 101.81 26.94 97.35 15.15 86.39 C 0.42 72.69 -3.61 50.68 3.23 32.02 C 3.63 30.93 4.09 29.41 4.91 28.58 C 5.74 40.55 8.01 53.36 13.94 63.9 C 18.64 72.27 30.6 86.01 40.03 75.55 C 46.53 68.34 41.83 58.07 37.75 50.92 C 31.78 40.48 19.44 27.35 23.08 14.4 C 24.91 7.89 32.01 2.56 38.28 0.77"/>
+            <path d="M 101.8 55.8 L 99.68 49.29 C 97.16 41.37 85.33 24.11 77.22 21.99 C 72.51 20.75 75.21 27.84 76.11 30.12 C 81.74 44.43 91.66 55.68 90.69 72.65 C 89.76 88.89 75.96 96.65 61.7 100 C 68.11 94.38 73.44 87.35 74.79 78.7 C 77.05 64.22 68.26 44.73 61.56 32.09 C 58.56 26.43 54.39 20.55 51.99 14.73 C 43.63 -5.49 64.77 -0.92 75.55 5.22 C 93.71 15.58 104.57 34.59 101.8 55.8"/>
+          </svg>
+        </span>
+        <span class="cookie__kicker">Privacy first</span>
+      </div>
+      <h2 class="cookie__title">Cookies — <em>cleared for takeoff?</em></h2>
+      <p class="cookie__copy">We use essential cookies to run this site and, only with your OK, analytics to learn what's useful. We never sell your data.</p>
+
+      <div class="cookie__prefs" id="cookiePrefs" hidden>
+        <label class="cookie__pref">
+          <span><b>Essential</b> Keeps the site working. Always on.</span>
+          <input type="checkbox" checked disabled><span class="cookie__switch" aria-hidden="true"></span>
+        </label>
+        <label class="cookie__pref">
+          <span><b>Analytics</b> Anonymous stats on what people read.</span>
+          <input type="checkbox" name="analytics"><span class="cookie__switch" aria-hidden="true"></span>
+        </label>
+        <label class="cookie__pref">
+          <span><b>Marketing</b> Measures our own campaigns.</span>
+          <input type="checkbox" name="marketing"><span class="cookie__switch" aria-hidden="true"></span>
+        </label>
+      </div>
+
+      <div class="cookie__actions">
+        <button type="button" class="cookie__btn cookie__btn--text" data-cookie="prefs" aria-expanded="false" aria-controls="cookiePrefs">Preferences</button>
+        <button type="button" class="cookie__btn cookie__btn--ghost" data-cookie="essential">Essential only</button>
+        <button type="button" class="cookie__btn cookie__btn--lime" data-cookie="accept">Accept all</button>
+        <button type="button" class="cookie__btn cookie__btn--lime" data-cookie="save" hidden>Save choices</button>
+      </div>
+    </div>
+  </section>
+  <!-- /include:cookie -->
+
+  <!-- include:scripts -->
+  <!-- GSAP + Lenis (smooth scroll) -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
+  <script src="app.js?v=20"></script>
+  <script src="kit.js?v=2"></script>
+  <!-- /include:scripts -->
+  <script src="js/process.js?v=1"></script>
+</body>
+</html>

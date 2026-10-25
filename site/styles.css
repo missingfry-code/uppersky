@@ -798,6 +798,8 @@ button{ font: inherit; color: inherit; background: none; border: 0; cursor: poin
   /* Reveal only up to the slider position */
   clip-path: inset(0 calc(100% - var(--ba-pos, 50%)) 0 0);
 }
+/* A real before/after pair shows the original exactly as shot — no fake greying */
+.ba-slider--real .ba-slider__img--before{ filter: none; }
 .ba-slider__handle{
   position: absolute;
   top: 0; bottom: 0;
@@ -2273,14 +2275,16 @@ button{ font: inherit; color: inherit; background: none; border: 0; cursor: poin
   font-size: 11px;
   letter-spacing: .32em;
   text-transform: uppercase;
-  color: #fff;
-  mix-blend-mode: difference; /* stays legible over light and dark chapters */
+  color: #fff;            /* app.js flips it to ink over light chapters */
   pointer-events: none;
   opacity: 0;
   transform: translateY(8px);
   transition: opacity .4s ease, transform .4s var(--easing);
 }
 .story-rail.is-visible{ opacity: 1; transform: none; }
+.story-rail.is-on-light{ color: #0a0b0e; }
+.story-rail.is-on-light .story-rail__bar{ background: rgba(10,11,14,.25); }
+.story-rail.is-on-light .story-rail__fill{ background: #0a0b0e; }
 .story-rail__num{ font-weight: 700; font-variant-numeric: tabular-nums; }
 .story-rail__bar{
   width: 56px; height: 1px;

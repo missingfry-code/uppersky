@@ -132,11 +132,16 @@
     });
   });
 
+  // app.js runs on every page; homepage-only blocks check their section exists
+  const has = (sel) => !!document.querySelector(sel);
+
   /* ============ STRATEGIES — staggered dots ============ */
-  gsap.from('.dot', {
-    scale: 0, autoAlpha: 0, duration: .6, ease: 'back.out(1.8)', stagger: .12,
-    scrollTrigger: { trigger: '.dots', start: 'top 80%' }
-  });
+  if (has('.dots')){
+    gsap.from('.dot', {
+      scale: 0, autoAlpha: 0, duration: .6, ease: 'back.out(1.8)', stagger: .12,
+      scrollTrigger: { trigger: '.dots', start: 'top 80%' }
+    });
+  }
 
   /* ============ BIG QUOTE — word stagger ============ */
   const bq = document.querySelector('.big-quote p');
@@ -205,21 +210,23 @@
   });
 
   /* ============ PROCESS ============ */
-  gsap.set('.step', { autoAlpha: 0, y: 40 });
-  ScrollTrigger.create({
-    trigger: '.steps',
-    start: 'top 80%',
-    once: true,
-    onEnter: () => {
-      gsap.to('.step', {
-        autoAlpha: 1, y: 0,
-        duration: .7, ease: 'power3.out', stagger: .12,
-        onStart: () => document.querySelectorAll('.step').forEach((s, i) => {
-          setTimeout(() => s.classList.add('is-revealed'), 120 * i + 200);
-        })
-      });
-    }
-  });
+  if (has('.steps')){
+    gsap.set('.step', { autoAlpha: 0, y: 40 });
+    ScrollTrigger.create({
+      trigger: '.steps',
+      start: 'top 80%',
+      once: true,
+      onEnter: () => {
+        gsap.to('.step', {
+          autoAlpha: 1, y: 0,
+          duration: .7, ease: 'power3.out', stagger: .12,
+          onStart: () => document.querySelectorAll('.step').forEach((s, i) => {
+            setTimeout(() => s.classList.add('is-revealed'), 120 * i + 200);
+          })
+        });
+      }
+    });
+  }
 
   /* ============ SCRUB SECTION — canvas frame sequence ============ */
   // The old <video currentTime> scrub needed the full 13MB mp4 buffered before
@@ -323,30 +330,34 @@
 
   /* ============ SCRUBBED PARALLAX ============ */
   if (!reduce){
-    // Strategies — headline drifts up, tagline trails further
-    gsap.to('.quote-head', {
-      yPercent: -18, ease: 'none',
-      scrollTrigger: { trigger: '.strategies', start: 'top bottom', end: 'bottom top', scrub: true }
-    });
-    gsap.to('.tagline', {
-      yPercent: -30, ease: 'none',
-      scrollTrigger: { trigger: '.strategies', start: 'top bottom', end: 'bottom top', scrub: true }
-    });
+    if (has('.strategies')){
+      // Strategies — headline drifts up, tagline trails further
+      gsap.to('.quote-head', {
+        yPercent: -18, ease: 'none',
+        scrollTrigger: { trigger: '.strategies', start: 'top bottom', end: 'bottom top', scrub: true }
+      });
+      gsap.to('.tagline', {
+        yPercent: -30, ease: 'none',
+        scrollTrigger: { trigger: '.strategies', start: 'top bottom', end: 'bottom top', scrub: true }
+      });
 
-    // (dots drift/rotate parallax removed — replaced by the scroll-scrubbed
-    //  row-to-column fold at the bottom of this file)
+      // (dots drift/rotate parallax removed — replaced by the scroll-scrubbed
+      //  row-to-column fold at the bottom of this file)
 
-    // CMS copy column lifts as it leaves
-    gsap.to('.strategies__col--right', {
-      yPercent: -8, ease: 'none',
-      scrollTrigger: { trigger: '.strategies', start: 'top bottom', end: 'bottom top', scrub: true }
-    });
+      // CMS copy column lifts as it leaves
+      gsap.to('.strategies__col--right', {
+        yPercent: -8, ease: 'none',
+        scrollTrigger: { trigger: '.strategies', start: 'top bottom', end: 'bottom top', scrub: true }
+      });
+    }
 
-    // Big quote — gentle scrubbed lift on the whole block
-    gsap.to('.big-quote', {
-      yPercent: -12, ease: 'none',
-      scrollTrigger: { trigger: '.big-quote-section', start: 'top bottom', end: 'bottom top', scrub: true }
-    });
+    if (has('.big-quote-section')){
+      // Big quote — gentle scrubbed lift on the whole block
+      gsap.to('.big-quote', {
+        yPercent: -12, ease: 'none',
+        scrollTrigger: { trigger: '.big-quote-section', start: 'top bottom', end: 'bottom top', scrub: true }
+      });
+    }
 
     // Process — step number/bar pulls upward as the row crosses the viewport
     gsap.utils.toArray('.step').forEach((step, i) => {
@@ -583,7 +594,7 @@
   }
 
   /* The method — the + + = operators snap in between the terms */
-  if (!reduce){
+  if (!reduce && document.querySelector('.craft__formula')){
     gsap.from('.craft__op', {
       scale: 0, rotate: -90, autoAlpha: 0,
       duration: .6, ease: 'back.out(2)', stagger: .15,
@@ -622,12 +633,35 @@
     chapters.forEach((el, k) => { if (el.getBoundingClientRect().top <= line) i = k; });
     return i;
   };
+  // Ink or white from whatever is actually behind the rail. (A difference blend
+  // turned it violet over lime chapters, which is off-brand.)
+  const behind = () => {
+    let el = document.elementFromPoint(40, window.innerHeight - 28);
+    while (el && el !== document.documentElement){
+      const m = getComputedStyle(el).backgroundColor.match(/[\d.]+/g);
+      if (m && (m.length < 4 || +m[3] > .5)) return m.map(Number);
+      el = el.parentElement;
+    }
+    return [255, 255, 255];
+  };
+  let toneQueued = false;
+  const tone = () => {
+    if (toneQueued) return;
+    toneQueued = true;
+    requestAnimationFrame(() => {
+      toneQueued = false;
+      const [r, g, b] = behind();
+      rail.classList.toggle('is-on-light', .2126 * r + .7152 * g + .0722 * b > 150);
+    });
+  };
+
   ScrollTrigger.create({
     start: 0, end: 'max',
     onUpdate: (self) => {
       fill.style.transform = `scaleX(${self.progress})`;
       show(current());
+      tone();
     },
-    onRefresh: () => show(current())
+    onRefresh: () => { show(current()); tone(); }
   });
 })();

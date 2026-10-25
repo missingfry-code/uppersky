@@ -1,0 +1,183 @@
+<!-- ============ CONSULTATION FORM — "file your flight plan" ============
+     Four short legs, one question each. Without a form backend the finished
+     request opens in the visitor's email app, fully written; set
+     data-endpoint to a form service URL to POST it instead. -->
+<div class="flightplan" data-flightplan>
+  <form class="flightform" id="consultForm" novalidate
+        data-to="hello@uppersky.media" data-endpoint="">
+    <header class="flightform__head">
+      <span class="flightform__kicker"><span class="flightform__pulse" aria-hidden="true"></span>Free consultation · No commitment</span>
+      <h2 class="flightform__title" id="cfTitle">File your <em>flight plan.</em></h2>
+      <p class="flightform__sub">Four quick legs. Then a real conversation about your sale or acquisition — no pitch, no pressure.</p>
+    </header>
+
+    <!-- progress, drawn as a route: you → us -->
+    <div class="flightform__route" aria-hidden="true">
+      <span class="flightform__code">YOU</span>
+      <span class="flightform__path">
+        <span class="flightform__trail"></span>
+        <svg class="flightform__plane" viewBox="0 0 102.23 100" fill="currentColor">
+          <path d="M 38.28 0.77 C 33.13 8.56 36.3 17.53 40.18 25.07 C 49.14 42.48 69.13 65.88 56.38 86.05 C 46.42 101.81 26.94 97.35 15.15 86.39 C 0.42 72.69 -3.61 50.68 3.23 32.02 C 3.63 30.93 4.09 29.41 4.91 28.58 C 5.74 40.55 8.01 53.36 13.94 63.9 C 18.64 72.27 30.6 86.01 40.03 75.55 C 46.53 68.34 41.83 58.07 37.75 50.92 C 31.78 40.48 19.44 27.35 23.08 14.4 C 24.91 7.89 32.01 2.56 38.28 0.77"/>
+          <path d="M 101.8 55.8 L 99.68 49.29 C 97.16 41.37 85.33 24.11 77.22 21.99 C 72.51 20.75 75.21 27.84 76.11 30.12 C 81.74 44.43 91.66 55.68 90.69 72.65 C 89.76 88.89 75.96 96.65 61.7 100 C 68.11 94.38 73.44 87.35 74.79 78.7 C 77.05 64.22 68.26 44.73 61.56 32.09 C 58.56 26.43 54.39 20.55 51.99 14.73 C 43.63 -5.49 64.77 -0.92 75.55 5.22 C 93.71 15.58 104.57 34.59 101.8 55.8"/>
+        </svg>
+      </span>
+      <span class="flightform__code flightform__code--dest">USM</span>
+    </div>
+    <ol class="flightform__legs" aria-label="Steps">
+      <li class="is-current"><span>01</span>Mission</li>
+      <li><span>02</span>Aircraft</li>
+      <li><span>03</span>Contact</li>
+      <li><span>04</span>Notes</li>
+    </ol>
+
+    <div class="flightform__stage">
+      <!-- LEG 01 -->
+      <fieldset class="flightform__step is-active" data-step="1">
+        <legend class="flightform__q"><span class="flightform__qnum">01</span>What's the mission?</legend>
+        <div class="missions">
+          <label class="mission">
+            <input type="radio" name="mission" value="Selling an aircraft" required>
+            <span class="mission__card">
+              <svg class="mission__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 12.5V4.5a1 1 0 0 1 1-1h8l8 8-9 9-8-8Z"/><circle cx="8.5" cy="8.5" r="1.6"/></svg>
+              <span class="mission__name">Sell</span>
+              <span class="mission__desc">Launch a listing that moves — fast.</span>
+              <span class="mission__tick" aria-hidden="true"></span>
+            </span>
+          </label>
+          <label class="mission">
+            <input type="radio" name="mission" value="Acquiring an aircraft">
+            <span class="mission__card">
+              <svg class="mission__icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 1.5v4M12 18.5v4M1.5 12h4M18.5 12h4"/></svg>
+              <span class="mission__name">Acquire</span>
+              <span class="mission__desc">Find and win the right aircraft.</span>
+              <span class="mission__tick" aria-hidden="true"></span>
+            </span>
+          </label>
+          <label class="mission">
+            <input type="radio" name="mission" value="Marketing a brokerage">
+            <span class="mission__card">
+              <svg class="mission__icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8.5 7V5.5a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2V7M3 13h18"/></svg>
+              <span class="mission__name">Brokerage</span>
+              <span class="mission__desc">Build the brand behind the deals.</span>
+              <span class="mission__tick" aria-hidden="true"></span>
+            </span>
+          </label>
+          <label class="mission">
+            <input type="radio" name="mission" value="Something else">
+            <span class="mission__card">
+              <svg class="mission__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5v5M12 16.5v5M2.5 12h5M16.5 12h5M5.3 5.3l3.2 3.2M15.5 15.5l3.2 3.2M18.7 5.3l-3.2 3.2M8.5 15.5l-3.2 3.2"/></svg>
+              <span class="mission__name">Other</span>
+              <span class="mission__desc">Something bespoke? Let's hear it.</span>
+              <span class="mission__tick" aria-hidden="true"></span>
+            </span>
+          </label>
+        </div>
+        <p class="flightform__hint" data-hint="1" hidden>Pick a mission to continue.</p>
+      </fieldset>
+
+      <!-- LEG 02 -->
+      <fieldset class="flightform__step" data-step="2">
+        <legend class="flightform__q"><span class="flightform__qnum">02</span>Tell us about the aircraft.</legend>
+        <div class="ff-field">
+          <input class="ff-input" id="cf-aircraft" name="aircraft" type="text" placeholder=" " autocomplete="off">
+          <label class="ff-label" for="cf-aircraft">Make &amp; model <span>optional</span></label>
+          <span class="ff-line" aria-hidden="true"></span>
+        </div>
+        <p class="flightform__label" id="cf-timeline-label">When do you want to move?</p>
+        <div class="chips" role="radiogroup" aria-labelledby="cf-timeline-label">
+          <label class="chip"><input type="radio" name="timeline" value="As soon as possible"><span>ASAP</span></label>
+          <label class="chip"><input type="radio" name="timeline" value="1–3 months"><span>1–3 months</span></label>
+          <label class="chip"><input type="radio" name="timeline" value="3–6 months"><span>3–6 months</span></label>
+          <label class="chip"><input type="radio" name="timeline" value="Just exploring"><span>Just exploring</span></label>
+        </div>
+      </fieldset>
+
+      <!-- LEG 03 -->
+      <fieldset class="flightform__step" data-step="3">
+        <legend class="flightform__q"><span class="flightform__qnum">03</span>Who should we call?</legend>
+        <div class="ff-grid">
+          <div class="ff-field">
+            <input class="ff-input" id="cf-name" name="name" type="text" placeholder=" " autocomplete="name" required>
+            <label class="ff-label" for="cf-name">Your name</label>
+            <span class="ff-line" aria-hidden="true"></span>
+          </div>
+          <div class="ff-field">
+            <input class="ff-input" id="cf-email" name="email" type="email" placeholder=" " autocomplete="email" required>
+            <label class="ff-label" for="cf-email">Email</label>
+            <span class="ff-line" aria-hidden="true"></span>
+          </div>
+          <div class="ff-field">
+            <input class="ff-input" id="cf-phone" name="phone" type="tel" placeholder=" " autocomplete="tel">
+            <label class="ff-label" for="cf-phone">Phone <span>optional</span></label>
+            <span class="ff-line" aria-hidden="true"></span>
+          </div>
+          <div class="ff-field">
+            <input class="ff-input" id="cf-company" name="company" type="text" placeholder=" " autocomplete="organization">
+            <label class="ff-label" for="cf-company">Company / brokerage <span>optional</span></label>
+            <span class="ff-line" aria-hidden="true"></span>
+          </div>
+        </div>
+        <p class="flightform__hint" data-hint="3" hidden>We need your name and a valid email to reply.</p>
+      </fieldset>
+
+      <!-- LEG 04 -->
+      <fieldset class="flightform__step" data-step="4">
+        <legend class="flightform__q"><span class="flightform__qnum">04</span>Anything we should know?</legend>
+        <div class="ff-field ff-field--area">
+          <textarea class="ff-input" id="cf-message" name="message" rows="4" placeholder=" "></textarea>
+          <label class="ff-label" for="cf-message">Goals, questions, the story of the deal <span>optional</span></label>
+          <span class="ff-line" aria-hidden="true"></span>
+        </div>
+        <p class="flightform__privacy">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/></svg>
+          Private by default. We use your details only to reply — never shared, never sold.
+        </p>
+      </fieldset>
+    </div>
+
+    <footer class="flightform__nav">
+      <button type="button" class="flightform__back" data-ff="back" hidden>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H5M11 6l-6 6 6 6"/></svg>Back
+      </button>
+      <span class="flightform__count" aria-live="polite"><b data-ff="count">01</b> / 04</span>
+      <button type="button" class="ff-btn" data-ff="next">
+        <span>Continue</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+      </button>
+      <button type="submit" class="ff-btn ff-btn--submit" data-ff="submit" hidden>
+        <span>Request my free consultation</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+      </button>
+    </footer>
+    <p class="flightform__error" role="alert" hidden>Something went wrong sending that. Email us directly at <a href="mailto:hello@uppersky.media">hello@uppersky.media</a>.</p>
+  </form>
+
+  <!-- confirmation — a boarding pass for the call -->
+  <div class="flightdone" data-ff="done" tabindex="-1" hidden>
+    <div class="pass">
+      <div class="pass__main">
+        <span class="pass__kicker">Boarding pass · Free consultation</span>
+        <h3 class="pass__title">Cleared for <em>takeoff.</em></h3>
+        <dl class="pass__grid">
+          <div><dt>Passenger</dt><dd data-pass="name">—</dd></div>
+          <div><dt>Mission</dt><dd data-pass="mission">—</dd></div>
+          <div><dt>Aircraft</dt><dd data-pass="aircraft">—</dd></div>
+          <div><dt>Timeline</dt><dd data-pass="timeline">—</dd></div>
+        </dl>
+        <p class="pass__note" data-pass-note
+           data-note-mail="Your email app just opened with your flight plan filled in — press send and we'll take it from there."
+           data-note-sent="Your flight plan is in. We'll be in touch personally to find a time that suits you.">—</p>
+        <p class="pass__fallback">Nothing opened? Email <a href="mailto:hello@uppersky.media">hello@uppersky.media</a>.</p>
+      </div>
+      <div class="pass__stub" aria-hidden="true">
+        <svg class="pass__emblem" viewBox="0 0 102.23 100" fill="currentColor">
+          <path d="M 38.28 0.77 C 33.13 8.56 36.3 17.53 40.18 25.07 C 49.14 42.48 69.13 65.88 56.38 86.05 C 46.42 101.81 26.94 97.35 15.15 86.39 C 0.42 72.69 -3.61 50.68 3.23 32.02 C 3.63 30.93 4.09 29.41 4.91 28.58 C 5.74 40.55 8.01 53.36 13.94 63.9 C 18.64 72.27 30.6 86.01 40.03 75.55 C 46.53 68.34 41.83 58.07 37.75 50.92 C 31.78 40.48 19.44 27.35 23.08 14.4 C 24.91 7.89 32.01 2.56 38.28 0.77"/>
+          <path d="M 101.8 55.8 L 99.68 49.29 C 97.16 41.37 85.33 24.11 77.22 21.99 C 72.51 20.75 75.21 27.84 76.11 30.12 C 81.74 44.43 91.66 55.68 90.69 72.65 C 89.76 88.89 75.96 96.65 61.7 100 C 68.11 94.38 73.44 87.35 74.79 78.7 C 77.05 64.22 68.26 44.73 61.56 32.09 C 58.56 26.43 54.39 20.55 51.99 14.73 C 43.63 -5.49 64.77 -0.92 75.55 5.22 C 93.71 15.58 104.57 34.59 101.8 55.8"/>
+        </svg>
+        <span class="pass__route">YOU <i>→</i> USM</span>
+        <span class="pass__gate">Gate · Consult</span>
+        <span class="pass__barcode"></span>
+      </div>
+    </div>
+  </div>
+</div>

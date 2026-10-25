@@ -1,0 +1,730 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Contact — Free consultation — UPPERSKY MEDIA</title>
+  <meta name="description" content="Book a free, no-commitment consultation with UPPERSKY MEDIA about your aircraft sales or acquisition strategy. File your flight plan, or reach us directly." />
+
+  <!-- the hero photograph is the first thing on screen -->
+  <link rel="preload" as="image" href="assets/hero-bg.jpg" fetchpriority="high">
+
+  <!-- include:head-assets -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+  <link rel="stylesheet" href="styles.css?v=30" />
+  <link rel="stylesheet" href="kit.css?v=2" />
+  <script>
+    // Disable browser scroll restoration BEFORE the browser repositions on reload.
+    // Must run before paint, so it lives in <head> not in app.js (which runs at body end).
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    // Best-effort: jump to top early in case the browser already restored.
+    window.scrollTo(0, 0);
+  </script>
+  <!-- /include:head-assets -->
+  <link rel="stylesheet" href="css/contact.css?v=1" />
+  <script>
+    // Hold the hero's intro pieces back until contact.js animates them in.
+    // Failsafe: never keep them hidden longer than 3s (slow CDN, blocked script).
+    document.documentElement.classList.add('ct-arriving');
+    setTimeout(function(){ document.documentElement.classList.remove('ct-arriving'); }, 3000);
+  </script>
+</head>
+<body id="top" class="page page--contact">
+
+  <!-- include:chrome -->
+  <!-- ============ DESKTOP MENU TAB (top-left) ============ -->
+  <button class="menu-tab" id="menuTab" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
+    <svg class="emblem menu-tab__emblem" viewBox="0 0 102.23 100" fill="currentColor" aria-hidden="true">
+      <path class="emblem__a" d="M 38.28 0.77 C 33.13 8.56 36.3 17.53 40.18 25.07 C 49.14 42.48 69.13 65.88 56.38 86.05 C 46.42 101.81 26.94 97.35 15.15 86.39 C 0.42 72.69 -3.61 50.68 3.23 32.02 C 3.63 30.93 4.09 29.41 4.91 28.58 C 5.74 40.55 8.01 53.36 13.94 63.9 C 18.64 72.27 30.6 86.01 40.03 75.55 C 46.53 68.34 41.83 58.07 37.75 50.92 C 31.78 40.48 19.44 27.35 23.08 14.4 C 24.91 7.89 32.01 2.56 38.28 0.77"/>
+      <path class="emblem__b" d="M 101.8 55.8 L 99.68 49.29 C 97.16 41.37 85.33 24.11 77.22 21.99 C 72.51 20.75 75.21 27.84 76.11 30.12 C 81.74 44.43 91.66 55.68 90.69 72.65 C 89.76 88.89 75.96 96.65 61.7 100 C 68.11 94.38 73.44 87.35 74.79 78.7 C 77.05 64.22 68.26 44.73 61.56 32.09 C 58.56 26.43 54.39 20.55 51.99 14.73 C 43.63 -5.49 64.77 -0.92 75.55 5.22 C 93.71 15.58 104.57 34.59 101.8 55.8"/>
+    </svg>
+    <span class="menu-tab__label" aria-hidden="true">MENU</span>
+    <span class="visually-hidden">MENU</span>
+  </button>
+
+  <!-- ============ MOBILE HEADER ============ -->
+  <header class="m-header">
+    <a class="m-header__logo" href="index.html" aria-label="UPPERSKY home">
+      <svg class="emblem" viewBox="0 0 102.23 100" fill="currentColor" aria-hidden="true">
+        <path class="emblem__a" d="M 38.28 0.77 C 33.13 8.56 36.3 17.53 40.18 25.07 C 49.14 42.48 69.13 65.88 56.38 86.05 C 46.42 101.81 26.94 97.35 15.15 86.39 C 0.42 72.69 -3.61 50.68 3.23 32.02 C 3.63 30.93 4.09 29.41 4.91 28.58 C 5.74 40.55 8.01 53.36 13.94 63.9 C 18.64 72.27 30.6 86.01 40.03 75.55 C 46.53 68.34 41.83 58.07 37.75 50.92 C 31.78 40.48 19.44 27.35 23.08 14.4 C 24.91 7.89 32.01 2.56 38.28 0.77"/>
+        <path class="emblem__b" d="M 101.8 55.8 L 99.68 49.29 C 97.16 41.37 85.33 24.11 77.22 21.99 C 72.51 20.75 75.21 27.84 76.11 30.12 C 81.74 44.43 91.66 55.68 90.69 72.65 C 89.76 88.89 75.96 96.65 61.7 100 C 68.11 94.38 73.44 87.35 74.79 78.7 C 77.05 64.22 68.26 44.73 61.56 32.09 C 58.56 26.43 54.39 20.55 51.99 14.73 C 43.63 -5.49 64.77 -0.92 75.55 5.22 C 93.71 15.58 104.57 34.59 101.8 55.8"/>
+      </svg>
+    </a>
+    <button class="m-header__burger" id="mBurger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- ============ DRAWER (1/3 width) ============ -->
+  <aside class="drawer" id="drawer" aria-hidden="true" data-lenis-prevent>
+    <div class="drawer__inner">
+      <div class="drawer__head">
+        <!-- Lockup built around the emblem: mark + UPPER/SKY wordmark + spaced MEDIA -->
+        <a class="drawer__brand" href="index.html" aria-label="UPPERSKY Media — home">
+          <svg class="emblem drawer__emblem" viewBox="0 0 102.23 100" fill="currentColor" aria-hidden="true">
+            <path class="emblem__a" d="M 38.28 0.77 C 33.13 8.56 36.3 17.53 40.18 25.07 C 49.14 42.48 69.13 65.88 56.38 86.05 C 46.42 101.81 26.94 97.35 15.15 86.39 C 0.42 72.69 -3.61 50.68 3.23 32.02 C 3.63 30.93 4.09 29.41 4.91 28.58 C 5.74 40.55 8.01 53.36 13.94 63.9 C 18.64 72.27 30.6 86.01 40.03 75.55 C 46.53 68.34 41.83 58.07 37.75 50.92 C 31.78 40.48 19.44 27.35 23.08 14.4 C 24.91 7.89 32.01 2.56 38.28 0.77"/>
+            <path class="emblem__b" d="M 101.8 55.8 L 99.68 49.29 C 97.16 41.37 85.33 24.11 77.22 21.99 C 72.51 20.75 75.21 27.84 76.11 30.12 C 81.74 44.43 91.66 55.68 90.69 72.65 C 89.76 88.89 75.96 96.65 61.7 100 C 68.11 94.38 73.44 87.35 74.79 78.7 C 77.05 64.22 68.26 44.73 61.56 32.09 C 58.56 26.43 54.39 20.55 51.99 14.73 C 43.63 -5.49 64.77 -0.92 75.55 5.22 C 93.71 15.58 104.57 34.59 101.8 55.8"/>
+          </svg>
+          <span class="drawer__wordmark" aria-hidden="true">
+            <span class="drawer__word"><span>U</span><span>P</span><span>P</span><span>E</span><span>R</span><span class="is-sky">S</span><span class="is-sky">K</span><span class="is-sky">Y</span></span>
+            <span class="drawer__sub"><span>M</span><span>E</span><span>D</span><span>I</span><span>A</span></span>
+          </span>
+        </a>
+        <button class="drawer__close" id="drawerClose" aria-label="Close menu">
+          <svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+
+      <nav class="drawer__nav" aria-label="Primary">
+        <ul>
+          <li><a href="index.html" data-i="01"><span class="num">01</span><span class="word">Home</span></a></li>
+          <li><a href="why-us.html" data-i="02"><span class="num">02</span><span class="word">Why us</span></a></li>
+          <li><a href="services.html" data-i="03"><span class="num">03</span><span class="word">Services</span></a></li>
+          <li><a href="process.html" data-i="04"><span class="num">04</span><span class="word">Process</span></a></li>
+          <li><a href="blog.html" data-i="05"><span class="num">05</span><span class="word">Journal</span></a></li>
+          <li><a href="contact.html" aria-current="page" data-i="06"><span class="num">06</span><span class="word">Contact</span></a></li>
+        </ul>
+      </nav>
+
+      <div class="drawer__foot">
+        <div>
+          <div class="drawer__label">Get in touch</div>
+          <a class="drawer__email" href="mailto:hello@uppersky.media">hello@uppersky.media</a>
+        </div>
+        <div class="drawer__socials">
+          <a href="#" aria-label="Instagram">IG</a>
+          <a href="#" aria-label="LinkedIn">IN</a>
+          <a href="#" aria-label="YouTube">YT</a>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="drawer-scrim" id="drawerScrim"></div>
+
+  <!-- ============ TOP-RIGHT CTA — opens the consultation form ============ -->
+  <a class="top-cta" href="contact.html" data-consult>GET STARTED</a>
+
+  <!-- ============ STORY RAIL (current chapter, desktop) ============ -->
+  <div class="story-rail" aria-hidden="true">
+    <span class="story-rail__num" id="railNum">01</span>
+    <span class="story-rail__bar"><span class="story-rail__fill" id="railFill"></span></span>
+    <span class="story-rail__name" id="railName"></span>
+  </div>
+  <!-- /include:chrome -->
+
+  <main>
+
+    <!-- ================================================================
+         PROLOGUE — THE GATE (story left, flight plan right)
+         ================================================================ -->
+    <section class="ct-hero" data-chapter="Prologue" aria-labelledby="ctTitle">
+      <div class="ct-hero__media" aria-hidden="true">
+        <img src="assets/hero-bg.jpg" alt="" fetchpriority="high" />
+      </div>
+      <div class="ct-hero__shade" aria-hidden="true"></div>
+
+      <div class="ct-hero__inner">
+
+        <!-- THE STORY -->
+        <div class="ct-story">
+          <span class="ct-status" data-ct-in>
+            <span class="ct-pulse" aria-hidden="true"></span>
+            Free consultation · No commitment
+          </span>
+          <h1 class="ct-title" id="ctTitle">
+            <span class="line"><span>Let's talk</span></span>
+            <span class="line"><span>about your</span></span>
+            <span class="line"><span><em>deal.</em></span></span>
+          </h1>
+          <p class="ct-lede" data-ct-in>A free, no-commitment conversation about your sales or acquisition strategy. You bring the aircraft, the goal and the timeline. We bring an honest read on how to get it done.</p>
+
+          <ul class="ct-promises" data-ct-in>
+            <li class="ct-promise">
+              <span class="ct-promise__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12.4l2.7 2.7 5.4-5.6"/></svg>
+              </span>
+              <b>Free</b>
+              <span class="ct-promise__copy">The first conversation costs nothing.</span>
+            </li>
+            <li class="ct-promise">
+              <span class="ct-promise__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M9.5 14.5l-2 2a3.5 3.5 0 0 1-5-5l2-2M14.5 9.5l2-2a3.5 3.5 0 0 1 5 5l-2 2M8.5 3.5v2.5M3.5 8.5H6M15.5 20.5V18M20.5 15.5H18"/></svg>
+              </span>
+              <b>No commitment</b>
+              <span class="ct-promise__copy">Walk away with a plan, whatever you decide.</span>
+            </li>
+            <li class="ct-promise">
+              <span class="ct-promise__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/></svg>
+              </span>
+              <b>Private</b>
+              <span class="ct-promise__copy">Your deal stays between us.</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- THE GATE — departure board + the flight-plan form -->
+        <div class="ct-gate" data-consult-target>
+          <span class="ct-gate__glow" aria-hidden="true"></span>
+          <div class="ct-bezel">
+            <span class="ct-gate__frame" aria-hidden="true"></span>
+
+            <!-- split-flap board; contact.js keeps the LA clock and the status live -->
+            <div class="ct-board" aria-hidden="true" data-leg="1">
+              <svg class="ct-board__emblem" viewBox="0 0 102.23 100" fill="currentColor">
+                <path d="M 38.28 0.77 C 33.13 8.56 36.3 17.53 40.18 25.07 C 49.14 42.48 69.13 65.88 56.38 86.05 C 46.42 101.81 26.94 97.35 15.15 86.39 C 0.42 72.69 -3.61 50.68 3.23 32.02 C 3.63 30.93 4.09 29.41 4.91 28.58 C 5.74 40.55 8.01 53.36 13.94 63.9 C 18.64 72.27 30.6 86.01 40.03 75.55 C 46.53 68.34 41.83 58.07 37.75 50.92 C 31.78 40.48 19.44 27.35 23.08 14.4 C 24.91 7.89 32.01 2.56 38.28 0.77"/>
+                <path d="M 101.8 55.8 L 99.68 49.29 C 97.16 41.37 85.33 24.11 77.22 21.99 C 72.51 20.75 75.21 27.84 76.11 30.12 C 81.74 44.43 91.66 55.68 90.69 72.65 C 89.76 88.89 75.96 96.65 61.7 100 C 68.11 94.38 73.44 87.35 74.79 78.7 C 77.05 64.22 68.26 44.73 61.56 32.09 C 58.56 26.43 54.39 20.55 51.99 14.73 C 43.63 -5.49 64.77 -0.92 75.55 5.22 C 93.71 15.58 104.57 34.59 101.8 55.8"/>
+              </svg>
+              <div class="ct-board__cell">
+                <span class="ct-board__label">Route</span>
+                <span class="ct-flap" data-ct-flap="YOU→USM">YOU → USM</span>
+              </div>
+              <div class="ct-board__cell">
+                <span class="ct-board__label">Local · LA</span>
+                <span class="ct-board__time"><span class="ct-flap" data-ct-clock-tiles>--:--</span><span class="ct-board__ampm" data-ct-ampm>PT</span></span>
+              </div>
+              <div class="ct-board__cell ct-board__cell--status">
+                <span class="ct-board__label">Status</span>
+                <span class="ct-board__status"><span class="ct-board__dot"></span><span class="ct-flap ct-flap--lime" data-ct-status>Check-in</span></span>
+              </div>
+            </div>
+
+            <div class="ct-screen">
+              <!-- include:consult-form -->
+              <!-- ============ CONSULTATION FORM — "file your flight plan" ============
+                   Four short legs, one question each. Without a form backend the finished
+                   request opens in the visitor's email app, fully written; set
+                   data-endpoint to a form service URL to POST it instead. -->
+              <div class="flightplan" data-flightplan>
+                <form class="flightform" id="consultForm" novalidate
+                      data-to="hello@uppersky.media" data-endpoint="">
+                  <header class="flightform__head">
+                    <span class="flightform__kicker"><span class="flightform__pulse" aria-hidden="true"></span>Free consultation · No commitment</span>
+                    <h2 class="flightform__title" id="cfTitle">File your <em>flight plan.</em></h2>
+                    <p class="flightform__sub">Four quick legs. Then a real conversation about your sale or acquisition — no pitch, no pressure.</p>
+                  </header>
+
+                  <!-- progress, drawn as a route: you → us -->
+                  <div class="flightform__route" aria-hidden="true">
+                    <span class="flightform__code">YOU</span>
+                    <span class="flightform__path">
+                      <span class="flightform__trail"></span>
+                      <svg class="flightform__plane" viewBox="0 0 102.23 100" fill="currentColor">
+                        <path d="M 38.28 0.77 C 33.13 8.56 36.3 17.53 40.18 25.07 C 49.14 42.48 69.13 65.88 56.38 86.05 C 46.42 101.81 26.94 97.35 15.15 86.39 C 0.42 72.69 -3.61 50.68 3.23 32.02 C 3.63 30.93 4.09 29.41 4.91 28.58 C 5.74 40.55 8.01 53.36 13.94 63.9 C 18.64 72.27 30.6 86.01 40.03 75.55 C 46.53 68.34 41.83 58.07 37.75 50.92 C 31.78 40.48 19.44 27.35 23.08 14.4 C 24.91 7.89 32.01 2.56 38.28 0.77"/>
+                        <path d="M 101.8 55.8 L 99.68 49.29 C 97.16 41.37 85.33 24.11 77.22 21.99 C 72.51 20.75 75.21 27.84 76.11 30.12 C 81.74 44.43 91.66 55.68 90.69 72.65 C 89.76 88.89 75.96 96.65 61.7 100 C 68.11 94.38 73.44 87.35 74.79 78.7 C 77.05 64.22 68.26 44.73 61.56 32.09 C 58.56 26.43 54.39 20.55 51.99 14.73 C 43.63 -5.49 64.77 -0.92 75.55 5.22 C 93.71 15.58 104.57 34.59 101.8 55.8"/>
+                      </svg>
+                    </span>
+                    <span class="flightform__code flightform__code--dest">USM</span>
+                  </div>
+                  <ol class="flightform__legs" aria-label="Steps">
+                    <li class="is-current"><span>01</span>Mission</li>
+                    <li><span>02</span>Aircraft</li>
+                    <li><span>03</span>Contact</li>
+                    <li><span>04</span>Notes</li>
+                  </ol>
+
+                  <div class="flightform__stage">
+                    <!-- LEG 01 -->
+                    <fieldset class="flightform__step is-active" data-step="1">
+                      <legend class="flightform__q"><span class="flightform__qnum">01</span>What's the mission?</legend>
+                      <div class="missions">
+                        <label class="mission">
+                          <input type="radio" name="mission" value="Selling an aircraft" required>
+                          <span class="mission__card">
+                            <svg class="mission__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 12.5V4.5a1 1 0 0 1 1-1h8l8 8-9 9-8-8Z"/><circle cx="8.5" cy="8.5" r="1.6"/></svg>
+                            <span class="mission__name">Sell</span>
+                            <span class="mission__desc">Launch a listing that moves — fast.</span>
+                            <span class="mission__tick" aria-hidden="true"></span>
+                          </span>
+                        </label>
+                        <label class="mission">
+                          <input type="radio" name="mission" value="Acquiring an aircraft">
+                          <span class="mission__card">
+                            <svg class="mission__icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 1.5v4M12 18.5v4M1.5 12h4M18.5 12h4"/></svg>
+                            <span class="mission__name">Acquire</span>
+                            <span class="mission__desc">Find and win the right aircraft.</span>
+                            <span class="mission__tick" aria-hidden="true"></span>
+                          </span>
+                        </label>
+                        <label class="mission">
+                          <input type="radio" name="mission" value="Marketing a brokerage">
+                          <span class="mission__card">
+                            <svg class="mission__icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8.5 7V5.5a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2V7M3 13h18"/></svg>
+                            <span class="mission__name">Brokerage</span>
+                            <span class="mission__desc">Build the brand behind the deals.</span>
+                            <span class="mission__tick" aria-hidden="true"></span>
+                          </span>
+                        </label>
+                        <label class="mission">
+                          <input type="radio" name="mission" value="Something else">
+                          <span class="mission__card">
+                            <svg class="mission__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5v5M12 16.5v5M2.5 12h5M16.5 12h5M5.3 5.3l3.2 3.2M15.5 15.5l3.2 3.2M18.7 5.3l-3.2 3.2M8.5 15.5l-3.2 3.2"/></svg>
+                            <span class="mission__name">Other</span>
+                            <span class="mission__desc">Something bespoke? Let's hear it.</span>
+                            <span class="mission__tick" aria-hidden="true"></span>
+                          </span>
+                        </label>
+                      </div>
+                      <p class="flightform__hint" data-hint="1" hidden>Pick a mission to continue.</p>
+                    </fieldset>
+
+                    <!-- LEG 02 -->
+                    <fieldset class="flightform__step" data-step="2">
+                      <legend class="flightform__q"><span class="flightform__qnum">02</span>Tell us about the aircraft.</legend>
+                      <div class="ff-field">
+                        <input class="ff-input" id="cf-aircraft" name="aircraft" type="text" placeholder=" " autocomplete="off">
+                        <label class="ff-label" for="cf-aircraft">Make &amp; model <span>optional</span></label>
+                        <span class="ff-line" aria-hidden="true"></span>
+                      </div>
+                      <p class="flightform__label" id="cf-timeline-label">When do you want to move?</p>
+                      <div class="chips" role="radiogroup" aria-labelledby="cf-timeline-label">
+                        <label class="chip"><input type="radio" name="timeline" value="As soon as possible"><span>ASAP</span></label>
+                        <label class="chip"><input type="radio" name="timeline" value="1–3 months"><span>1–3 months</span></label>
+                        <label class="chip"><input type="radio" name="timeline" value="3–6 months"><span>3–6 months</span></label>
+                        <label class="chip"><input type="radio" name="timeline" value="Just exploring"><span>Just exploring</span></label>
+                      </div>
+                    </fieldset>
+
+                    <!-- LEG 03 -->
+                    <fieldset class="flightform__step" data-step="3">
+                      <legend class="flightform__q"><span class="flightform__qnum">03</span>Who should we call?</legend>
+                      <div class="ff-grid">
+                        <div class="ff-field">
+                          <input class="ff-input" id="cf-name" name="name" type="text" placeholder=" " autocomplete="name" required>
+                          <label class="ff-label" for="cf-name">Your name</label>
+                          <span class="ff-line" aria-hidden="true"></span>
+                        </div>
+                        <div class="ff-field">
+                          <input class="ff-input" id="cf-email" name="email" type="email" placeholder=" " autocomplete="email" required>
+                          <label class="ff-label" for="cf-email">Email</label>
+                          <span class="ff-line" aria-hidden="true"></span>
+                        </div>
+                        <div class="ff-field">
+                          <input class="ff-input" id="cf-phone" name="phone" type="tel" placeholder=" " autocomplete="tel">
+                          <label class="ff-label" for="cf-phone">Phone <span>optional</span></label>
+                          <span class="ff-line" aria-hidden="true"></span>
+                        </div>
+                        <div class="ff-field">
+                          <input class="ff-input" id="cf-company" name="company" type="text" placeholder=" " autocomplete="organization">
+                          <label class="ff-label" for="cf-company">Company / brokerage <span>optional</span></label>
+                          <span class="ff-line" aria-hidden="true"></span>
+                        </div>
+                      </div>
+                      <p class="flightform__hint" data-hint="3" hidden>We need your name and a valid email to reply.</p>
+                    </fieldset>
+
+                    <!-- LEG 04 -->
+                    <fieldset class="flightform__step" data-step="4">
+                      <legend class="flightform__q"><span class="flightform__qnum">04</span>Anything we should know?</legend>
+                      <div class="ff-field ff-field--area">
+                        <textarea class="ff-input" id="cf-message" name="message" rows="4" placeholder=" "></textarea>
+                        <label class="ff-label" for="cf-message">Goals, questions, the story of the deal <span>optional</span></label>
+                        <span class="ff-line" aria-hidden="true"></span>
+                      </div>
+                      <p class="flightform__privacy">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/></svg>
+                        Private by default. We use your details only to reply — never shared, never sold.
+                      </p>
+                    </fieldset>
+                  </div>
+
+                  <footer class="flightform__nav">
+                    <button type="button" class="flightform__back" data-ff="back" hidden>
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H5M11 6l-6 6 6 6"/></svg>Back
+                    </button>
+                    <span class="flightform__count" aria-live="polite"><b data-ff="count">01</b> / 04</span>
+                    <button type="button" class="ff-btn" data-ff="next">
+                      <span>Continue</span>
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+                    </button>
+                    <button type="submit" class="ff-btn ff-btn--submit" data-ff="submit" hidden>
+                      <span>Request my free consultation</span>
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+                    </button>
+                  </footer>
+                  <p class="flightform__error" role="alert" hidden>Something went wrong sending that. Email us directly at <a href="mailto:hello@uppersky.media">hello@uppersky.media</a>.</p>
+                </form>
+
+                <!-- confirmation — a boarding pass for the call -->
+                <div class="flightdone" data-ff="done" tabindex="-1" hidden>
+                  <div class="pass">
+                    <div class="pass__main">
+                      <span class="pass__kicker">Boarding pass · Free consultation</span>
+                      <h3 class="pass__title">Cleared for <em>takeoff.</em></h3>
+                      <dl class="pass__grid">
+                        <div><dt>Passenger</dt><dd data-pass="name">—</dd></div>
+                        <div><dt>Mission</dt><dd data-pass="mission">—</dd></div>
+                        <div><dt>Aircraft</dt><dd data-pass="aircraft">—</dd></div>
+                        <div><dt>Timeline</dt><dd data-pass="timeline">—</dd></div>
+                      </dl>
+                      <p class="pass__note" data-pass-note
+                         data-note-mail="Your email app just opened with your flight plan filled in — press send and we'll take it from there."
+                         data-note-sent="Your flight plan is in. We'll be in touch personally to find a time that suits you.">—</p>
+                      <p class="pass__fallback">Nothing opened? Email <a href="mailto:hello@uppersky.media">hello@uppersky.media</a>.</p>
+                    </div>
+                    <div class="pass__stub" aria-hidden="true">
+                      <svg class="pass__emblem" viewBox="0 0 102.23 100" fill="currentColor">
+                        <path d="M 38.28 0.77 C 33.13 8.56 36.3 17.53 40.18 25.07 C 49.14 42.48 69.13 65.88 56.38 86.05 C 46.42 101.81 26.94 97.35 15.15 86.39 C 0.42 72.69 -3.61 50.68 3.23 32.02 C 3.63 30.93 4.09 29.41 4.91 28.58 C 5.74 40.55 8.01 53.36 13.94 63.9 C 18.64 72.27 30.6 86.01 40.03 75.55 C 46.53 68.34 41.83 58.07 37.75 50.92 C 31.78 40.48 19.44 27.35 23.08 14.4 C 24.91 7.89 32.01 2.56 38.28 0.77"/>
+                        <path d="M 101.8 55.8 L 99.68 49.29 C 97.16 41.37 85.33 24.11 77.22 21.99 C 72.51 20.75 75.21 27.84 76.11 30.12 C 81.74 44.43 91.66 55.68 90.69 72.65 C 89.76 88.89 75.96 96.65 61.7 100 C 68.11 94.38 73.44 87.35 74.79 78.7 C 77.05 64.22 68.26 44.73 61.56 32.09 C 58.56 26.43 54.39 20.55 51.99 14.73 C 43.63 -5.49 64.77 -0.92 75.55 5.22 C 93.71 15.58 104.57 34.59 101.8 55.8"/>
+                      </svg>
+                      <span class="pass__route">YOU <i>→</i> USM</span>
+                      <span class="pass__gate">Gate · Consult</span>
+                      <span class="pass__barcode"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /include:consult-form -->
+            </div>
+          </div>
+          <p class="ct-gate__alt" data-ct-in>
+            Rather talk it through? Email <a href="mailto:hello@uppersky.media">hello@uppersky.media</a> or call <a href="tel:+15555555555">+1 (555) 555-5555</a>.
+          </p>
+        </div>
+
+        <!-- WHAT HAPPENS NEXT -->
+        <div class="ct-next" data-ct-in>
+          <h2 class="ct-next__title">What happens next</h2>
+          <div class="ct-next__track">
+            <span class="ct-next__path" aria-hidden="true"></span>
+            <ol class="ct-next__list">
+              <li class="ct-step">
+                <span class="ct-step__num" aria-hidden="true">01</span>
+                <div class="ct-step__body">
+                  <h3 class="ct-step__title">You file your flight plan <span class="ct-step__tag ct-step__tag--now">You are here</span></h3>
+                  <p class="ct-step__copy">Four quick legs: the mission, the aircraft, how to reach you, and anything else we should know.</p>
+                </div>
+              </li>
+              <li class="ct-step">
+                <span class="ct-step__num" aria-hidden="true">02</span>
+                <div class="ct-step__body">
+                  <h3 class="ct-step__title">A real conversation <span class="ct-step__tag ct-step__tag--next">Up next</span></h3>
+                  <p class="ct-step__copy">Your aircraft, your goals, your timeline. We listen first — no script, no hard sell.</p>
+                </div>
+              </li>
+              <li class="ct-step">
+                <span class="ct-step__num" aria-hidden="true">03</span>
+                <div class="ct-step__body">
+                  <h3 class="ct-step__title">An honest plan</h3>
+                  <p class="ct-step__copy">A clear strategy with a transparent, itemized quote. No pressure — the decision is yours.</p>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- FLIGHT LOG -->
+        <ul class="ct-log" aria-label="Flight log" data-ct-in>
+          <li class="ct-log__stat">
+            <span class="ct-log__num"><i>+</i>175,320</span>
+            <span class="ct-log__label">Hours logged</span>
+          </li>
+          <li class="ct-log__stat">
+            <span class="ct-log__num"><i>+</i>300</span>
+            <span class="ct-log__label">Projects landed</span>
+          </li>
+          <li class="ct-log__stat">
+            <span class="ct-log__num"><i>+</i>180</span>
+            <span class="ct-log__label">Aircraft featured</span>
+          </li>
+          <li class="ct-log__tag">Up and running in <em>days,</em> not weeks.</li>
+        </ul>
+
+      </div>
+    </section>
+
+    <!-- ================================================================
+         CHAPTER 01 — DIRECT LINES (for people who'd rather talk)
+         ================================================================ -->
+    <section class="chapter chapter--light ct-lines" id="direct" data-chapter="Direct lines" aria-labelledby="ctLinesTitle">
+      <div class="chapter__inner">
+        <header class="chapter__head" data-reveal>
+          <span class="kicker">Direct lines</span>
+          <h2 class="display" id="ctLinesTitle">Prefer to <em>talk?</em></h2>
+          <p class="lede">Not everyone wants a form. Write, call, or simply say hello — tell us about the aircraft, the goal and the timeline, and we'll take it from there.</p>
+        </header>
+
+        <ul class="ct-lines__list">
+          <li>
+            <a class="ct-line" href="mailto:hello@uppersky.media">
+              <span class="ct-line__num" aria-hidden="true">01</span>
+              <span class="ct-line__label">Email</span>
+              <span class="ct-line__main">
+                <span class="ct-line__value">hello@uppersky.media</span>
+                <span class="ct-line__note">Best for the details — photos, spec sheets, the story of the deal.</span>
+              </span>
+              <span class="ct-line__go" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a class="ct-line" href="tel:+15555555555">
+              <span class="ct-line__num" aria-hidden="true">02</span>
+              <span class="ct-line__label">Phone</span>
+              <span class="ct-line__main">
+                <span class="ct-line__value">+1 (555) 555-5555</span>
+                <span class="ct-line__note">Best when you'd rather just talk it through.</span>
+              </span>
+              <span class="ct-line__go" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg>
+              </span>
+            </a>
+          </li>
+          <li>
+            <div class="ct-line ct-line--static">
+              <span class="ct-line__num" aria-hidden="true">03</span>
+              <span class="ct-line__label">Base</span>
+              <span class="ct-line__main">
+                <span class="ct-line__value">Los Angeles · Worldwide</span>
+                <span class="ct-line__note">Based in LA. Working wherever the aircraft is.</span>
+              </span>
+              <span class="ct-line__time">
+                <b data-ct-clock>—</b>
+                <span>Local time · LA</span>
+              </span>
+            </div>
+          </li>
+        </ul>
+
+        <!-- PRIVACY PROMISE -->
+        <div class="ct-privacy" data-reveal>
+          <figure class="ct-privacy__media" data-parallax>
+            <img src="assets/scrub/frame_001.webp" alt="A business jet waiting inside a lit hangar, doors open" loading="lazy" />
+          </figure>
+
+          <div class="ct-seal" aria-hidden="true">
+            <svg viewBox="0 0 200 200">
+              <defs>
+                <path id="ctSealPath" d="M 100 100 m -76 0 a 76 76 0 1 1 152 0 a 76 76 0 1 1 -152 0"/>
+              </defs>
+              <circle class="ct-seal__disc" cx="100" cy="100" r="98"/>
+              <g class="ct-seal__ring">
+                <text textLength="474" lengthAdjust="spacing"><textPath href="#ctSealPath">PRIVATE BY DEFAULT · NEVER SHARED · NEVER SOLD ·</textPath></text>
+              </g>
+              <circle class="ct-seal__core" cx="100" cy="100" r="44"/>
+              <g class="ct-seal__lock" transform="translate(82 80) scale(1.5)">
+                <rect x="5" y="10.5" width="14" height="10" rx="2"/>
+                <path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/>
+              </g>
+            </svg>
+          </div>
+
+          <div class="ct-privacy__body">
+            <span class="kicker">We care about your privacy</span>
+            <h3 class="ct-privacy__title">Your deal stays <em>between us.</em></h3>
+            <p class="ct-privacy__copy">Aircraft deals run on discretion — so do we. The details you share are used for one thing: replying to you.</p>
+            <ul class="ct-privacy__list">
+              <li>Used only to reply to you</li>
+              <li>Never shared with anyone else</li>
+              <li>Never sold — ever</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         CHAPTER 02 — BEFORE YOU ASK (consultation FAQ)
+         ================================================================ -->
+    <section class="chapter chapter--soft ct-faq" id="questions" data-chapter="Questions" aria-labelledby="ctFaqTitle">
+      <div class="chapter__inner">
+        <div class="split">
+          <div class="split__sticky">
+            <header data-reveal>
+              <span class="kicker">Before you ask</span>
+              <h2 class="display" id="ctFaqTitle">Good <em>questions.</em></h2>
+              <p class="lede">Straight answers on what the consultation is — and what it isn't.</p>
+            </header>
+            <div class="ct-faq__card" data-reveal>
+              <p class="ct-faq__card-title">The quickest answer is usually a conversation.</p>
+              <a class="btn btn--ink" href="#consultForm" data-consult>
+                File your flight plan
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="faq" data-reveal>
+            <details open>
+              <summary>Is the consultation really free?</summary>
+              <div class="faq__a">
+                <p>Yes. The first conversation costs nothing — no fee, no card, no catch. It's how you find out what we'd actually do for your deal, and how we find out whether we're the right fit.</p>
+              </div>
+            </details>
+            <details>
+              <summary>Do I commit to anything by booking?</summary>
+              <div class="faq__a">
+                <p>No. You leave with an honest read on your sale or acquisition and, if you want one, a plan with a transparent, itemized quote. Whether you take it any further is entirely up to you.</p>
+              </div>
+            </details>
+            <details>
+              <summary>What should I prepare?</summary>
+              <div class="faq__a">
+                <p>Nothing formal. It helps to know the aircraft — make, model and year if you have them — where you are in the deal, and your timeline.</p>
+                <p>Existing photos, a spec sheet or a live listing are welcome, but optional. Just come ready to talk about the goal.</p>
+              </div>
+            </details>
+            <details>
+              <summary>Do you work with single brokers?</summary>
+              <div class="faq__a">
+                <p>Absolutely. We work with single brokers and established industry professionals alike. Whether you're representing one aircraft or a full book of listings, you get the same team and the same standard — and once we agree on a plan, we're up and running in days, not weeks.</p>
+              </div>
+            </details>
+            <details>
+              <summary>What happens to my details?</summary>
+              <div class="faq__a">
+                <p>They're used for one thing: replying to you. We never share them and never sell them, and everything you tell us about your deal stays between us.</p>
+              </div>
+            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- include:footer -->
+  <!-- ================================================================
+       EPILOGUE — ARRIVAL (consultation CTA + footer in one cinematic block)
+       ================================================================ -->
+  <section class="colophon" id="footer" data-chapter="Arrival">
+    <video class="colophon__video"
+           src="assets/colophon-loop.mp4"
+           autoplay muted loop playsinline preload="metadata"
+           aria-hidden="true"></video>
+    <div class="colophon__overlay" aria-hidden="true"></div>
+
+    <div class="colophon__inner">
+
+      <!-- INVITATION -->
+      <div class="colophon__invite">
+        <span class="colophon__status">
+          <span class="colophon__pulse" aria-hidden="true"></span>
+          Free consultation · No commitment
+        </span>
+        <h2 class="colophon__h" data-reveal>
+          Want to see what a <em>customized</em> approach looks like?
+        </h2>
+        <a class="colophon__cta" href="contact.html" data-consult>
+          <span>Book a free consultation</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a class="colophon__contact" href="mailto:hello@uppersky.media">hello@uppersky.media</a>
+      </div>
+
+      <!-- WORDMARK MOMENT -->
+      <a class="colophon__wordmark" href="index.html" aria-label="UPPERSKY home">
+        UPPERSKY<span class="colophon__dot">.</span>
+      </a>
+
+      <!-- INFO GRID -->
+      <div class="colophon__grid">
+        <nav class="colophon__col" aria-label="Footer navigation">
+          <span class="colophon__h-mini">Navigate</span>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="why-us.html">Why us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="process.html">Process</a></li>
+            <li><a href="blog.html">Journal</a></li>
+            <li><a href="contact.html" aria-current="page">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="colophon__col">
+          <span class="colophon__h-mini">Get in touch</span>
+          <ul>
+            <li><a href="mailto:hello@uppersky.media">hello@uppersky.media</a></li>
+            <li><a href="tel:+15555555555">+1 (555) 555-5555</a></li>
+            <li>Los Angeles · Worldwide</li>
+          </ul>
+        </div>
+        <div class="colophon__col">
+          <span class="colophon__h-mini">Follow</span>
+          <ul class="colophon__social">
+            <li><a href="#" aria-label="Instagram">Instagram <span aria-hidden="true">↗</span></a></li>
+            <li><a href="#" aria-label="LinkedIn">LinkedIn <span aria-hidden="true">↗</span></a></li>
+            <li><a href="#" aria-label="YouTube">YouTube <span aria-hidden="true">↗</span></a></li>
+            <li><a href="#" aria-label="Vimeo">Vimeo <span aria-hidden="true">↗</span></a></li>
+          </ul>
+        </div>
+        <div class="colophon__col colophon__col--time">
+          <span class="colophon__h-mini">Local time</span>
+          <span class="colophon__clock" id="laClock">—</span>
+          <span class="colophon__clock-meta">Los Angeles · PT</span>
+        </div>
+      </div>
+
+      <!-- BOTTOM BAR -->
+      <div class="colophon__bar">
+        <span class="colophon__copy">© <span id="year"></span> UPPERSKY MEDIA — a Unimarq company · All rights reserved</span>
+        <button class="colophon__cookie" type="button" data-cookie-open>Cookie settings</button>
+        <span class="colophon__tag">— Built to fly</span>
+        <a class="colophon__top-link" href="#top" aria-label="Back to top">
+          Back to top
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </section>
+  <!-- /include:footer -->
+
+  <!-- include:cookie -->
+  <!-- ============ COOKIE CONSENT ============
+       Choice is stored in localStorage ("usm-consent") and announced as an
+       "uppersky:consent" event — load any analytics only after that fires. -->
+  <section class="cookie" id="cookieBanner" aria-label="Cookie preferences" hidden>
+    <div class="cookie__card">
+      <div class="cookie__top">
+        <span class="cookie__badge" aria-hidden="true">
+          <svg viewBox="0 0 102.23 100" fill="currentColor">
+            <path d="M 38.28 0.77 C 33.13 8.56 36.3 17.53 40.18 25.07 C 49.14 42.48 69.13 65.88 56.38 86.05 C 46.42 101.81 26.94 97.35 15.15 86.39 C 0.42 72.69 -3.61 50.68 3.23 32.02 C 3.63 30.93 4.09 29.41 4.91 28.58 C 5.74 40.55 8.01 53.36 13.94 63.9 C 18.64 72.27 30.6 86.01 40.03 75.55 C 46.53 68.34 41.83 58.07 37.75 50.92 C 31.78 40.48 19.44 27.35 23.08 14.4 C 24.91 7.89 32.01 2.56 38.28 0.77"/>
+            <path d="M 101.8 55.8 L 99.68 49.29 C 97.16 41.37 85.33 24.11 77.22 21.99 C 72.51 20.75 75.21 27.84 76.11 30.12 C 81.74 44.43 91.66 55.68 90.69 72.65 C 89.76 88.89 75.96 96.65 61.7 100 C 68.11 94.38 73.44 87.35 74.79 78.7 C 77.05 64.22 68.26 44.73 61.56 32.09 C 58.56 26.43 54.39 20.55 51.99 14.73 C 43.63 -5.49 64.77 -0.92 75.55 5.22 C 93.71 15.58 104.57 34.59 101.8 55.8"/>
+          </svg>
+        </span>
+        <span class="cookie__kicker">Privacy first</span>
+      </div>
+      <h2 class="cookie__title">Cookies — <em>cleared for takeoff?</em></h2>
+      <p class="cookie__copy">We use essential cookies to run this site and, only with your OK, analytics to learn what's useful. We never sell your data.</p>
+
+      <div class="cookie__prefs" id="cookiePrefs" hidden>
+        <label class="cookie__pref">
+          <span><b>Essential</b> Keeps the site working. Always on.</span>
+          <input type="checkbox" checked disabled><span class="cookie__switch" aria-hidden="true"></span>
+        </label>
+        <label class="cookie__pref">
+          <span><b>Analytics</b> Anonymous stats on what people read.</span>
+          <input type="checkbox" name="analytics"><span class="cookie__switch" aria-hidden="true"></span>
+        </label>
+        <label class="cookie__pref">
+          <span><b>Marketing</b> Measures our own campaigns.</span>
+          <input type="checkbox" name="marketing"><span class="cookie__switch" aria-hidden="true"></span>
+        </label>
+      </div>
+
+      <div class="cookie__actions">
+        <button type="button" class="cookie__btn cookie__btn--text" data-cookie="prefs" aria-expanded="false" aria-controls="cookiePrefs">Preferences</button>
+        <button type="button" class="cookie__btn cookie__btn--ghost" data-cookie="essential">Essential only</button>
+        <button type="button" class="cookie__btn cookie__btn--lime" data-cookie="accept">Accept all</button>
+        <button type="button" class="cookie__btn cookie__btn--lime" data-cookie="save" hidden>Save choices</button>
+      </div>
+    </div>
+  </section>
+  <!-- /include:cookie -->
+
+  <!-- include:scripts -->
+  <!-- GSAP + Lenis (smooth scroll) -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
+  <script src="app.js?v=20"></script>
+  <script src="kit.js?v=2"></script>
+  <!-- /include:scripts -->
+  <script src="js/contact.js?v=1"></script>
+</body>
+</html>
