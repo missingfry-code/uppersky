@@ -77,11 +77,20 @@
     const mm = gsap.matchMedia();
     mm.add({ wide: '(min-width: 761px)', narrow: '(max-width: 760px)' }, (ctx) => {
       const v = ctx.conditions.wide
-        ? { ax: -36, ay: 5, ar: -9, bx: 36, by: -5, br: 9, s: 1.08, dim: .38 }
+        ? { ax: -48, ay: 5, ar: -9, bx: 48, by: -5, br: 9, s: 1.08, dim: .38 }
         : { ax: -40, ay: -30, ar: -14, bx: 40, by: 30, br: 14, s: 1, dim: .62 };
       // the film is 1.7x the emblem; holding back ~60% of the window's travel
       // keeps the scene nearly still with a hint of parallax
       const counter = (n) => (-n / 1.7) * .62;
+
+      // The headline plays in whole once the swooshes have parted, rather than
+      // being scrubbed: a scrubbed reveal can stop half-way, leaving glyph tops
+      // of the lime line floating over the film like stray marks.
+      const reveal = gsap.timeline({ paused: true })
+        .to(kicker, { opacity: 1, y: 0, duration: .5, ease: 'power2.out' }, 0)
+        .to(lines, { yPercent: 0, duration: .8, stagger: .09, ease: 'power3.out' }, .05)
+        .to(copy, { opacity: 1, y: 0, duration: .6, stagger: .1, ease: 'power2.out' }, .4)
+        .set(actions, { pointerEvents: 'auto' }, .5);
 
       const tl = gsap.timeline({
         defaults: { ease: 'none' },
@@ -94,7 +103,11 @@
           anticipatePin: 1,
           // the pin is created after app.js/kit.js triggers further down the
           // page — refresh it first so theirs include its spacing
-          refreshPriority: 1
+          refreshPriority: 1,
+          onUpdate: (self) => {
+            if (self.progress > .34) reveal.play();
+            else if (self.progress < .2) reveal.reverse();
+          }
         }
       });
       tl.to(footBits, { autoAlpha: 0, duration: .16 }, 0)
@@ -102,12 +115,8 @@
         .to(b, { xPercent: v.bx, yPercent: v.by, rotation: v.br, scale: v.s, duration: 1, ease: 'power1.inOut' }, 0)
         .to(mediaA, { xPercent: counter(v.ax), yPercent: counter(v.ay), rotation: -v.ar, duration: 1, ease: 'power1.inOut' }, 0)
         .to(mediaB, { xPercent: counter(v.bx), yPercent: counter(v.by), rotation: -v.br, duration: 1, ease: 'power1.inOut' }, 0)
-        .to(scrim, { opacity: 1, duration: .5 }, .2)
-        .to(dims, { opacity: v.dim, duration: .55 }, .2)
-        .to(kicker, { opacity: 1, y: 0, duration: .3, ease: 'power2.out' }, .26)
-        .to(lines, { yPercent: 0, duration: .42, stagger: .08, ease: 'power3.out' }, .3)
-        .to(copy, { opacity: 1, y: 0, duration: .32, stagger: .1, ease: 'power2.out' }, .64)
-        .set(actions, { pointerEvents: 'auto' }, .72)
+        .to(scrim, { opacity: 1, duration: .5 }, .15)
+        .to(dims, { opacity: v.dim, duration: .55 }, .15)
         .to({}, { duration: .32 }); // hold the finished frame before the pin lets go
       heroST = tl.scrollTrigger;
     });
