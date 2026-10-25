@@ -1,7 +1,7 @@
 /* ===========================================================
    UPPERSKY MEDIA — styles
    Light editorial site with dark hero/CTA bookends
-   Palette: white #ffffff, ink #0a0b0e, lime #d4ff3d, sky #2f9bd6
+   Palette: white #ffffff, ink #0a0b0e, lime #d4ff3d (brand accent — no blue)
    =========================================================== */
 
 :root{
@@ -23,7 +23,6 @@
 
   --yellow:    #d4ff3d;
   --yellow-2:  #b9e132;
-  --sky:       #2f9bd6;
 
   --max: 1280px;
   --pad: clamp(20px, 4vw, 64px);
@@ -217,7 +216,7 @@ button{ font: inherit; color: inherit; background: none; border: 0; cursor: poin
   letter-spacing: .08em;
 }
 .drawer__word span{ display: inline-block; }
-.drawer__word .is-sky{ color: var(--sky); }
+.drawer__word .is-sky{ color: var(--yellow); }
 .drawer__sub{
   display: flex;
   justify-content: space-between;
@@ -229,7 +228,6 @@ button{ font: inherit; color: inherit; background: none; border: 0; cursor: poin
   padding-right: .08em; /* optically match the wordmark's trailing tracking */
 }
 .drawer__sub span{ display: inline-block; }
-.drawer__brand:hover .drawer__word .is-sky{ color: var(--yellow); }
 .drawer__close{ flex: none; }
 .drawer__close{
   width: 40px; height: 40px;
