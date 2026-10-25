@@ -28,8 +28,11 @@
     setInterval(renderClock, 30 * 1000);
   }
 
-  if (typeof gsap === 'undefined') return;
+  // Content marked [data-reveal] is only hidden once we know GSAP is here to
+  // reveal it — if the CDN fails the page still shows everything.
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
   gsap.registerPlugin(ScrollTrigger);
+  document.documentElement.classList.add('has-motion');
 
   /* ============ LENIS — SMOOTH SCROLL ============ */
   let lenis = null;
@@ -47,12 +50,12 @@
     // Force start at top — beats both browser scroll-restoration and Lenis's own state
     lenis.scrollTo(0, { immediate: true });
   }
-  // Belt-and-braces: pin to top after the page finishes loading
-  window.addEventListener('load', () => {
-    if (lenis) lenis.scrollTo(0, { immediate: true });
-    else window.scrollTo(0, 0);
-    if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
-  });
+  // No scroll-to-top on `load`: with no loader the visitor is already scrolling
+  // by then, and yanking them back to the top reads as a glitch.
+  // Webfonts reflow the headings, so re-measure triggers once they land.
+  if (document.fonts && document.fonts.ready){
+    document.fonts.ready.then(() => ScrollTrigger.refresh());
+  }
 
   /* ============ DRAWER ============ */
   const tab    = document.getElementById('menuTab');
@@ -73,6 +76,9 @@
     drawer.setAttribute('aria-hidden', 'false');
     triggers.forEach(t => t.setAttribute('aria-expanded', 'true'));
     document.body.style.overflow = 'hidden';
+    // body overflow alone doesn't stop Lenis from scrolling the page underneath
+    if (lenis) lenis.stop();
+    window.dispatchEvent(new Event('uppersky:draweropen'));
     gsap.to(linksAnim, {
       x: 0, autoAlpha: 1,
       duration: .55, ease: 'power3.out',
@@ -86,6 +92,7 @@
     drawer.setAttribute('aria-hidden', 'true');
     triggers.forEach(t => t.setAttribute('aria-expanded', 'false'));
     document.body.style.overflow = '';
+    if (lenis) lenis.start();
     gsap.to(linksAnim, { x: -30, autoAlpha: 0, duration: .25, ease: 'power2.in' });
   }
   triggers.forEach(t => t.addEventListener('click', () => drawerOpen ? closeDrawer() : openDrawer()));
@@ -101,12 +108,7 @@
   // The background video is static and visible from the start — don't fade it in.
   // The first scrub word is already opacity 1 via the CSS .is-active rule, so we
   // keep its entrance to a subtle settle (no full fade-in) to avoid flashing.
-  // Hold the intro until the loader clears (plays immediately if no loader in DOM)
-  const intro = gsap.timeline({
-    defaults: { ease: 'power3.out' },
-    paused: !!document.getElementById('loader')
-  });
-  window.addEventListener('uppersky:loaded', () => intro.play(), { once: true });
+  const intro = gsap.timeline({ defaults: { ease: 'power3.out' } });
   intro.from('.top-cta',  { autoAlpha: 0, y: -10, duration: .6 }, 0);
   intro.from('.menu-tab', { x: -40, autoAlpha: 0, duration: .6 }, 0);
   intro.from('.m-header', { y: -30, autoAlpha: 0, duration: .6 }, 0);
@@ -115,14 +117,6 @@
   if (firstWord){
     // Subtle "settle" without ever hiding the word — y only, opacity already 1.
     intro.from(firstWord, { y: 24, duration: 1.0, ease: 'power3.out' }, 0.1);
-  }
-
-  // Hero logo (off-screen on load — animates when scrolled into view)
-  if (ScrollTrigger){
-    gsap.from('.hero__logo-img', {
-      y: 30, autoAlpha: 0, scale: .98, duration: 1.2, ease: 'power3.out',
-      scrollTrigger: { trigger: '.hero', start: 'top 80%', once: true }
-    });
   }
 
   /* ============ GENERIC REVEALS ============ */
@@ -154,33 +148,6 @@
       scrollTrigger: { trigger: '.big-quote', start: 'top 82%' }
     });
   }
-
-  /* ============ SERVICES — plane + tags ============ */
-  if (!reduce){
-    gsap.from('.stage-plane', {
-      x: -80, autoAlpha: 0, duration: 1.4, ease: 'power3.out',
-      scrollTrigger: { trigger: '.services__stage', start: 'top 75%' }
-    });
-    gsap.to('.stage-plane', {
-      y: -10, duration: 3, ease: 'sine.inOut',
-      yoyo: true, repeat: -1
-    });
-  }
-
-  const tagsEls = document.querySelectorAll('.tag');
-  gsap.to(tagsEls, {
-    x: 0, autoAlpha: 1,
-    duration: .55, stagger: .12, ease: 'power3.out',
-    scrollTrigger: { trigger: '.stage-tags', start: 'top 80%' },
-    onComplete: () => {
-      tagsEls.forEach((t, i) => setTimeout(() => t.classList.add('is-lit'), 120 * i));
-    }
-  });
-
-  gsap.from('.svc', {
-    y: 26, autoAlpha: 0, duration: .6, ease: 'power3.out', stagger: .08,
-    scrollTrigger: { trigger: '.services__icons', start: 'top 85%' }
-  });
 
   /* ============ BEFORE / AFTER SLIDER ============ */
   document.querySelectorAll('.ba-slider').forEach((slider) => {
@@ -237,23 +204,6 @@
     }
   });
 
-  /* services tabs — switch detail panel on click/hover */
-  const svcButtons = document.querySelectorAll('.svc[data-svc]');
-  const svcInfos   = document.querySelectorAll('.svc-info[data-info]');
-  function activateSvc(key){
-    svcButtons.forEach(b => {
-      const on = b.dataset.svc === key;
-      b.classList.toggle('is-active', on);
-      b.setAttribute('aria-selected', on ? 'true' : 'false');
-    });
-    svcInfos.forEach(i => i.classList.toggle('is-active', i.dataset.info === key));
-  }
-  svcButtons.forEach(b => {
-    b.addEventListener('click', () => activateSvc(b.dataset.svc));
-    b.addEventListener('mouseenter', () => activateSvc(b.dataset.svc));
-    b.addEventListener('focus', () => activateSvc(b.dataset.svc));
-  });
-
   /* ============ PROCESS ============ */
   gsap.set('.step', { autoAlpha: 0, y: 40 });
   ScrollTrigger.create({
@@ -274,7 +224,8 @@
   /* ============ SCRUB SECTION — canvas frame sequence ============ */
   // The old <video currentTime> scrub needed the full 13MB mp4 buffered before
   // it felt responsive. A WebP frame sequence paints after ~35KB and streams
-  // the rest in behind the loader.
+  // the rest in while the visitor reads the first headline. The canvas also has
+  // frame 1 as a CSS background, so there's never a black box while it loads.
   const scrubSection = document.querySelector('.scrub-section');
   const scrubCanvas  = document.querySelector('canvas.scrub-video');
   const scrubCard    = document.querySelector('.scrub-card');
@@ -282,7 +233,6 @@
 
   if (scrubSection && scrubCanvas){
     const FRAME_COUNT = 96;
-    const FIRST_CHUNK = 24; // the loader holds until this many frames are in
     const frameSrc = (i) => `assets/scrub/frame_${String(i + 1).padStart(3, '0')}.webp`;
 
     const ctx = scrubCanvas.getContext('2d');
@@ -314,25 +264,26 @@
 
     const onFrameSettled = () => {
       loadedCount++;
-      if (!window.__scrubReady && loadedCount >= FIRST_CHUNK){
-        window.__scrubReady = true;
-        window.dispatchEvent(new Event('uppersky:scrubready'));
-      }
       if (loadedCount === FRAME_COUNT) render();
     };
 
-    const loadFrame = (i) => {
+    const loadFrame = (i, done) => {
       const img = new Image();
       img.decoding = 'async';
       img.onload = () => {
         frames[i] = img;
         if (i === 0 || i === currentIndex) render();
         onFrameSettled();
+        done && done();
       };
-      img.onerror = onFrameSettled;
+      img.onerror = () => { onFrameSettled(); done && done(); };
       img.src = frameSrc(i);
     };
-    for (let i = 0; i < FRAME_COUNT; i++) loadFrame(i);
+    // Frame 1 first so the opening shot is sharp, then the rest in order —
+    // firing all 96 at once starved the fonts and above-the-fold images.
+    loadFrame(0, () => {
+      for (let i = 1; i < FRAME_COUNT; i++) loadFrame(i);
+    });
 
     window.addEventListener('resize', render);
 
@@ -397,16 +348,6 @@
       scrollTrigger: { trigger: '.big-quote-section', start: 'top bottom', end: 'bottom top', scrub: true }
     });
 
-    // Services stage — plane drifts across as you scroll through the section
-    gsap.to('.services__stage', {
-      xPercent: 4, yPercent: -6, ease: 'none',
-      scrollTrigger: { trigger: '.services', start: 'top bottom', end: 'bottom top', scrub: true }
-    });
-    gsap.to('.stage-tags .tag', {
-      yPercent: -25, ease: 'none', stagger: 0.05,
-      scrollTrigger: { trigger: '.services', start: 'top bottom', end: 'bottom top', scrub: true }
-    });
-
     // Process — step number/bar pulls upward as the row crosses the viewport
     gsap.utils.toArray('.step').forEach((step, i) => {
       gsap.fromTo(step.querySelector('.step__num'),
@@ -418,27 +359,10 @@
       );
     });
 
-    // CTA background parallax
-    gsap.to('.cta__bg', {
-      yPercent: -12, ease: 'none',
-      scrollTrigger: {
-        trigger: '.cta',
-        start: 'top bottom',
-        end: 'bottom top',
-        scrub: true
-      }
-    });
   }
-  gsap.from('.cta h2', {
-    y: 50, autoAlpha: 0, duration: 1, ease: 'power3.out',
-    scrollTrigger: { trigger: '.cta', start: 'top 70%' }
-  });
-  gsap.from('.btn-yellow', {
-    y: 30, autoAlpha: 0, duration: .8, ease: 'back.out(1.6)', delay: .25,
-    scrollTrigger: { trigger: '.cta', start: 'top 70%' }
-  });
 
-  /* smooth anchor scroll */
+  /* smooth anchor scroll — through Lenis when it's running, since a native
+     smooth scroll and Lenis fight each other and the page stutters */
   document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', (e) => {
       const id = link.getAttribute('href');
@@ -446,8 +370,14 @@
       const target = document.querySelector(id);
       if (!target) return;
       e.preventDefault();
-      const top = target.getBoundingClientRect().top + window.scrollY - 12;
-      window.scrollTo({ top, behavior: 'smooth' });
+      if (lenis){
+        // the drawer stops Lenis; wait for it to close before scrolling
+        const go = () => lenis.scrollTo(target, { offset: -12 });
+        drawerOpen ? setTimeout(go, 220) : go();
+      } else {
+        const top = target.getBoundingClientRect().top + window.scrollY - 12;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
     });
   });
 
@@ -565,53 +495,132 @@
 })();
 
 /* =====================================================
-   LOADER — buys the scrub video time to buffer
+   EMBLEM — the SVG logo's two swooshes, animated
    ===================================================== */
 (() => {
-  const loader = document.getElementById('loader');
-  if (!loader || typeof gsap === 'undefined'){ loader?.remove(); return; }
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce || typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
 
-  const pctEl = document.getElementById('loaderPct');
-  const fill  = document.getElementById('loaderFill');
+  // Rotate each swoosh around the emblem's centre, not its own bbox
+  const CENTER = '51.1 50';
+  const parts = (svg) => [svg.querySelector('.emblem__a'), svg.querySelector('.emblem__b')];
 
-  document.documentElement.classList.add('is-loading');
-  if (window.lenis) window.lenis.stop();
+  /* Header emblems turn one full revolution over the length of the page */
+  gsap.to('.menu-tab__emblem, .m-header__logo .emblem', {
+    rotate: 360, ease: 'none',
+    scrollTrigger: { start: 0, end: 'max', scrub: .6 }
+  });
 
-  const state = { p: 0 };
-  const render = () => {
-    const v = Math.round(state.p);
-    pctEl.textContent = v;
-    fill.style.transform = `scaleX(${v / 100})`;
-  };
-
-  // Creep toward 90% while the video buffers; real readiness completes it
-  const creep = gsap.to(state, { p: 90, duration: 4.5, ease: 'power1.out', onUpdate: render });
-
-  let done = false;
-  const finish = () => {
-    if (done) return;
-    done = true;
-    creep.kill();
-    gsap.to(state, {
-      p: 100, duration: .35, ease: 'power1.in', onUpdate: render,
-      onComplete: () => {
-        gsap.timeline()
-          .to('.loader__inner', { y: -24, autoAlpha: 0, duration: .4, ease: 'power2.in' })
-          .to(loader, { yPercent: -100, duration: .85, ease: 'power4.inOut' }, '-=.05')
-          .add(() => {
-            loader.remove();
-            document.documentElement.classList.remove('is-loading');
-            if (window.lenis) window.lenis.start();
-            window.dispatchEvent(new Event('uppersky:loaded'));
-            if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
-          });
-      }
+  /* Menu tab — swooshes fly together on load, part slightly on hover */
+  const tabEmblem = document.querySelector('.menu-tab__emblem');
+  if (tabEmblem){
+    const [a, b] = parts(tabEmblem);
+    gsap.from(a, { x: -26, rotate: -60, svgOrigin: CENTER, autoAlpha: 0, duration: 1, ease: 'power3.out', delay: .2 });
+    gsap.from(b, { x: 26, rotate: -60, svgOrigin: CENTER, autoAlpha: 0, duration: 1, ease: 'power3.out', delay: .3 });
+    const tab = document.getElementById('menuTab');
+    tab.addEventListener('mouseenter', () => {
+      gsap.to(a, { x: -5, y: 3, duration: .35, ease: 'power2.out' });
+      gsap.to(b, { x: 5, y: -3, duration: .35, ease: 'power2.out' });
     });
-  };
+    tab.addEventListener('mouseleave', () => {
+      gsap.to([a, b], { x: 0, y: 0, duration: .5, ease: 'elastic.out(1, .5)' });
+    });
+  }
 
-  // Ready once the scrub section's first chunk of frames is in
-  if (window.__scrubReady) finish();
-  else window.addEventListener('uppersky:scrubready', finish, { once: true });
-  // Never trap the visitor — hard cap even if the network stalls
-  setTimeout(finish, 7000);
+  /* Drawer lockup — emblem draws itself in, then the wordmark rises */
+  const brand = document.querySelector('.drawer__brand');
+  const drawerEmblem = document.querySelector('.drawer__emblem');
+  if (brand && drawerEmblem){
+    const paths = parts(drawerEmblem);
+    const lengths = paths.map(p => p.getTotalLength());
+    const word = brand.querySelectorAll('.drawer__word span');
+    const sub = brand.querySelectorAll('.drawer__sub span');
+    let drawTl = null;
+
+    window.addEventListener('uppersky:draweropen', () => {
+      drawTl && drawTl.kill();
+      paths.forEach((p, i) => gsap.set(p, {
+        stroke: 'currentColor', strokeWidth: 1.2,
+        strokeDasharray: lengths[i], strokeDashoffset: lengths[i], fillOpacity: 0,
+        rotate: 0, svgOrigin: CENTER
+      }));
+      gsap.set(word, { yPercent: 110, autoAlpha: 0 });
+      gsap.set(sub, { autoAlpha: 0 });
+      drawTl = gsap.timeline({ delay: .2 })
+        .to(paths, { strokeDashoffset: 0, duration: .9, ease: 'power2.inOut', stagger: .12 })
+        .to(paths, { fillOpacity: 1, duration: .4, ease: 'power1.out' }, '-=.3')
+        .set(paths, { stroke: 'none' })
+        .to(word, { yPercent: 0, autoAlpha: 1, duration: .6, ease: 'power3.out', stagger: .04 }, .35)
+        .to(sub, { autoAlpha: 1, duration: .4, stagger: .06 }, .75);
+    });
+
+    // Hover: the swooshes counter-rotate like a turbine spooling up
+    brand.addEventListener('mouseenter', () => {
+      if (drawTl && drawTl.isActive()) return;
+      gsap.to(paths[0], { rotate: -180, svgOrigin: CENTER, duration: .9, ease: 'power3.inOut' });
+      gsap.to(paths[1], { rotate: 180, svgOrigin: CENTER, duration: .9, ease: 'power3.inOut' });
+    });
+    brand.addEventListener('mouseleave', () => {
+      gsap.to(paths, { rotate: 0, svgOrigin: CENTER, duration: .7, ease: 'power3.out' });
+    });
+  }
+})();
+
+/* =====================================================
+   STORY — chapter rail + chapter-specific motion
+   ===================================================== */
+(() => {
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+  /* Ch. 02 — "Better. Faster. More accurate. Seamless." lights up word by word */
+  const whyWords = gsap.utils.toArray('.why__word');
+  if (whyWords.length && !reduce){
+    gsap.to(whyWords, {
+      opacity: 1, ease: 'none', stagger: .5,
+      scrollTrigger: { trigger: '.why__statement', start: 'top 80%', end: 'bottom 45%', scrub: true }
+    });
+  }
+
+  /* Ch. 03 — the + + = operators snap in between the terms */
+  if (!reduce){
+    gsap.from('.craft__op', {
+      scale: 0, rotate: -90, autoAlpha: 0,
+      duration: .6, ease: 'back.out(2)', stagger: .15,
+      scrollTrigger: { trigger: '.craft__formula', start: 'top 80%', once: true }
+    });
+  }
+
+  /* Rail — which chapter you're in, plus overall progress. Hidden during the
+     prologue and epilogue, where the scrub cards and footer own that corner. */
+  const rail = document.querySelector('.story-rail');
+  const chapters = gsap.utils.toArray('[data-chapter]');
+  if (!rail || chapters.length < 3) return;
+  const num  = document.getElementById('railNum');
+  const name = document.getElementById('railName');
+  const fill = document.getElementById('railFill');
+  const last = chapters.length - 1;
+
+  const show = (i) => {
+    rail.classList.toggle('is-visible', i > 0 && i < last);
+    if (i === 0 || i === last) return;
+    num.textContent = String(i).padStart(2, '0');
+    const label = chapters[i].dataset.chapter;
+    if (name.textContent !== label){
+      name.textContent = label;
+      name.classList.remove('is-swap');
+      void name.offsetWidth; // restart the swap animation
+      name.classList.add('is-swap');
+    }
+  };
+  chapters.forEach((el, i) => {
+    ScrollTrigger.create({
+      trigger: el, start: 'top 55%', end: 'bottom 55%',
+      onToggle: (self) => { if (self.isActive) show(i); }
+    });
+  });
+  ScrollTrigger.create({
+    start: 0, end: 'max',
+    onUpdate: (self) => { fill.style.transform = `scaleX(${self.progress})`; }
+  });
 })();
