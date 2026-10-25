@@ -44,10 +44,10 @@
 .ct-hero__inner{
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, clamp(440px, 44vw, 580px));
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: auto auto auto;
   grid-template-areas:
     "intro gate"
-    "next  gate"
+    "next  next"
     "log   log";
   column-gap: clamp(40px, 6vw, 110px);
   width: 100%;
@@ -148,7 +148,8 @@
 .ct-promise__copy{ grid-area: copy; font-size: 13.5px; line-height: 1.5; color: var(--on-dark-3); }
 
 /* ---------- what happens next ---------- */
-.ct-next{ grid-area: next; min-width: 0; align-self: start; margin-top: clamp(40px, 6vh, 60px); }
+/* a full-width row of three waypoints under the form (a vertical list on phones) */
+.ct-next{ grid-area: next; min-width: 0; align-self: start; margin-top: clamp(56px, 9vh, 96px); }
 .ct-next__title{
   display: flex;
   align-items: center;
@@ -162,18 +163,26 @@
   color: var(--on-dark-3);
 }
 .ct-next__title::before{ content: ''; width: 28px; height: 1px; background: currentColor; }
-.ct-next__track{ position: relative; }
-/* dashed flight path between the waypoints */
+.ct-next__track{ position: relative; --ct-step-gap: clamp(24px, 3.4vw, 56px); }
+/* dashed flight path from the first waypoint's centre to the last one's */
 .ct-next__path{
   position: absolute;
-  left: 19.25px; top: 20px; bottom: 44px;
-  border-left: 1.5px dashed rgba(255,255,255,.22);
-  transform-origin: 50% 0;
+  top: 19.25px;
+  left: 20px;
+  right: calc((100% - 2 * var(--ct-step-gap)) / 3 - 20px);
+  border-top: 1.5px dashed rgba(255,255,255,.22);
+  transform-origin: 0 50%;
 }
-.ct-next__list{ display: grid; gap: 22px; margin: 0; padding: 0; list-style: none; }
+.ct-next__list{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px var(--ct-step-gap);
+  margin: 0; padding: 0;
+  list-style: none;
+}
 .ct-step{
   display: grid;
-  grid-template-columns: 40px minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr);
   gap: 18px;
   align-items: start;
 }
@@ -197,7 +206,7 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 6px 12px;
-  margin: 9px 0 6px;
+  margin: 0 0 8px;
   font-family: 'Oswald', sans-serif;
   font-weight: 600;
   font-size: 17px;
@@ -761,6 +770,19 @@ a.ct-line:focus-visible .ct-line__go{ background: var(--yellow); border-color: v
 
 @media (max-width: 768px){
   .ct-hero__inner{ padding-top: 100px; }
+}
+
+/* phones: the waypoints stack, path runs down beside the numbers */
+@media (max-width: 640px){
+  .ct-next__path{
+    top: 20px; bottom: 44px; left: 19.25px; right: auto;
+    border-top: 0;
+    border-left: 1.5px dashed rgba(255,255,255,.22);
+    transform-origin: 50% 0;
+  }
+  .ct-next__list{ grid-template-columns: minmax(0, 1fr); gap: 22px; }
+  .ct-step{ grid-template-columns: 40px minmax(0, 1fr); }
+  .ct-step__title{ margin: 9px 0 6px; }
 }
 
 @media (max-width: 760px){

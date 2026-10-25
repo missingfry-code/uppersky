@@ -132,7 +132,12 @@
   if (cells.length) tl.fromTo(cells, { y: 8, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: .5, stagger: .08, ease: 'power3.out', clearProps: 'transform' }, .85);
   tl.to(lines, { yPercent: 0, duration: 1.15, stagger: .1 }, .15)
     .to(ins, { autoAlpha: 1, y: 0, duration: .8, stagger: .07, ease: 'power3.out', clearProps: 'transform' }, .55);
-  if (path) tl.fromTo(path, { scaleY: 0 }, { scaleY: 1, duration: 1.3, ease: 'power2.inOut' }, 1.1);
+  if (path){
+    // the path runs across the three waypoints, or down them on phones
+    const down = getComputedStyle(path).borderLeftStyle === 'dashed';
+    tl.fromTo(path, down ? { scaleY: 0 } : { scaleX: 0 },
+      { ...(down ? { scaleY: 1 } : { scaleX: 1 }), duration: 1.3, ease: 'power2.inOut' }, 1.1);
+  }
   release();
 
   /* The sky drifts slower than the page */
