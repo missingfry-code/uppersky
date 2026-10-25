@@ -1,6 +1,6 @@
 /* =====================================================
    UPPERSKY MEDIA — Why us
-   The emblem hero (outline draws, film fills the swooshes,
+   The emblem hero (outline draws, the photo fills the swooshes,
    scroll parts them around the headline), the old-way
    ledger, the promise index, pledge stamps, the redacted
    project file and the honest before/after sweep.
@@ -61,7 +61,7 @@
     gsap.set(frame, { autoAlpha: 0 });
     hero.classList.remove('is-intro');
 
-    /* Load — the outline draws itself in lime, then the film fills the swooshes */
+    /* Load — the outline draws itself in lime, then the photo fills the swooshes */
     gsap.timeline({ delay: .35 })
       .to(paths, { strokeDashoffset: 0, duration: 1.8, ease: 'power2.inOut', stagger: .22 }, 0)
       .to(windows, { autoAlpha: 1, duration: 1.4, ease: 'power2.out', stagger: .14 }, 1.3)
@@ -70,7 +70,7 @@
       .to(paths, { opacity: .6, duration: 1.4, ease: 'power1.out' }, 2.5)
       .to(frame, { autoAlpha: 1, duration: .9, ease: 'power2.out', stagger: .12 }, 1.5);
 
-    /* Scroll — the swooshes part like cloud around the headline. The film
+    /* Scroll — the swooshes part like cloud around the headline. The photo
        counter-moves inside each window, so the scene holds still while the
        windows slide over it. Phones part on the diagonal, desktop sideways. */
     let heroST = null;
@@ -79,13 +79,13 @@
       const v = ctx.conditions.wide
         ? { ax: -48, ay: 5, ar: -9, bx: 48, by: -5, br: 9, s: 1.08, dim: .38 }
         : { ax: -40, ay: -30, ar: -14, bx: 40, by: 30, br: 14, s: 1, dim: .62 };
-      // the film is 1.7x the emblem; holding back ~60% of the window's travel
+      // the photo is 1.7x the emblem; holding back ~60% of the window's travel
       // keeps the scene nearly still with a hint of parallax
       const counter = (n) => (-n / 1.7) * .62;
 
       // The headline plays in whole once the swooshes have parted, rather than
       // being scrubbed: a scrubbed reveal can stop half-way, leaving glyph tops
-      // of the lime line floating over the film like stray marks.
+      // of the lime line floating over the photo like stray marks.
       const reveal = gsap.timeline({ paused: true })
         .to(kicker, { opacity: 1, y: 0, duration: .5, ease: 'power2.out' }, 0)
         .to(lines, { yPercent: 0, duration: .8, stagger: .09, ease: 'power3.out' }, .05)
@@ -131,17 +131,6 @@
       else window.scrollTo(0, y);
     });
 
-    // The films only play while the hero is on screen
-    const films = [mediaA, mediaB];
-    const next = document.querySelector('.wu-old');
-    if (next){
-      ScrollTrigger.create({
-        trigger: next,
-        start: 'top top',
-        onEnter: () => films.forEach((f) => f.pause()),
-        onLeaveBack: () => films.forEach((f) => f.play().catch(() => {}))
-      });
-    }
   }
 
   /* =====================================================
