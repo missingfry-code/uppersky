@@ -964,6 +964,81 @@ button{ font: inherit; color: inherit; background: none; border: 0; cursor: poin
   color: #0a0b0e;
 }
 
+/* ===================== CREATIVE STRIP (full-width compact preview) ===================== */
+.creative-strip{
+  background: var(--bg-light);
+  color: var(--ink);
+  padding: clamp(48px, 8vh, 90px) var(--pad) clamp(36px, 5vh, 60px);
+}
+.creative-strip__inner{
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(0, 2.1fr);
+  gap: clamp(24px, 4vw, 64px);
+  align-items: end;
+}
+.creative-strip__head{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.creative-strip__eyebrow{
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  letter-spacing: .26em;
+  font-size: 11px;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.creative-strip__title{
+  font-family: 'Bebas Neue', 'Oswald', sans-serif;
+  font-weight: 400;
+  font-size: clamp(22px, 2.4vw, 34px);
+  letter-spacing: .015em;
+  line-height: 1.05;
+  margin: 0;
+  color: var(--ink);
+}
+.creative-strip__list{
+  list-style: none;
+  margin: 0; padding: 0;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: clamp(12px, 1.4vw, 22px);
+  border-top: 1px solid var(--line);
+  padding-top: clamp(18px, 2vh, 26px);
+}
+.creative-strip__item{
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 4px 2px 0;
+  border-top: 2px solid transparent;
+  transition: border-color .25s var(--easing);
+}
+.creative-strip__item:hover{ border-top-color: var(--yellow); }
+.creative-strip__num{
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 10px;
+  letter-spacing: .26em;
+  color: var(--ink-3);
+}
+.creative-strip__name{
+  font-family: 'Bebas Neue', 'Oswald', sans-serif;
+  font-weight: 400;
+  font-size: clamp(20px, 2vw, 28px);
+  letter-spacing: .02em;
+  line-height: 1;
+  color: var(--ink);
+}
+.creative-strip__desc{
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--ink-2);
+}
+
 /* ===================== BIG QUOTE (white section) ===================== */
 .big-quote-section{
   background: var(--bg-light);
@@ -1797,6 +1872,9 @@ button{ font: inherit; color: inherit; background: none; border: 0; cursor: poin
   .big-quote-section{ padding: clamp(60px, 12vh, 120px) var(--pad); }
   .big-quote p{ font-size: clamp(22px, 7vw, 32px); max-width: 18ch; }
 
+  .creative-strip__inner{ grid-template-columns: 1fr; gap: 22px; }
+  .creative-strip__list{ grid-template-columns: repeat(2, 1fr); gap: 14px 18px; padding-top: 18px; }
+
   .scrub-section{ height: 260vh; }
   .scrub-card{
     max-width: calc(100% - 40px);
@@ -2492,6 +2570,30 @@ button{ font: inherit; color: inherit; background: none; border: 0; cursor: poin
 
   /* Scrub headline — own the screen */
   .scrub-headers__line{ font-size: clamp(56px, 17vw, 110px); }
+
+  /* Creative strip — editorial index rows instead of a cramped 2-col grid */
+  .creative-strip__list{
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding-top: 6px;
+  }
+  .creative-strip__item{
+    flex-direction: row;
+    align-items: baseline;
+    gap: 14px;
+    padding: 16px 0;
+    border-top: 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .creative-strip__item:hover{ border-top-color: transparent; }
+  .creative-strip__num{ min-width: 26px; }
+  .creative-strip__name{ font-size: clamp(32px, 10vw, 44px); flex: 1; }
+  .creative-strip__desc{
+    font-size: 11px;
+    text-align: right;
+    max-width: 42%;
+    color: var(--ink-3);
+  }
 
   /* Gallery — one full-bleed frame per row, magazine style */
   .gallery-grid{
